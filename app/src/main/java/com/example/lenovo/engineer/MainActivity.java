@@ -23,8 +23,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private static final String TAG = "SignInActivity";
     private static final int RC_SIGN_IN = 9001;
+    GoogleSignInClient mGoogleSignInClient;
 
-    private GoogleSignInClient mGoogleSignInClient;
     private TextView mStatusTextView;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .requestEmail()
                 .build();
         // Build a GoogleSignInClient with the options specified by gso.
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         SignInButton signInButton = findViewById(R.id.sign_in_button);
         signInButton.setSize(SignInButton.SIZE_STANDARD);
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onStart() {
         // Check for existing Google Sign In account, if the user is already signed in
-// the GoogleSignInAccount will be non-null.
+        // the GoogleSignInAccount will be non-null.
         super.onStart();
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
 
@@ -60,19 +60,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         else {
             Intent myIntent = new Intent(MainActivity.this, main_menu.class);
-            myIntent.putExtra("Account", (Serializable) account);
-            //String email =
-
             startActivity(myIntent);
 
             finish();
-
         }
     }
     // [START signIn]
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
+        Log.d("signingIN", "signed in done");
     }
 
     @Override

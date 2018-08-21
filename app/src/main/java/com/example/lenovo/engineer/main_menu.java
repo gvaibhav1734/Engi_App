@@ -26,7 +26,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 public class main_menu extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
       //    GoogleSignInClient mGoogleSignInClient = (GoogleSi0gnInClient) getIntent().getParcelableExtra("SignInClient");
-            GoogleSignInAccount account = (GoogleSignInAccount) getIntent().getSerializableExtra("Account");
+           // GoogleSignInAccount account = (GoogleSignInAccount) getIntent().getSerializableExtra("Account");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
