@@ -23,56 +23,48 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private static final String TAG = "SignInActivity";
     private static final int RC_SIGN_IN = 9001;
+    GoogleSignInClient mGoogleSignInClient;
+    GoogleSignInAccount mGoogleSignInAccount;
 
-    private GoogleSignInClient mGoogleSignInClient;
     private TextView mStatusTextView;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mGoogleSignInAccount = GoogleSignIn.getLastSignedInAccount(this);
         // Configure sign-in to request the user's ID, email address, and basic
         // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
         // Build a GoogleSignInClient with the options specified by gso.
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+        mGoogleSignInClient = GoogleSignInHelper.getInstance(this, gso).getClient();
+        if (mGoogleSignInAccount == null) {
 
-        SignInButton signInButton = findViewById(R.id.sign_in_button);
-        signInButton.setSize(SignInButton.SIZE_STANDARD);
-        findViewById(R.id.sign_in_button).setOnClickListener(this);
+            SignInButton signInButton = findViewById(R.id.sign_in_button);
+            signInButton.setSize(SignInButton.SIZE_STANDARD);
+            findViewById(R.id.sign_in_button).setOnClickListener(this);
+        } else {
+            updateUI(mGoogleSignInAccount);
+        }
     }
-
-    @Override
-    protected void onStart() {
-        // Check for existing Google Sign In account, if the user is already signed in
-// the GoogleSignInAccount will be non-null.
-        super.onStart();
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-
-
-    }
-
 
     private void updateUI(GoogleSignInAccount account) {
-        if(account == null) {
+        if (account == null) {
 
-        }
-        else {
+        } else {
             Intent myIntent = new Intent(MainActivity.this, main_menu.class);
-            myIntent.putExtra("Account", (Serializable) account);
-            //String email =
-
             startActivity(myIntent);
 
             finish();
-
         }
     }
+
     // [START signIn]
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
+        Log.d("signingIN", "signed in done");
     }
 
     @Override
@@ -82,11 +74,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.sign_in_button:
                 signIn();
 
-              // MainActivity.this.startActivity(myIntent);
+                // MainActivity.this.startActivity(myIntent);
                 break;
             // ...
         }
     }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -99,20 +92,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             handleSignInResult(task);
         }
     }
+
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
-            GoogleSignInAccount account = completedTask.getResult(ApiException.class);
+            mGoogleSignInAccount = completedTask.getResult(ApiException.class);
 
             // Signed in successfully, show authenticated UI.
-            updateUI(account);
+            updateUI(mGoogleSignInAccount);
         } catch (ApiException e) {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
-            Log.w(TAG, "signInResult:failed code=" + e.getStatusCode());
+            Log.w(TAG, "signInResult:failed code=" + e.getMessage());
             updateUI(null);
         }
     }
-
 
 
 }
