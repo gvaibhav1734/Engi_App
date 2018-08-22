@@ -1,10 +1,12 @@
 package com.example.lenovo.engineer;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -25,6 +27,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 
 public class main_menu extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    private static final String TAG = "MainMenu";
       //    GoogleSignInClient mGoogleSignInClient = (GoogleSi0gnInClient) getIntent().getParcelableExtra("SignInClient");
            // GoogleSignInAccount account = (GoogleSignInAccount) getIntent().getSerializableExtra("Account");
 
@@ -113,7 +116,10 @@ public class main_menu extends AppCompatActivity
             fragment = new Home();
         }
         else if(id == R.id.logout) {
-            //mGoogleSignInClient.signOut();
+            GoogleSignInHelper.getInstance().getClient().signOut();
+            Log.d(TAG,"Logout Successful");
+            finish();
+            startActivity(new Intent(this,MainActivity.class));
         }
 
         if (fragment != null) {
