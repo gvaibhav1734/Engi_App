@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInApi;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -58,7 +59,7 @@ public class main_menu extends AppCompatActivity
 
         View header = navigationView.getHeaderView(0);
         TextView text = (TextView) header.findViewById(R.id.textView);
-       //text.setText(account.getDisplayName());
+        text.setText(GoogleSignInHelper.getInstance().getAccount().getDisplayName());
     }
 
 
