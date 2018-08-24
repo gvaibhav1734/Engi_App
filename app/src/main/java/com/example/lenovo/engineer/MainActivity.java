@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             mGoogleSignInAccount = completedTask.getResult(ApiException.class);
-
+            GoogleSignInHelper.getInstance(this, null);
             // Signed in successfully, show authenticated UI.
             updateUI(mGoogleSignInAccount);
         } catch (ApiException e) {

@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInApi;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -28,8 +29,6 @@ import com.google.android.gms.common.api.GoogleApiClient;
 public class main_menu extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private static final String TAG = "MainMenu";
-      //    GoogleSignInClient mGoogleSignInClient = (GoogleSi0gnInClient) getIntent().getParcelableExtra("SignInClient");
-           // GoogleSignInAccount account = (GoogleSignInAccount) getIntent().getSerializableExtra("Account");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +36,7 @@ public class main_menu extends AppCompatActivity
         setContentView(R.layout.activity_main_menu);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        getSupportActionBar().setElevation(0);
       /*  FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,10 +54,15 @@ public class main_menu extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        // Removing this will cause the navigation view to not respond to click events
+        navigationView.bringToFront();
 
         View header = navigationView.getHeaderView(0);
         TextView text = (TextView) header.findViewById(R.id.textView);
-       //text.setText(account.getDisplayName());
+        text.setText(GoogleSignInHelper.getInstance().getAccount().getDisplayName());
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.main_menu_fl_container,new ScheduleFragment(),"Schedule")
+                .commit();
     }
 
 
@@ -97,6 +101,7 @@ public class main_menu extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+        Log.d(TAG,"Menu item clicked.");
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         Fragment fragment = null;
