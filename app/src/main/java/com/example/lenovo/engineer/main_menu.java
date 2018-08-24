@@ -2,8 +2,6 @@ package com.example.lenovo.engineer;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
@@ -16,15 +14,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.android.gms.auth.api.Auth;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInApi;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.api.GoogleApiClient;
+import com.bumptech.glide.Glide;
 
 public class main_menu extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -58,8 +51,14 @@ public class main_menu extends AppCompatActivity
         navigationView.bringToFront();
 
         View header = navigationView.getHeaderView(0);
-        TextView text = (TextView) header.findViewById(R.id.textView);
-        text.setText(GoogleSignInHelper.getInstance().getAccount().getDisplayName());
+        ImageView profileImage = header.findViewById(R.id.header_iv_profile_image);
+        Glide.with(this)
+                .load(GoogleSignInHelper.getInstance().getAccount().getPhotoUrl())
+                .into(profileImage);
+        TextView name = (TextView) header.findViewById(R.id.header_tv_name);
+        name.setText(GoogleSignInHelper.getInstance().getAccount().getDisplayName());
+        TextView email = (TextView) header.findViewById(R.id.header_tv_email);
+        email.setText(GoogleSignInHelper.getInstance().getAccount().getEmail());
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.main_menu_fl_container,new ScheduleFragment(),"Schedule")
                 .commit();
