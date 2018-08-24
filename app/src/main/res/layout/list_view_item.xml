@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/list_item_tv_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_normal"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/list_item_iv_like"
+        android:layout_width="80dp"
+        android:layout_height="0dp"
+        android:padding="@dimen/padding_normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/list_item_tv_name" />
+
+    <TextView
+        android:id="@+id/list_item_tv_time"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_small"
+        android:drawableLeft="@drawable/ic_schedule"
+        android:drawablePadding="@dimen/padding_small"
+        android:drawableStart="@drawable/ic_schedule"
+        android:gravity="center_vertical"
+        android:padding="@dimen/padding_small"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/list_item_tv_location"
+        app:layout_constraintTop_toBottomOf="@id/list_item_tv_name" />
+
+    <TextView
+        android:id="@+id/list_item_tv_location"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_small"
+        android:drawableLeft="@drawable/ic_schedule"
+        android:drawablePadding="@dimen/padding_small"
+        android:drawableStart="@drawable/ic_location"
+        android:gravity="center_vertical"
+        android:padding="@dimen/padding_small"
+        app:layout_constraintLeft_toRightOf="@id/list_item_tv_time"
+        app:layout_constraintRight_toLeftOf="@id/list_item_iv_like"
+        app:layout_constraintTop_toBottomOf="@id/list_item_tv_name" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/padding_normal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/list_item_iv_like"
+        app:layout_constraintTop_toBottomOf="@id/list_item_tv_time">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_small"
+            android:text="Content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_small"
+            android:text=":" />
+
+        <TextView
+            android:id="@+id/list_item_tv_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_small" />
+    </LinearLayout>
+    <View
+        style="@style/Divider.Horizontal"
+        android:layout_marginTop="@dimen/margin_small"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+</android.support.constraint.ConstraintLayout>

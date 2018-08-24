@@ -8,4 +8,6 @@
     <string name="nav_header_desc">blablabla</string>
     <string name="action_settings">Settings</string>
     <string name="text_schedules">Schedule</string>
+
+    <string name="EVENT_LIST_URL">https://cricstat.000webhostapp.com/ved/php/schedule.php</string>
 </resources>
