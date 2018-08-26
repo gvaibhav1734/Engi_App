@@ -12,6 +12,7 @@ public class Entry implements Parcelable {
     private String Image;
     private String Content;
     private int Day;
+    private boolean Liked;
 
     public String getImage() {
         return Image;
@@ -19,6 +20,14 @@ public class Entry implements Parcelable {
 
     public void setImage(String image) {
         Image = image;
+    }
+
+    public boolean isLiked() {
+        return Liked;
+    }
+    public void setLiked(boolean like)
+    {
+        Liked=like;
     }
 
     public int getDay() {
