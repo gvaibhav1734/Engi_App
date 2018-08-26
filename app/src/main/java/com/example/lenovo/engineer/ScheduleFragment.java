@@ -57,6 +57,8 @@ public class ScheduleFragment extends Fragment {
         day5Adapter = new ScheduleListAdapter(getActivity());
         viewPager.setAdapter(new CustomPagerAdapter(getActivity()));
         makeRequest();
+
+        getActivity().setTitle("Schedule");
         return rootView;
     }
 

@@ -16,15 +16,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.android.gms.auth.api.Auth;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInApi;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.api.GoogleApiClient;
+
 
 public class main_menu extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -37,6 +36,7 @@ public class main_menu extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setElevation(0);
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,6 +45,7 @@ public class main_menu extends AppCompatActivity
                 startActivity(intent);
             }
         });
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -58,10 +59,25 @@ public class main_menu extends AppCompatActivity
         navigationView.bringToFront();
 
         View header = navigationView.getHeaderView(0);
-        TextView text = (TextView) header.findViewById(R.id.textView);
-        text.setText(GoogleSignInHelper.getInstance().getAccount().getDisplayName());
+        GoogleSignInAccount account = GoogleSignInHelper.getInstance().getAccount();
+
+        View navView;
+        navView = header.findViewById(R.id.name); ((TextView) navView).setText(account.getDisplayName());
+        navView = header.findViewById(R.id.email);((TextView) navView).setText(account.getEmail());
+        navView = header.findViewById(R.id.profilePic);
+        String imgurl = account.getPhotoUrl().toString();
+
+        RequestOptions options = new RequestOptions()
+                .centerCrop()
+                .placeholder(R.mipmap.ic_launcher_round)
+                .error(R.mipmap.ic_launcher_round);
+
+
+
+        Glide.with(this).load(imgurl).apply(options).into(((ImageView) navView));
+
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.main_menu_fl_container,new ScheduleFragment(),"Schedule")
+                .replace(R.id.main_menu_fl_container,new Home(),"Home")
                 .commit();
     }
 
@@ -105,8 +121,12 @@ public class main_menu extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         Fragment fragment = null;
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
+
+        if (id  == R.id.Home){
+            fragment = new Home();
+        } else if(id == R.id.nav_camera) {
+            fragment = new ScheduleFragment();
+
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
@@ -117,10 +137,7 @@ public class main_menu extends AppCompatActivity
 
         } else if (id == R.id.nav_send) {
 
-        } else if(id == R.id.Home) {
-            fragment = new Home();
-        }
-        else if(id == R.id.logout) {
+        } else if(id == R.id.logout) {
             GoogleSignInHelper.getInstance().getClient().signOut();
             Log.d(TAG,"Logout Successful");
             finish();
@@ -129,7 +146,7 @@ public class main_menu extends AppCompatActivity
 
         if (fragment != null) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.content_frame, fragment);
+            ft.replace(R.id.main_menu_fl_container, fragment);
             ft.commit();
         }
 
