@@ -2,6 +2,8 @@ package com.example.lenovo.engineer;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
@@ -18,6 +20,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+
 
 public class main_menu extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -30,14 +36,16 @@ public class main_menu extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setElevation(0);
-      /*  FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent=new Intent(main_menu.this,FavSchedule.class);
+                startActivity(intent);
             }
-        });*/
+        });
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -51,16 +59,25 @@ public class main_menu extends AppCompatActivity
         navigationView.bringToFront();
 
         View header = navigationView.getHeaderView(0);
-        ImageView profileImage = header.findViewById(R.id.header_iv_profile_image);
-        Glide.with(this)
-                .load(GoogleSignInHelper.getInstance().getAccount().getPhotoUrl())
-                .into(profileImage);
-        TextView name = (TextView) header.findViewById(R.id.header_tv_name);
-        name.setText(GoogleSignInHelper.getInstance().getAccount().getDisplayName());
-        TextView email = (TextView) header.findViewById(R.id.header_tv_email);
-        email.setText(GoogleSignInHelper.getInstance().getAccount().getEmail());
+        GoogleSignInAccount account = GoogleSignInHelper.getInstance().getAccount();
+
+        View navView;
+        navView = header.findViewById(R.id.name); ((TextView) navView).setText(account.getDisplayName());
+        navView = header.findViewById(R.id.email);((TextView) navView).setText(account.getEmail());
+        navView = header.findViewById(R.id.profilePic);
+        String imgurl = account.getPhotoUrl().toString();
+
+        RequestOptions options = new RequestOptions()
+                .centerCrop()
+                .placeholder(R.mipmap.ic_launcher_round)
+                .error(R.mipmap.ic_launcher_round);
+
+
+
+        Glide.with(this).load(imgurl).apply(options).into(((ImageView) navView));
+
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.main_menu_fl_container,new ScheduleFragment(),"Schedule")
+                .replace(R.id.main_menu_fl_container,new Home(),"Home")
                 .commit();
     }
 
@@ -104,8 +121,12 @@ public class main_menu extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         Fragment fragment = null;
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
+
+        if (id  == R.id.Home){
+            fragment = new Home();
+        } else if(id == R.id.nav_camera) {
+            fragment = new ScheduleFragment();
+
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
@@ -116,10 +137,7 @@ public class main_menu extends AppCompatActivity
 
         } else if (id == R.id.nav_send) {
 
-        } else if(id == R.id.Home) {
-            fragment = new Home();
-        }
-        else if(id == R.id.logout) {
+        } else if(id == R.id.logout) {
             GoogleSignInHelper.getInstance().getClient().signOut();
             Log.d(TAG,"Logout Successful");
             finish();
@@ -128,7 +146,7 @@ public class main_menu extends AppCompatActivity
 
         if (fragment != null) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.content_frame, fragment);
+            ft.replace(R.id.main_menu_fl_container, fragment);
             ft.commit();
         }
 

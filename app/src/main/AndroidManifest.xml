@@ -19,6 +19,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".FavSchedule"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="Favorites"></activity>
         <activity
             android:name=".main_menu"
             android:label="@string/title_activity_main_menu"

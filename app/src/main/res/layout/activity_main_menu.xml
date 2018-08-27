@@ -17,7 +17,7 @@
         app:headerLayout="@layout/nav_header_main_menu"
         app:menu="@menu/activity_main_menu_drawer" />
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -35,5 +35,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" />
-    </LinearLayout>
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:src="@drawable/baseline_calendar_today_black_18dp"
+            android:layout_margin="16dp" />
+    </FrameLayout>
 </android.support.v4.widget.DrawerLayout>

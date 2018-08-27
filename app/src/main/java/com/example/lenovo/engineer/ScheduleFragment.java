@@ -57,6 +57,8 @@ public class ScheduleFragment extends Fragment {
         day5Adapter = new ScheduleListAdapter(getActivity());
         viewPager.setAdapter(new CustomPagerAdapter(getActivity()));
         makeRequest();
+
+        getActivity().setTitle("Schedule");
         return rootView;
     }
 
@@ -75,7 +77,7 @@ public class ScheduleFragment extends Fragment {
                         for (int i =0 ; i<response.length(); i++) {
                             Entry entry = new Entry();
                             try {
-                            JSONObject jsonObject = response.getJSONObject(i);
+                                JSONObject jsonObject = response.getJSONObject(i);
                                 entry.setDay(jsonObject.getInt("Day"));
                                 entry.setID(jsonObject.getInt("Day"));
                                 entry.setImage(jsonObject.getString("Image"));
@@ -84,6 +86,7 @@ public class ScheduleFragment extends Fragment {
                                 entry.setTime(jsonObject.getString("Time"));
                                 entry.setCommittee(jsonObject.getString("Committee"));
                                 entry.setName(jsonObject.getString("Name"));
+                                entry.setLiked(false);
                             } catch (JSONException error) {
                                 Log.e(TAG, "JSON error " + error.getMessage());
                             }
