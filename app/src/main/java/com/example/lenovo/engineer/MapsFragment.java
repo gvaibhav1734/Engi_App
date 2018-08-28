@@ -99,7 +99,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
             setLocation(name, locations.get(location));
         } else {
             // Default location
-            setLocation("Main Building", locations.get("main building"));
+            setLocation("Main Building", locations.get(MAIN_BUILDING));
         }
     }
 
