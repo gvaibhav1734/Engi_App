@@ -1,6 +1,7 @@
 package com.example.lenovo.engineer;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -65,19 +66,18 @@ public class main_menu extends AppCompatActivity
         navView = header.findViewById(R.id.name); ((TextView) navView).setText(account.getDisplayName());
         navView = header.findViewById(R.id.email);((TextView) navView).setText(account.getEmail());
         navView = header.findViewById(R.id.profilePic);
-        String imgurl = account.getPhotoUrl().toString();
+        Uri imguri = account.getPhotoUrl();
 
         RequestOptions options = new RequestOptions()
                 .centerCrop()
                 .placeholder(R.mipmap.ic_launcher_round)
                 .error(R.mipmap.ic_launcher_round);
 
-
-
-        Glide.with(this).load(imgurl).apply(options).into(((ImageView) navView));
+        Glide.with(this).load(imguri).apply(options).into(((ImageView) navView));
 
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.main_menu_fl_container,new Home(),"Home")
+                .replace(R.id.main_menu_fl_container,new ScheduleFragment(),"Schedule")
+                .addToBackStack("Schedule")
                 .commit();
     }
 

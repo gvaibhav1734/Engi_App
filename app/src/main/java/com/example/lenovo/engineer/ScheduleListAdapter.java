@@ -4,8 +4,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.recyclerview.extensions.ListAdapter;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,6 +16,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.android.gms.maps.MapFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,6 +72,51 @@ public class ScheduleListAdapter extends RecyclerView.Adapter<ScheduleListAdapte
         viewHolder.name.setText(entryList.get(position).getName());
         viewHolder.time.setText(entryList.get(position).getTime());
         viewHolder.location.setText(entryList.get(position).getLocation());
+        viewHolder.location.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MapsFragment mapsFragment = new MapsFragment();
+                Bundle bundle = new Bundle();
+                String location = viewHolder.location.getText().toString().toLowerCase();
+                /*
+                 Add checks here to call the correct location
+
+                 * name - indicates the name displayed when user clicks on marker
+                 * location - is and int which is used to get desired LatLng object.
+                 */
+                if(location.contains("ntb")) {
+                    bundle.putString("name","NTB");
+                    bundle.putInt("location",MapsFragment.NTB);
+                } else if(location.contains("atb")){
+                    bundle.putString("name","ATB");
+                    bundle.putInt("location",MapsFragment.ATB);
+                } else if(location.contains("mb")){
+                    bundle.putString("name","Main Building");
+                    bundle.putInt("location",MapsFragment.MAIN_BUILDING);
+                } else if(location.contains("pavilion")){
+                    bundle.putString("name","Pavilion");
+                    bundle.putInt("location",MapsFragment.PAVILION);
+                } else if(location.contains("ccc")){
+                    bundle.putString("name","CCC");
+                    bundle.putInt("location",MapsFragment.CCC);
+                } else if(location.contains("sja")){
+                    bundle.putString("name","SJA");
+                    bundle.putInt("location",MapsFragment.SJA);
+                } else if(location.contains("sac")){
+                    bundle.putString("name","SAC");
+                    bundle.putInt("location",MapsFragment.SAC);
+                } else if(location.contains("Sports Complex")){
+                    bundle.putString("name","New Sports Block");
+                    bundle.putInt("location",MapsFragment.NEW_SPORTS_BLOCK);
+                }
+                mapsFragment.setArguments(bundle);
+                ((AppCompatActivity)context).getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.main_menu_fl_container,mapsFragment)
+                        .addToBackStack("MapsFragment")
+                        .commit();
+            }
+        });
         viewHolder.content.setText(entryList.get(position).getContent());
         if (entryList.get(position).isLiked()) {
             viewHolder.like.setTypeface(font2);
