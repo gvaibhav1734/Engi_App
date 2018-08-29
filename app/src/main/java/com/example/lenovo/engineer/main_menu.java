@@ -3,6 +3,8 @@ package com.example.lenovo.engineer;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -29,6 +31,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 public class main_menu extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private static final String TAG = "MainMenu";
+    private BottomNavigationView bottomBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +45,7 @@ public class main_menu extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(main_menu.this,FavSchedule.class);
+                Intent intent = new Intent(main_menu.this, FavSchedule.class);
                 startActivity(intent);
             }
         });
@@ -63,8 +66,10 @@ public class main_menu extends AppCompatActivity
         GoogleSignInAccount account = GoogleSignInHelper.getInstance().getAccount();
 
         View navView;
-        navView = header.findViewById(R.id.name); ((TextView) navView).setText(account.getDisplayName());
-        navView = header.findViewById(R.id.email);((TextView) navView).setText(account.getEmail());
+        navView = header.findViewById(R.id.name);
+        ((TextView) navView).setText(account.getDisplayName());
+        navView = header.findViewById(R.id.email);
+        ((TextView) navView).setText(account.getEmail());
         navView = header.findViewById(R.id.profilePic);
         Uri imguri = account.getPhotoUrl();
 
@@ -75,10 +80,35 @@ public class main_menu extends AppCompatActivity
 
         Glide.with(this).load(imguri).apply(options).into(((ImageView) navView));
 
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.main_menu_fl_container,new ScheduleFragment(),"Schedule")
-                .addToBackStack("Schedule")
-                .commit();
+        bottomBar = findViewById(R.id.main_menu_bnv_bottom_bar);
+        bottomBar.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.bottom_bar_home:
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.main_menu_fl_container, new Home(), "Home")
+                                .addToBackStack("Home")
+                                .commit();
+                        break;
+                    case R.id.bottom_bar_schedule:
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.main_menu_fl_container, new ScheduleFragment(), "Schedule")
+                                .addToBackStack("Schedule")
+                                .commit();
+                        break;
+                    case R.id.bottom_bar_maps:
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.main_menu_fl_container, new MapsFragment(), "Maps")
+                                .addToBackStack("Maps")
+                                .commit();
+                        break;
+                }
+                return true;
+            }
+        });
+        // Set initial/default fragment
+        bottomBar.setSelectedItemId(R.id.bottom_bar_home);
     }
 
 
@@ -114,20 +144,20 @@ public class main_menu extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        Log.d(TAG,"Menu item clicked.");
+        Log.d(TAG, "Menu item clicked.");
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         Fragment fragment = null;
 
-        if (id  == R.id.Home){
+        if (id == R.id.Home) {
             fragment = new Home();
-        } else if(id == R.id.nav_camera) {
+        } else if (id == R.id.nav_schedule) {
             fragment = new ScheduleFragment();
 
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_maps) {
+            fragment = new MapsFragment();
 
         } else if (id == R.id.nav_slideshow) {
 
@@ -137,11 +167,11 @@ public class main_menu extends AppCompatActivity
 
         } else if (id == R.id.nav_send) {
 
-        } else if(id == R.id.logout) {
+        } else if (id == R.id.logout) {
             GoogleSignInHelper.getInstance().getClient().signOut();
-            Log.d(TAG,"Logout Successful");
+            Log.d(TAG, "Logout Successful");
             finish();
-            startActivity(new Intent(this,MainActivity.class));
+            startActivity(new Intent(this, MainActivity.class));
         }
 
         if (fragment != null) {
