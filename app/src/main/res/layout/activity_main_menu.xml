@@ -59,6 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
             android:layout_margin="16dp"
+            android:tint="@color/white"
             android:src="@drawable/baseline_calendar_today_black_18dp"
             app:layout_constraintBottom_toTopOf="@id/main_menu_bnv_bottom_bar"
             app:layout_constraintRight_toRightOf="parent" />
