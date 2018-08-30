@@ -20,4 +20,12 @@
     <string name="backdrop_title">LOVE MUSIC</string>
     <string name="backdrop_subtitle">This season top 20 albums</string>
     <string name="committee1">Committee 1</string>
+    <string name="Tronix">Tronix</string>
+    <string name="Mech">Mechanical</string>
+    <string name="Meta">Metallurgy</string>
+    <string name="Comp">Comp</string>
+    <string name="Chem">Chemical</string>
+    <string name="Mining">Mining</string>
+    <string name="Civil">Civil</string>
+    <string name="Technites">Technites</string>
 </resources>

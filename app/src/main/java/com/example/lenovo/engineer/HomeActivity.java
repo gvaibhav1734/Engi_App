@@ -22,6 +22,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -40,6 +41,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private CommAdapter adapter;
     private List<CommitteeDet> committeeDetList;
     private static final String TAG = "HomeActivity";
+    public HomeActivity()
+    {
+
+    }
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +52,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.home_toolbar);
         setSupportActionBar(toolbar);
+        toolbar.showOverflowMenu();
 
         //Adding Drawer to layout
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.home_drawer_layout);
@@ -133,28 +139,25 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private void prepCommitte() {
         int[] covers = new int[]
                 {
-                        R.drawable.album1,
-                        R.drawable.album2,
-                        R.drawable.album3,
-                        R.drawable.album4,
-                        R.drawable.album5,
-                        R.drawable.album6,
-                        R.drawable.album7,
-                        R.drawable.album8,
-                        R.drawable.album9,
-                        R.drawable.album10,
-                        R.drawable.album11
+                        R.drawable.tronix,
+                        R.drawable.mechanical,
+                        R.drawable.meta,
+                        R.drawable.comps,
+                        R.drawable.chemical,
+                        R.drawable.mining,
+                        R.drawable.civil,
+                        R.drawable.technites,
                 };
-        CommitteeDet a= new CommitteeDet(getString(R.string.committee1),covers[0]);
+        CommitteeDet a= new CommitteeDet(getString(R.string.Tronix),covers[0]);
         committeeDetList.add(a);
-        a= new CommitteeDet(getString(R.string.committee1),covers[1]);
+        CommitteeDet c= new CommitteeDet(getString(R.string.Mech),covers[1]);
+        CommitteeDet d= new CommitteeDet(getString(R.string.Meta),covers[2]);
+        CommitteeDet e= new CommitteeDet(getString(R.string.Comp),covers[3]);
+        CommitteeDet f= new CommitteeDet(getString(R.string.Chem),covers[4]);
+        CommitteeDet g= new CommitteeDet(getString(R.string.Mining),covers[5]);
+        CommitteeDet h= new CommitteeDet(getString(R.string.Civil),covers[6]);
+        a= new CommitteeDet(getString(R.string.Technites),covers[7]);
         committeeDetList.add(a);
-        CommitteeDet c= new CommitteeDet(getString(R.string.committee1),covers[2]);
-        CommitteeDet d= new CommitteeDet(getString(R.string.committee1),covers[3]);
-        CommitteeDet e= new CommitteeDet(getString(R.string.committee1),covers[4]);
-        CommitteeDet f= new CommitteeDet(getString(R.string.committee1),covers[5]);
-        CommitteeDet g= new CommitteeDet(getString(R.string.committee1),covers[6]);
-        CommitteeDet h= new CommitteeDet(getString(R.string.committee1),covers[7]);
 
 
 
@@ -167,6 +170,26 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         adapter.notifyDataSetChanged();
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -176,9 +199,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         Fragment fragment = null;
 
         if (id == R.id.Home) {
-            fragment = new Home();
+
         } else if (id == R.id.nav_schedule) {
-            fragment = new ScheduleFragment();
+           // fragment = new ScheduleFragment();
+            Intent intent= new Intent(HomeActivity.this,main_menu.class);
+            startActivity(intent);
+            finish();
 
         } else if (id == R.id.nav_maps) {
             fragment = new MapsFragment();
@@ -200,12 +226,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         if (fragment != null) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.main_menu_fl_container, fragment);
+            ft.replace(R.id.home_relative_layout, fragment);
             ft.commit();
 
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.home_drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
 

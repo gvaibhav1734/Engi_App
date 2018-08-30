@@ -152,7 +152,10 @@ public class main_menu extends AppCompatActivity
         Fragment fragment = null;
 
         if (id == R.id.Home) {
-            fragment = new Home();
+           // fragment = new Home();
+            Intent intent=new Intent(main_menu.this,HomeActivity.class);
+            finish();
+            startActivity(intent);
         } else if (id == R.id.nav_schedule) {
             fragment = new ScheduleFragment();
 
