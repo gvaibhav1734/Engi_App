@@ -98,7 +98,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         prepCommitte();
         recyclerView.setAdapter(adapter);
         try {
-            Glide.with(this).load(R.drawable.cover).into((ImageView) findViewById(R.id.backdrop));
+            Glide.with(this).load(R.drawable.logo).into((ImageView) findViewById(R.id.backdrop));
         } catch (Exception e) {
             e.printStackTrace();
         }
