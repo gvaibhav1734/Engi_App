@@ -84,7 +84,7 @@ public class ScheduleFragment extends Fragment {
                                 entry.setContent(jsonObject.getString("Content"));
                                 entry.setLocation(jsonObject.getString("Location"));
                                 entry.setTime(jsonObject.getString("Time"));
-                                entry.setCommittee(jsonObject.getString("committee"));
+                                //entry.setCommittee(jsonObject.getString("committee"));
                                 entry.setName(jsonObject.getString("Name"));
                                 entry.setLiked(false);
                             } catch (JSONException error) {

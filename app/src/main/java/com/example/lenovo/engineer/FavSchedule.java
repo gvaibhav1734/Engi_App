@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
 import org.json.JSONException;
@@ -23,6 +24,9 @@ public class FavSchedule extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fav_sc);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.fav_toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.showOverflowMenu();
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
 
         // use this setting to improve performance if you know that changes
@@ -44,15 +48,16 @@ public class FavSchedule extends AppCompatActivity {
             Entry entry = new Entry();
             try {
                 JSONObject jsonObject = new JSONObject(String.valueOf(entry1.getValue()));
+                Log.d("JSON Response",jsonObject.toString());
                 entry.setDay(jsonObject.getInt("Day"));
                 entry.setID(jsonObject.getInt("Day"));
                 entry.setImage(jsonObject.getString("Image"));
                 entry.setContent(jsonObject.getString("Content"));
                 entry.setLocation(jsonObject.getString("Location"));
                 entry.setTime(jsonObject.getString("Time"));
-                entry.setCommittee(jsonObject.getString("committee"));
+                //entry.setCommittee(jsonObject.getString("committee"));
                 entry.setName(jsonObject.getString("Name"));
-                entry.setLiked(jsonObject.getBoolean("Liked"));
+                entry.setLiked(true);
             } catch (JSONException error) {
                 Log.e(TAG, "JSON error " + error.getMessage());
             }

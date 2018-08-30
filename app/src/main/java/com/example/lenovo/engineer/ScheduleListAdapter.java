@@ -14,6 +14,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -118,7 +119,7 @@ public class ScheduleListAdapter extends RecyclerView.Adapter<ScheduleListAdapte
             }
         });
         viewHolder.content.setText(entryList.get(position).getContent());
-        if (entryList.get(position).isLiked()) {
+        if (entryList.get(viewHolder.getAdapterPosition()).isLiked()) {
             viewHolder.like.setTypeface(font2);
         } else
             viewHolder.like.setTypeface(font1);
