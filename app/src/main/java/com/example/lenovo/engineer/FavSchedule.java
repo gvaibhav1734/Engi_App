@@ -50,7 +50,7 @@ public class FavSchedule extends AppCompatActivity {
                 entry.setContent(jsonObject.getString("Content"));
                 entry.setLocation(jsonObject.getString("Location"));
                 entry.setTime(jsonObject.getString("Time"));
-                entry.setCommittee(jsonObject.getString("Committee"));
+                entry.setCommittee(jsonObject.getString("committee"));
                 entry.setName(jsonObject.getString("Name"));
                 entry.setLiked(jsonObject.getBoolean("Liked"));
             } catch (JSONException error) {

@@ -8,10 +8,16 @@
     <string name="nav_header_desc">blablabla</string>
     <string name="action_settings">Settings</string>
     <string name="text_schedules">Schedule</string>
-
     <string name="EVENT_LIST_URL">https://cricstat.000webhostapp.com/ved/php/schedule.php</string>
     <string name="title_activity_maps">Map</string>
     <string name="home">Home</string>
     <string name="schedule">Schedule</string>
     <string name="map">Map</string>
+
+    <!--Home Page String                                             -->
+    <string name="action_add_favourite">Add to Favourites</string>
+    <string name="action_play_next">Play Next</string>
+    <string name="backdrop_title">LOVE MUSIC</string>
+    <string name="backdrop_subtitle">This season top 20 albums</string>
+    <string name="committee1">Committee 1</string>
 </resources>
