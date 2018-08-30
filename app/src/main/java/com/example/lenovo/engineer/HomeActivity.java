@@ -1,36 +1,85 @@
 package com.example.lenovo.engineer;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Rect;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.util.TypedValue;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private RecyclerView recyclerView;
     private CommAdapter adapter;
     private List<CommitteeDet> committeeDetList;
+    private static final String TAG = "HomeActivity";
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_activity_main);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.home_toolbar);
         setSupportActionBar(toolbar);
+
+        //Adding Drawer to layout
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.home_drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.home_nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+        // Removing this will cause the navigation view to not respond to click events
+        navigationView.bringToFront();
+
+        View header = navigationView.getHeaderView(0);
+        GoogleSignInAccount account = GoogleSignInHelper.getInstance().getAccount();
+
+        View navView;
+        navView = header.findViewById(R.id.name);
+        ((TextView) navView).setText(account.getDisplayName());
+        navView = header.findViewById(R.id.email);
+        ((TextView) navView).setText(account.getEmail());
+        navView = header.findViewById(R.id.profilePic);
+        Uri imguri = account.getPhotoUrl();
+
+        RequestOptions options = new RequestOptions()
+                .centerCrop()
+                .placeholder(R.mipmap.ic_launcher_round)
+                .error(R.mipmap.ic_launcher_round);
+
+        Glide.with(this).load(imguri).apply(options).into(((ImageView) navView));
+        //End of drawer
+
+
         initCollapsingToolbar();
         recyclerView=(RecyclerView) findViewById(R.id.home_recycler_view);
         committeeDetList=new ArrayList<>();
@@ -117,6 +166,49 @@ public class HomeActivity extends AppCompatActivity {
         committeeDetList.add(h);
 
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        Log.d(TAG, "Menu item clicked.");
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+        Fragment fragment = null;
+
+        if (id == R.id.Home) {
+            fragment = new Home();
+        } else if (id == R.id.nav_schedule) {
+            fragment = new ScheduleFragment();
+
+        } else if (id == R.id.nav_maps) {
+            fragment = new MapsFragment();
+
+        } else if (id == R.id.nav_slideshow) {
+
+        } else if (id == R.id.nav_manage) {
+
+        } else if (id == R.id.nav_share) {
+
+        } else if (id == R.id.nav_send) {
+
+        } else if (id == R.id.logout) {
+            GoogleSignInHelper.getInstance().getClient().signOut();
+            Log.d(TAG, "Logout Successful");
+            finish();
+            startActivity(new Intent(this, MainActivity.class));
+        }
+
+        if (fragment != null) {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.main_menu_fl_container, fragment);
+            ft.commit();
+
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+
     }
 
 
