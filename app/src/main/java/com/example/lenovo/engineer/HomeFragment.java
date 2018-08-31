@@ -30,7 +30,7 @@ public class HomeFragment extends Fragment{
     private List<CommitteeDet> committeeDetList;
     private static ViewPager mPager;
     private static int currentPage = 0;
-    private static final Integer[] Images = {R.drawable.pic1, R.drawable.pic2, R.drawable.pic3};
+    private static final Integer[] Images = {R.drawable.logo, R.drawable.botfootball, R.drawable.laser,R.drawable.sandbox};
     private ArrayList<Integer> ImageArray = new ArrayList<Integer>();
 
     public HomeFragment()
