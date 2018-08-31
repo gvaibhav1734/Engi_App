@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
@@ -25,7 +24,6 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 
 
 public class main_menu extends AppCompatActivity
@@ -87,7 +85,7 @@ public class main_menu extends AppCompatActivity
                 switch (menuItem.getItemId()) {
                     case R.id.bottom_bar_home:
                         getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.main_menu_fl_container, new Home(), "Home")
+                                .replace(R.id.main_menu_fl_container, new HomeFragment(), "Home")
                                 .addToBackStack("Home")
                                 .commit();
                         break;
@@ -152,16 +150,11 @@ public class main_menu extends AppCompatActivity
         Fragment fragment = null;
 
         if (id == R.id.Home) {
-           // fragment = new Home();
-            Intent intent=new Intent(main_menu.this,HomeActivity.class);
-            finish();
-            startActivity(intent);
+            fragment = new HomeFragment();
         } else if (id == R.id.nav_schedule) {
             fragment = new ScheduleFragment();
-
         } else if (id == R.id.nav_maps) {
             fragment = new MapsFragment();
-
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
