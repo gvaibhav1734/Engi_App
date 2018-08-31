@@ -1,6 +1,7 @@
 package com.example.lenovo.engineer;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -31,20 +32,29 @@ import org.json.JSONObject;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class ScheduleFragment extends Fragment {
     private static final String TAG = "ScheduleFragment";
     private ViewPager viewPager;
     private TabLayout tabLayout;
     private ProgressBar progressBar;
     ScheduleListAdapter day1Adapter, day2Adapter, day3Adapter, day4Adapter, day5Adapter;
+    private String sharedPrefFile = "com.example.android.engineer";
+    private SharedPreferences mPreferences;
+    private String DEF=null;
 
     public ScheduleFragment() {
+
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+        //Read Shared Preference
+        mPreferences = getActivity().getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
+
         View rootView = inflater.inflate(R.layout.fragment_schedule, container, false);
         viewPager = rootView.findViewById(R.id.schedule_vp_container);
         tabLayout = rootView.findViewById(R.id.schedule_tl_tabs);
@@ -84,9 +94,17 @@ public class ScheduleFragment extends Fragment {
                                 entry.setContent(jsonObject.getString("Content"));
                                 entry.setLocation(jsonObject.getString("Location"));
                                 entry.setTime(jsonObject.getString("Time"));
+                                //Gives error in Fav_Schedule if not commented out
                                 //entry.setCommittee(jsonObject.getString("committee"));
                                 entry.setName(jsonObject.getString("Name"));
-                                entry.setLiked(false);
+                                if(mPreferences.getString(entry.getName(), "b").equals("b"))
+                                {
+                                    //Checks if the event is already liked by user
+                                    entry.setLiked(false);
+                                }
+                                else {
+                                    entry.setLiked(true);
+                                }
                             } catch (JSONException error) {
                                 Log.e(TAG, "JSON error " + error.getMessage());
                             }
