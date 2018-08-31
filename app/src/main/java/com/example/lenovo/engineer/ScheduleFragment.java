@@ -8,6 +8,8 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -43,6 +45,7 @@ public class ScheduleFragment extends Fragment {
     private String sharedPrefFile = "com.example.android.engineer";
     private SharedPreferences mPreferences;
     private String DEF=null;
+    private boolean allowRefresh=true;
 
     public ScheduleFragment() {
 
@@ -70,6 +73,21 @@ public class ScheduleFragment extends Fragment {
 
         getActivity().setTitle("Schedule");
         return rootView;
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d("OnResume", "Is in Resume");
+        day1Adapter = new ScheduleListAdapter(getActivity());
+        day2Adapter = new ScheduleListAdapter(getActivity());
+        day3Adapter = new ScheduleListAdapter(getActivity());
+        day4Adapter = new ScheduleListAdapter(getActivity());
+        day5Adapter = new ScheduleListAdapter(getActivity());
+        viewPager.setAdapter(new CustomPagerAdapter(getActivity()));
+        makeRequest();
+
     }
 
     public void makeRequest() {
@@ -101,6 +119,7 @@ public class ScheduleFragment extends Fragment {
                                 {
                                     //Checks if the event is already liked by user
                                     entry.setLiked(false);
+
                                 }
                                 else {
                                     entry.setLiked(true);

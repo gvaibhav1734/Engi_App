@@ -21,6 +21,12 @@ public class FavSchedule extends AppCompatActivity {
     private String mSharedPrefFile = "com.example.android.engineer";
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fav_sc);
