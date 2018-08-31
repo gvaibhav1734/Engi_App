@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (account == null) {
 
         } else {
-            Intent myIntent = new Intent(MainActivity.this, HomeActivity.class);
+            Intent myIntent = new Intent(MainActivity.this, main_menu.class);
             startActivity(myIntent);
             finish();
         }
@@ -63,12 +63,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
-        Log.d("signingIN", "signed in done");
+        Log.d(TAG, "User signed in.");
     }
 
     @Override
     public void onClick(View v) {
-        Log.d("msssg", "blabla");
         switch (v.getId()) {
             case R.id.sign_in_button:
                 signIn();
