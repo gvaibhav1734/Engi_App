@@ -28,4 +28,7 @@
     <string name="Mining">Mining</string>
     <string name="Civil">Civil</string>
     <string name="Technites">Technites</string>
+    <string name="title_sponsor">Title Sponsor</string>
+    <string name="other_sponsors">Other Sponsors</string>
+    <string name="prizes_sponsor">Prizes Sponsor</string>
 </resources>
