@@ -24,7 +24,6 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:padding="@dimen/padding_normal"
-            android:src="@drawable/sponsor_informatica"
             android:text="@string/title_sponsor"
             android:textAlignment="center" />
 
@@ -45,7 +44,6 @@
             android:layout_gravity="center"
             android:gravity="center_vertical"
             android:padding="@dimen/padding_normal"
-            android:src="@drawable/sponsor_dell"
             android:text="@string/title_sponsor"
             android:textAlignment="center" />
     </LinearLayout>

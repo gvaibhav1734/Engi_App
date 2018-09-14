@@ -155,8 +155,8 @@ public class main_menu extends AppCompatActivity
             fragment = new ScheduleFragment();
         } else if (id == R.id.nav_maps) {
             fragment = new MapsFragment();
-        } else if (id == R.id.nav_slideshow) {
-
+        } else if (id == R.id.nav_about) {
+            fragment = new AboutFragment();
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {
