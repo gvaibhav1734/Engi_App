@@ -112,14 +112,11 @@ public class HomeFragment extends Fragment{
         CommitteeDet c= new CommitteeDet(getString(R.string.Mech),covers[1]);
         CommitteeDet d= new CommitteeDet(getString(R.string.Meta),covers[2]);
         CommitteeDet e= new CommitteeDet(getString(R.string.Comp),covers[3]);
-        CommitteeDet f= new CommitteeDet(getString(R.string.Chem),covers[4]);
+        CommitteeDet f= new CommitteeDet(getString(R.string.chem),covers[4]);
         CommitteeDet g= new CommitteeDet(getString(R.string.Mining),covers[5]);
         CommitteeDet h= new CommitteeDet(getString(R.string.Civil),covers[6]);
         a= new CommitteeDet(getString(R.string.Technites),covers[7]);
         committeeDetList.add(a);
-
-
-
         committeeDetList.add(c);
         committeeDetList.add(d);
         committeeDetList.add(e);
