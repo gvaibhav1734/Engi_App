@@ -157,12 +157,12 @@ public class main_menu extends AppCompatActivity
             fragment = new MapsFragment();
         } else if (id == R.id.nav_about) {
             fragment = new AboutFragment();
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        } else if (id == R.id.committee_head) {
+            fragment=new CommitteeHeadsFragment();
+        } else if (id == R.id.developers) {
+            fragment=new DevelopersFragment();
+        } else if (id == R.id.sponsors) {
+            fragment=new SponsorsFragment();
         } else if (id == R.id.logout) {
             GoogleSignInHelper.getInstance().getClient().signOut();
             Log.d(TAG, "Logout Successful");

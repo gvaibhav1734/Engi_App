@@ -21,25 +21,26 @@
             android:icon="@drawable/ic_menu_slideshow"
             android:title="About Engineer" />
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/logout"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:title="Logout" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Support">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:id="@+id/committee_head"
+                android:icon="@drawable/baseline_portrait_black_18dp"
+                android:title="Committee Heads" />
             <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:id="@+id/developers"
+                android:icon="@drawable/baseline_portrait_black_18dp"
+                android:title="Developers" />
             <item
-                android:id="@+id/logout"
-                android:icon="@drawable/ic_menu_manage"
-                android:title="Logout" />
+                android:id="@+id/sponsors"
+                android:icon="@drawable/baseline_portrait_black_18dp"
+                android:title="Sponsors" />
+
         </menu>
     </item>
 
