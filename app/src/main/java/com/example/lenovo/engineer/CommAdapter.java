@@ -50,6 +50,15 @@ public class CommAdapter extends RecyclerView.Adapter<CommAdapter.MyViewHolder> 
         myViewHolder.title.setText(committeeDet.getName());
         //Loading Committee Cover
         Glide.with(mContext).load(committeeDet.getThumbnail()).into(myViewHolder.thumbnail);
+        myViewHolder.thumbnail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(mContext,EventsActivity.class);
+                String s=committeeDet.getName();
+                intent.putExtra("title", s);
+                mContext.startActivity(intent);
+            }
+        });
         myViewHolder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
