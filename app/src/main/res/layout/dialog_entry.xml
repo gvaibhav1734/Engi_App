@@ -33,6 +33,7 @@
         app:layout_constraintTop_toBottomOf="@id/entry_dialog_tv_name" />
 
     <ScrollView
+        android:id="@+id/entry_dialog_sv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -148,4 +149,12 @@
             </LinearLayout>
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
+    <Button
+        android:id="@+id/entry_dialog_btn_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/register"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
 </android.support.constraint.ConstraintLayout>

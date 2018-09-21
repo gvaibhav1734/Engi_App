@@ -13,6 +13,7 @@ public class Entry implements Parcelable {
     private String Content;
     private int Day;
     private boolean Liked;
+    private int register_event;
 
     public String getImage() {
         return Image;
@@ -101,6 +102,7 @@ public class Entry implements Parcelable {
         //parcel.writeString(getImage());
         parcel.writeString(getContent());
         parcel.writeInt(getDay());
+        parcel.writeInt(getRegister_event());
     }
 
     public final static Parcelable.Creator<Entry> CREATOR = new Parcelable.Creator<Entry>() {
@@ -116,6 +118,7 @@ public class Entry implements Parcelable {
             //entry.setImage(parcel.readString());
             entry.setContent(parcel.readString());
             entry.setDay(parcel.readInt());
+            entry.setRegister_event(parcel.readInt());
             return entry;
         }
 
@@ -124,4 +127,12 @@ public class Entry implements Parcelable {
             return new Entry[0];
         }
     };
+
+    public int getRegister_event() {
+        return register_event;
+    }
+
+    public void setRegister_event(int register_event) {
+        this.register_event = register_event;
+    }
 }
