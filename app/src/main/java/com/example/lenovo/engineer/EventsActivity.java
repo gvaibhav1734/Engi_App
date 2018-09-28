@@ -2,11 +2,14 @@ package com.example.lenovo.engineer;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
 
 
 import java.util.ArrayList;
@@ -16,6 +19,7 @@ public class EventsActivity extends AppCompatActivity {
     private List<Event> eventList=new ArrayList<>();
     private Eventadapter mAdapter;
     private String str1,str;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +27,7 @@ public class EventsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_events);
         android.support.v7.widget.Toolbar toolbar =  findViewById(R.id.event_toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         if(extras!=null)
         {
             str=extras.getString("title")+" Events";
@@ -40,6 +45,23 @@ public class EventsActivity extends AppCompatActivity {
 
 
 
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
     }
     private void prepareEventData()
     {
