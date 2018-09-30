@@ -24,96 +24,27 @@ public class DevelopersFragment extends Fragment{
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView =
-                inflater.inflate(R.layout.fragment_committee_heads, container, false);
-        RecyclerView recyclerView = rootView.findViewById(R.id.committee_heads_rv);
+                inflater.inflate(R.layout.fragment_developers, container, false);
+        RecyclerView recyclerView = rootView.findViewById(R.id.developers_rv);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         List<Developer> developers = new ArrayList<>();
         developers.add(new Developer(
-                R.drawable.image_shreyansh,
-                "<Name>",
-                "Chief Coordinator",
-                "shreyanshsajal17@gmail.com",
-                "7903344939")
+                R.drawable.developer_vaibhav,
+                "Vaibhav G",
+                "Android",
+                "gvaibhav1734@gmail.com")
         );
         developers.add(new Developer(
-                R.drawable.image_nihar,
-                "Nihar Raichada",
-                "Corporate Relations and Hospitality",
-                "raichada.nihar3@gmail.com",
-                "8105329305")
+                R.drawable.developer_avakash,
+                "Avakash Bhat",
+                "Android",
+                "avakash261@gmail.com")
         );
         developers.add(new Developer(
-                R.drawable.image_atul,
-                "S",
-                "Website and App Head",
-                "atulksingh1507@gmail.com",
-                "8976045880")
-        );
-
-        developers.add(new Developer(
-                R.drawable.image_dipanshu,
-                "Dipanshu Prasad",
-                "Tronix Committee",
-                "prasad.dipanshu.prasad@gmail.com",
-                "8861897884")
-        );
-        developers.add(new Developer(
-                R.drawable.image_darshan,
-                "Darshan S",
-                "Mechanical Committee",
-                "darshans9999@gmail.com",
-                "8861832038")
-        );
-        developers.add(new Developer(
-                R.drawable.image_chetan,
-                "Chetan Munegowda",
-                "Marketing Manager",
-                "chetanm66@gmail.com",
-                "8892140482")
-        );
-
-        developers.add(new Developer(
-                R.drawable.image_rakesh_naga_sai,
-                "Rakesh Naga Sai",
-                "Civil Committee",
-                "rakeshnagasai123@gmail.com",
-                "9505208878")
-        );
-        developers.add(new Developer(
-                R.drawable.image_gokul,
-                "Gokul Subramanian",
-                "Metamorph",
-                "subramanian.gokul@gmail.com",
-                "9742348710")
-        );
-        developers.add(new Developer(
-                R.drawable.image_kavish,
-                "Kavish Ramchandani",
-                "Joint Convenor",
-                "krciiti@gmail.com",
-                "8949696724")
-        );
-
-        developers.add(new Developer(
-                R.drawable.image_pradeep,
-                "Pradeep Choudhary",
-                "Student Hospitality",
-                "pradeepchoudharyj99@gmail.com",
-                "9413640133")
-        );
-        developers.add(new Developer(
-                R.drawable.image_ved,
-                "Ved Choupane",
-                "Engi Press",
-                "vchoop3@gmail.com",
-                "8830157634")
-        );
-        developers.add(new Developer(
-                R.drawable.image_akhilu,
-                "Akhil Udathu",
-                "Comps Committee",
-                "akhilu077@gmail.com",
-                "9740287502")
+                R.drawable.developer_tanmai,
+                "Tanmai V Harish",
+                "Android",
+                "vvijaytanmai@gmail.com")
         );
         recyclerView.setAdapter(new RecyclerViewAdapter(developers));
         return rootView;
@@ -132,11 +63,11 @@ public class DevelopersFragment extends Fragment{
 
             ViewHolder(View itemView) {
                 super(itemView);
-                name = itemView.findViewById(R.id.committee_heads_item_tv_name);
-                committee = itemView.findViewById(R.id.committee_heads_item_tv_committee);
-                email = itemView.findViewById(R.id.committee_heads_item_tv_email);
-                phone = itemView.findViewById(R.id.committee_heads_item_tv_phone);
-                image = itemView.findViewById(R.id.committee_heads_item_iv_image);
+                name = itemView.findViewById(R.id.developer_item_tv_name);
+                committee = itemView.findViewById(R.id.developer_item_tv_committee);
+                email = itemView.findViewById(R.id.developer_item_tv_email);
+                //phone = itemView.findViewById(R.id.committee_heads_item_tv_phone);
+                image = itemView.findViewById(R.id.developer_item_iv_image);
             }
         }
 
@@ -153,10 +84,10 @@ public class DevelopersFragment extends Fragment{
             View v = null;
             switch (viewType) {
                 case 0:
-                    v = layoutInflater.inflate(R.layout.committee_heads_item_0, viewGroup, false);
+                    v = layoutInflater.inflate(R.layout.developer_item_0, viewGroup, false);
                     break;
                 case 1:
-                    v = layoutInflater.inflate(R.layout.committee_heads_item_1, viewGroup, false);
+                    v = layoutInflater.inflate(R.layout.developer_item_1, viewGroup, false);
             }
             RecyclerViewAdapter.ViewHolder vh = new RecyclerViewAdapter.ViewHolder(v);
             return vh;
@@ -167,7 +98,7 @@ public class DevelopersFragment extends Fragment{
             viewHolder.name.setText(developers.get(position).getName());
             viewHolder.committee.setText(developers.get(position).getWorkedOn());
             viewHolder.email.setText(developers.get(position).getEmail());
-            viewHolder.phone.setText(developers.get(position).getPhone());
+            //viewHolder.phone.setText(developers.get(position).getPhone());
             RequestOptions options = new RequestOptions()
                     .centerCrop()
                     .placeholder(R.mipmap.ic_launcher_round)
@@ -192,11 +123,11 @@ public class DevelopersFragment extends Fragment{
         private String email;
         private int image;
 
-        Developer(int image, String name, String workedOn, String email, String phone) {
+        Developer(int image, String name, String workedOn, String email) { //, String phone
             this.image = image;
             this.name = name;
             this.workedOn = workedOn;
-            this.phone = phone;
+            //this.phone = phone;
             this.email = email;
         }
 
