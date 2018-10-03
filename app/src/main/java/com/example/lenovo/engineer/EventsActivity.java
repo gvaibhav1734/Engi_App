@@ -67,6 +67,57 @@ public class EventsActivity extends AppCompatActivity {
     {
         Event event;
 
+        if(str1.equals("Workshops"))
+        {
+            event=new Event("Ethical Hacking","*hacker voice*\"I'm in\"\n" +
+                    "\n" +
+                    "This workshop has been designed for everyone regardless of branch, " +
+                    "which helps students to know about Ethical Hacking and Information security. " +
+                    "So dive into the world of Ethical Hacking and get your hands dirty to keep the Web clean.",R.drawable.event_back);
+            eventList.add(event);
+            event=new Event("Digital Marketing and SEO","Ever desired 1000+ insta followers? Do you want to know what makes a blog trending or a video viral?" +
+                    " Worry not as we bring you a workshop where you would get to know all the secrets behind social media marketing and analytics.\n",R.drawable.event_back);
+            eventList.add(event);
+            event=new Event("Big Data and Hadoop","ENGINEER brings to you a workshop on the cutting edge and trending field of data analytics and processing. Data analytics is something any established company needs, " +
+                    "especially when humongous volumes of data are involved. Dive into the world of open source tech Hadoop and learn the intricacies of the art!",R.drawable.event_back);
+            eventList.add(event);
+            event=new Event("Bridge Design and Analysis","London Bridge is falling down, falling down, falling down..\n" +
+                    "\n" +
+                    "Ever wondered why? Could you stop this from happening? Then quit lazing around and join this workshop on bridge design and analysis.",R.drawable.event_back);
+            eventList.add(event);
+            event=new Event("Furious 5 Robotics","Remember the world going crazy when Sophia, the robot became Dubai’s citizen? Robots are becoming an inseparable part of our lives and robotics is one of the most exciting fields out there." +
+                    " Hence, we present the Robotics Workshop where you get to learn all the crazy stuff, including building actual robots!",R.drawable.event_back);
+            eventList.add(event);
+            event=new Event("Arduino Based Quadcopter Design","Is it a bird.. or is it a plane?? It's a Quadcopter!!\n" +
+                    "Enroll into one of the most popular workshops of Engineer, and get your hands dirty by building and flying your own Arduino based Quadcopter.\n" +
+                    "If the mere mention of Torque, Aerodynamics, gyrosensors etc excites you, then this is one thing you wouldn't want to miss!",R.drawable.event_back);
+            eventList.add(event);
+            event=new Event("Mercedes Benz Live Engine Training","Who doesn't like the fascinating beasts that modern automobiles have become?\n" +
+                    "In this workshop, learn all the basics of automobile engineering, from Engine transmission and overhauling to cutting edge technology " +
+                    "like DTSSi, RTR, ABS, EBD, ABR, TCS, ESP, VLC, AWC, and many more!",R.drawable.event_back);
+            eventList.add(event);
+            event=new Event("Photography","“Photography is a way of feeling, of touching, of loving. What you have caught on film is captured forever… " +
+                    "It remembers little things, long after you have forgotten everything.”\n" +
+                    "\n" +
+                    "Start a fulfilling creative pursuit today with our workshop on photography fundamentals",R.drawable.event_back);
+            eventList.add(event);
+        }
+        if(str1.equals("Engi Talks"))
+        {
+            event=new Event("Rahul Tyagi","CEO, Luciders Indian leading Cyber Security Expert" ,R.drawable.rahul_tyagi_curr);
+            eventList.add(event);
+            event=new Event("Dr. Pankaj Joshi","Globally renowned scientist Astrophysicist senior professor at TIFR",R.drawable.pankaj);
+            eventList.add(event);
+            event=new Event("SN Mukherjee","Retired Major General Indian Army ",R.drawable.sn_mukherjee);
+            eventList.add(event);
+            event=new Event("Grace Samson","HR, Head of Informatica India" ,R.drawable.grace_samson);
+            eventList.add(event);
+            event=new Event("Natasha Doshi","Model Actress",R.drawable.event_back);
+            eventList.add(event);
+            event=new Event("Henry Menezes","Former Indian Football Team \nCEO-Western Football Assoc",R.drawable.henry_menezes);
+            eventList.add(event);
+        }
+
        if(str1.equals("Tronix"))
        {
            event=new Event("Foxhunt",getString(R.string.foxhunt),R.drawable.event_back);

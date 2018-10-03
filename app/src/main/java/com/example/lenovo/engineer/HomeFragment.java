@@ -107,7 +107,12 @@ public class HomeFragment extends Fragment{
                         R.drawable.civil,
                         R.drawable.technites,
                 };
-        CommitteeDet a= new CommitteeDet(getString(R.string.Tronix),covers[0]);
+        CommitteeDet a;
+            a=new CommitteeDet("Workshops",covers[0]);
+        committeeDetList.add(a);
+        a=new CommitteeDet("Engi Talks",covers[0]);
+        committeeDetList.add(a);
+        a= new CommitteeDet(getString(R.string.Tronix),covers[0]);
         committeeDetList.add(a);
         CommitteeDet c= new CommitteeDet(getString(R.string.Mech),covers[1]);
         CommitteeDet d= new CommitteeDet(getString(R.string.Meta),covers[2]);
