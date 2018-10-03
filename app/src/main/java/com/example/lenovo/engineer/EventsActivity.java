@@ -73,33 +73,33 @@ public class EventsActivity extends AppCompatActivity {
                     "\n" +
                     "This workshop has been designed for everyone regardless of branch, " +
                     "which helps students to know about Ethical Hacking and Information security. " +
-                    "So dive into the world of Ethical Hacking and get your hands dirty to keep the Web clean.",R.drawable.event_back);
+                    "So dive into the world of Ethical Hacking and get your hands dirty to keep the Web clean.",R.drawable.ethical_hacking);
             eventList.add(event);
             event=new Event("Digital Marketing and SEO","Ever desired 1000+ insta followers? Do you want to know what makes a blog trending or a video viral?" +
-                    " Worry not as we bring you a workshop where you would get to know all the secrets behind social media marketing and analytics.\n",R.drawable.event_back);
+                    " Worry not as we bring you a workshop where you would get to know all the secrets behind social media marketing and analytics.\n",R.drawable.digital_marketing);
             eventList.add(event);
             event=new Event("Big Data and Hadoop","ENGINEER brings to you a workshop on the cutting edge and trending field of data analytics and processing. Data analytics is something any established company needs, " +
-                    "especially when humongous volumes of data are involved. Dive into the world of open source tech Hadoop and learn the intricacies of the art!",R.drawable.event_back);
+                    "especially when humongous volumes of data are involved. Dive into the world of open source tech Hadoop and learn the intricacies of the art!",R.drawable.bigdata);
             eventList.add(event);
             event=new Event("Bridge Design and Analysis","London Bridge is falling down, falling down, falling down..\n" +
                     "\n" +
-                    "Ever wondered why? Could you stop this from happening? Then quit lazing around and join this workshop on bridge design and analysis.",R.drawable.event_back);
+                    "Ever wondered why? Could you stop this from happening? Then quit lazing around and join this workshop on bridge design and analysis.",R.drawable.bridge);
             eventList.add(event);
             event=new Event("Furious 5 Robotics","Remember the world going crazy when Sophia, the robot became Dubai’s citizen? Robots are becoming an inseparable part of our lives and robotics is one of the most exciting fields out there." +
-                    " Hence, we present the Robotics Workshop where you get to learn all the crazy stuff, including building actual robots!",R.drawable.event_back);
+                    " Hence, we present the Robotics Workshop where you get to learn all the crazy stuff, including building actual robots!",R.drawable.robotics);
             eventList.add(event);
             event=new Event("Arduino Based Quadcopter Design","Is it a bird.. or is it a plane?? It's a Quadcopter!!\n" +
                     "Enroll into one of the most popular workshops of Engineer, and get your hands dirty by building and flying your own Arduino based Quadcopter.\n" +
-                    "If the mere mention of Torque, Aerodynamics, gyrosensors etc excites you, then this is one thing you wouldn't want to miss!",R.drawable.event_back);
+                    "If the mere mention of Torque, Aerodynamics, gyrosensors etc excites you, then this is one thing you wouldn't want to miss!",R.drawable.quadcoptor);
             eventList.add(event);
             event=new Event("Mercedes Benz Live Engine Training","Who doesn't like the fascinating beasts that modern automobiles have become?\n" +
                     "In this workshop, learn all the basics of automobile engineering, from Engine transmission and overhauling to cutting edge technology " +
-                    "like DTSSi, RTR, ABS, EBD, ABR, TCS, ESP, VLC, AWC, and many more!",R.drawable.event_back);
+                    "like DTSSi, RTR, ABS, EBD, ABR, TCS, ESP, VLC, AWC, and many more!",R.drawable.liveengine);
             eventList.add(event);
             event=new Event("Photography","“Photography is a way of feeling, of touching, of loving. What you have caught on film is captured forever… " +
                     "It remembers little things, long after you have forgotten everything.”\n" +
                     "\n" +
-                    "Start a fulfilling creative pursuit today with our workshop on photography fundamentals",R.drawable.event_back);
+                    "Start a fulfilling creative pursuit today with our workshop on photography fundamentals",R.drawable.photography);
             eventList.add(event);
         }
         if(str1.equals("Engi Talks"))
@@ -120,129 +120,129 @@ public class EventsActivity extends AppCompatActivity {
 
        if(str1.equals("Tronix"))
        {
-           event=new Event("Foxhunt",getString(R.string.foxhunt),R.drawable.event_back);
+           event=new Event("Foxhunt",getString(R.string.foxhunt),R.drawable.foxhunt1);
            eventList.add(event);
-           event=new Event("Symphony",getString(R.string.Symphony),R.drawable.event_back);
+           event=new Event("Symphony",getString(R.string.Symphony),R.drawable.symphony);
            eventList.add(event);
-           event=new Event("Trade-Off",getString(R.string.Trade_off),R.drawable.event_back);
+           event=new Event("Trade-Off",getString(R.string.Trade_off),R.drawable.tradeoff);
            eventList.add(event);
-           event=new Event("TrailBlazer",getString(R.string.TrailBlazer),R.drawable.event_back);
+           event=new Event("TrailBlazer",getString(R.string.TrailBlazer),R.drawable.trologo);
            eventList.add(event);
-           event=new Event("Light of Seven",getString(R.string.Light_of_seven),R.drawable.event_back);
+           event=new Event("Light of Seven",getString(R.string.Light_of_seven),R.drawable.lightofseven);
            eventList.add(event);
-           event=new Event("Automata",getString(R.string.Automata),R.drawable.event_back);
+           event=new Event("Automata",getString(R.string.Automata),R.drawable.automata);
            eventList.add(event);
 
        }
         if(str1.equals("Mechanical"))
         {
-            event=new Event("Robowars",getString(R.string.Robowars),R.drawable.event_back);
+            event=new Event("Robowars",getString(R.string.Robowars),R.drawable.mech5);
             eventList.add(event);
-            event=new Event("Bot Hockey",getString(R.string.bot_hockey),R.drawable.event_back);
+            event=new Event("Bot Hockey",getString(R.string.bot_hockey),R.drawable.mech1);
             eventList.add(event);
-            event=new Event("Perfect Machine",getString(R.string.perfect_machine),R.drawable.event_back);
+            event=new Event("Perfect Machine",getString(R.string.perfect_machine),R.drawable.mech8);
             eventList.add(event);
-            event=new Event("Wright Flight",getString(R.string.wright_flight),R.drawable.event_back);
+            event=new Event("Wright Flight",getString(R.string.wright_flight),R.drawable.mech7);
             eventList.add(event);
 
         }
         if(str1.equals("Technites"))
         {
-            event=new Event("Bot Football",getString(R.string.bot_foot),R.drawable.event_back);
+            event=new Event("Bot Football",getString(R.string.bot_foot),R.drawable.botfootball);
             eventList.add(event);
             event=new Event("Laser Projects",getString(R.string.laser_pro2) +
                     "\n" +
-                    getString(R.string.laser_pro),R.drawable.event_back);
+                    getString(R.string.laser_pro),R.drawable.laser);
             eventList.add(event);
-            event=new Event("Contraption",getString(R.string.contr),R.drawable.event_back);
+            event=new Event("Contraption",getString(R.string.contr),R.drawable.technites1);
             eventList.add(event);
-            event=new Event("Virtual Sandbox",getString(R.string.virt_sand),R.drawable.event_back);
+            event=new Event("Virtual Sandbox",getString(R.string.virt_sand),R.drawable.sandbox);
             eventList.add(event);
 
         }
 
         if(str1.equals("Metallurgy"))
         {
-            event=new Event("MetaMagic",getString(R.string.meta_mag),R.drawable.event_back);
+            event=new Event("MetaMagic",getString(R.string.meta_mag),R.drawable.meta);
             eventList.add(event);
-            event=new Event("MindBend",getString(R.string.mindbend),R.drawable.event_back);
+            event=new Event("MindBend",getString(R.string.mindbend),R.drawable.mindbend);
             eventList.add(event);
-            event=new Event("Sem Tem Expo",getString(R.string.sem_tem),R.drawable.event_back);
+            event=new Event("Sem Tem Expo",getString(R.string.sem_tem),R.drawable.miridae_sem_3);
             eventList.add(event);
-            event=new Event("Constarch Event",getString(R.string.constarch),R.drawable.event_back);
+            event=new Event("Constarch Event",getString(R.string.constarch),R.drawable.cornstarch);
             eventList.add(event);
-            event=new Event("Thermite Demo",getString(R.string.thermite),R.drawable.event_back);
+            event=new Event("Thermite Demo",getString(R.string.thermite),R.drawable.meta);
             eventList.add(event);
-            event=new Event("GA embrittlement of AL",getString(R.string.ga),R.drawable.event_back);
+            event=new Event("GA embrittlement of AL",getString(R.string.ga),R.drawable.gaal);
             eventList.add(event);
-            event=new Event("Blast Furnace Model",getString(R.string.blast_furnce),R.drawable.event_back);
+            event=new Event("Blast Furnace Model",getString(R.string.blast_furnce),R.drawable.blastfurnace);
             eventList.add(event);
-            event=new Event("Foil Amalgamation",getString(R.string.foil),R.drawable.event_back);
+            event=new Event("Foil Amalgamation",getString(R.string.foil),R.drawable.chem_lab_1);
             eventList.add(event);
 
         }
         if(str1.equals("Civil"))
         {
-            event=new Event("Colossus",getString(R.string.col),R.drawable.event_back);
+            event=new Event("Colossus",getString(R.string.col),R.drawable.colossus);
             eventList.add(event);
-            event=new Event("Mind Bend",getString(R.string.mind_bend),R.drawable.event_back);
+            event=new Event("Mind Bend",getString(R.string.mind_bend),R.drawable.mindbend);
             eventList.add(event);
-            event=new Event("Architect",getString(R.string.arch),R.drawable.event_back);
+            event=new Event("Architect",getString(R.string.arch),R.drawable.architect);
             eventList.add(event);
 
         }
         if(str1.equals("Reflux"))
         {
-            event=new Event("Chemical Breakdown",getString(R.string.chem_break),R.drawable.event_back);
+            event=new Event("Chemical Breakdown",getString(R.string.chem_break),R.drawable.chem_breakdown);
             eventList.add(event);
-            event=new Event("IDP",getString(R.string.idp),R.drawable.event_back);
+            event=new Event("IDP",getString(R.string.idp),R.drawable.chem_idp);
             eventList.add(event);
-            event=new Event("Capture",getString(R.string.capture),R.drawable.event_back);
+            event=new Event("Capture",getString(R.string.capture),R.drawable.chem_capture);
             eventList.add(event);
-            event=new Event("Chem-E-Talks",getString(R.string.chem_e_talks),R.drawable.event_back);
+            event=new Event("Chem-E-Talks",getString(R.string.chem_e_talks),R.drawable.chem_talks);
             eventList.add(event);
 
         }
         if(str1.equals("BizWaves"))
         {
-            event=new Event("GAME OF FINANCE","Finance Event",R.drawable.event_back);
+            event=new Event("GAME OF FINANCE","Finance Event",R.drawable.gameoffin);
             eventList.add(event);
-            event=new Event("Thrive","Human Resource Event",R.drawable.event_back);
+            event=new Event("Thrive","Human Resource Event",R.drawable.thrive);
             eventList.add(event);
-            event=new Event("Vipanan","Marketing Event",R.drawable.event_back);
+            event=new Event("Vipanan","Marketing Event",R.drawable.vipanan);
             eventList.add(event);
-            event=new Event("BizLytics","Analytics Event",R.drawable.event_back);
+            event=new Event("BizLytics","Analytics Event",R.drawable.biz1);
             eventList.add(event);
-            event=new Event("Light of Seven",getString(R.string.Light_of_seven),R.drawable.event_back);
+            event=new Event("Light of Seven",getString(R.string.Light_of_seven),R.drawable.lightofseven);
             eventList.add(event);
-            event=new Event("Automata",getString(R.string.Automata),R.drawable.event_back);
+            event=new Event("Automata",getString(R.string.Automata),R.drawable.automata);
             eventList.add(event);
 
         }
         if(str1.equals("Comp"))
         {
-            event=new Event("Inscription",getString(R.string.inscr),R.drawable.event_back);
+            event=new Event("Inscription",getString(R.string.inscr),R.drawable.ins);
             eventList.add(event);
-            event=new Event("Kode Kombat",getString(R.string.kode_komb),R.drawable.event_back);
+            event=new Event("Kode Kombat",getString(R.string.kode_komb),R.drawable.combat);
             eventList.add(event);
-            event=new Event("Marathon",getString(R.string.marath),R.drawable.event_back);
+            event=new Event("Marathon",getString(R.string.marath),R.drawable.mlpic);
             eventList.add(event);
-            event=new Event("Rectify",getString(R.string.rect),R.drawable.event_back);
+            event=new Event("Rectify",getString(R.string.rect),R.drawable.rectifyimg);
             eventList.add(event);
-            event=new Event("ECTF",getString(R.string.ectf),R.drawable.event_back);
+            event=new Event("ECTF",getString(R.string.ectf),R.drawable.ctfimg);
             eventList.add(event);
         }
         if(str1.equals("Astro"))
         {
-            event=new Event("Antariksh Attraction",getString(R.string.antar),R.drawable.event_back);
+            event=new Event("Antariksh Attraction",getString(R.string.antar),R.drawable.antariksh);
             eventList.add(event);
-            event=new Event("StarWars",getString(R.string.starwars),R.drawable.event_back);
+            event=new Event("StarWars",getString(R.string.starwars),R.drawable.starwars);
             eventList.add(event);
-            event=new Event("Interstellar",getString(R.string.Interst),R.drawable.event_back);
+            event=new Event("Interstellar",getString(R.string.Interst),R.drawable.interstellarfinal);
             eventList.add(event);
-            event=new Event("Endeavour",getString(R.string.endev),R.drawable.event_back);
+            event=new Event("Endeavour",getString(R.string.endev),R.drawable.endeavour);
             eventList.add(event);
-            event=new Event("Starry Night",getString(R.string.starrynight),R.drawable.event_back);
+            event=new Event("Starry Night",getString(R.string.starrynight),R.drawable.starrynight);
             eventList.add(event);
         }
         mAdapter.notifyDataSetChanged();

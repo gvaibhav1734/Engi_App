@@ -30,7 +30,7 @@ public class HomeFragment extends Fragment{
     private List<CommitteeDet> committeeDetList;
     private static ViewPager mPager;
     private static int currentPage = 0;
-    private static final Integer[] Images = {R.drawable.logo, R.drawable.botfootball, R.drawable.laser,R.drawable.sandbox};
+    private static final Integer[] Images = {R.drawable.logo, R.drawable.final_1, R.drawable.final_workshop,R.drawable.sandbox};
     private ArrayList<Integer> ImageArray = new ArrayList<Integer>();
 
     public HomeFragment()
@@ -106,11 +106,14 @@ public class HomeFragment extends Fragment{
                         R.drawable.mining,
                         R.drawable.civil,
                         R.drawable.technites,
+                        R.drawable.heic1509a,
+                        R.drawable.engi_talks_pic,
+                        R.drawable.wslogo
                 };
         CommitteeDet a;
-            a=new CommitteeDet("Workshops",covers[0]);
+            a=new CommitteeDet("Workshops",covers[10]);
         committeeDetList.add(a);
-        a=new CommitteeDet("Engi Talks",covers[0]);
+        a=new CommitteeDet("Engi Talks",covers[9]);
         committeeDetList.add(a);
         a= new CommitteeDet(getString(R.string.Tronix),covers[0]);
         committeeDetList.add(a);
@@ -118,7 +121,7 @@ public class HomeFragment extends Fragment{
         CommitteeDet d= new CommitteeDet(getString(R.string.Meta),covers[2]);
         CommitteeDet e= new CommitteeDet(getString(R.string.Comp),covers[3]);
         CommitteeDet f= new CommitteeDet(getString(R.string.chem),covers[4]);
-        CommitteeDet g= new CommitteeDet(getString(R.string.Mining),covers[5]);
+        CommitteeDet g= new CommitteeDet(getString(R.string.Mining),covers[8]);
         CommitteeDet h= new CommitteeDet(getString(R.string.Civil),covers[6]);
         a= new CommitteeDet(getString(R.string.Technites),covers[7]);
         committeeDetList.add(a);
