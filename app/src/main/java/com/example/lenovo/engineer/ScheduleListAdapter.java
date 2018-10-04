@@ -74,54 +74,54 @@ public class ScheduleListAdapter extends RecyclerView.Adapter<ScheduleListAdapte
         viewHolder.name.setText(entryList.get(position).getName());
         viewHolder.time.setText(entryList.get(position).getTime());
         viewHolder.location.setText(entryList.get(position).getLocation());
-        viewHolder.location.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                MapsFragment mapsFragment = new MapsFragment();
-                Bundle bundle = new Bundle();
-                String location = viewHolder.location.getText().toString().toLowerCase();
-                /*
-                 Add checks here to call the correct location
-
-                 * name - indicates the name displayed when user clicks on marker
-                 * location - is and int which is used to get desired LatLng object.
-                 */
-                if(location.contains("NTB")) {
-                    bundle.putString("name","NTB");
-                    bundle.putInt("location",MapsFragment.NTB);
-                } else if(location.contains("ATB")){
-                    bundle.putString("name","ATB");
-                    bundle.putInt("location",MapsFragment.ATB);
-                } else if(location.contains("ISTE Seminar Hall")
-                        || location.contains("MB")
-                        || location.contains("Main Building")
-                        || location.contains("Main Seminar Hall")){
-                    bundle.putString("name","Main Building");
-                    bundle.putInt("location",MapsFragment.MAIN_BUILDING);
-                } else if(location.contains("Pavilion")){
-                    bundle.putString("name","Pavilion");
-                    bundle.putInt("location",MapsFragment.PAVILION);
-                } else if(location.contains("CCC")){
-                    bundle.putString("name","CCC");
-                    bundle.putInt("location",MapsFragment.CCC);
-                } else if(location.contains("SJA")){
-                    bundle.putString("name","SJA");
-                    bundle.putInt("location",MapsFragment.SJA);
-                } else if(location.contains("SAC")){
-                    bundle.putString("name","SAC");
-                    bundle.putInt("location",MapsFragment.SAC);
-                } else if(location.contains("Sports Complex")){
-                    bundle.putString("name","New Sports Block");
-                    bundle.putInt("location",MapsFragment.NEW_SPORTS_BLOCK);
-                }
-                mapsFragment.setArguments(bundle);
-                ((AppCompatActivity)context).getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.main_menu_fl_container,mapsFragment)
-                        .addToBackStack("MapsFragment")
-                        .commit();
-            }
-        });
+//        viewHolder.location.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                MapsFragment mapsFragment = new MapsFragment();
+//                Bundle bundle = new Bundle();
+//                String location = viewHolder.location.getText().toString().toLowerCase();
+//                /*
+//                 Add checks here to call the correct location
+//
+//                 * name - indicates the name displayed when user clicks on marker
+//                 * location - is and int which is used to get desired LatLng object.
+//                 */
+//                if(location.contains("NTB")) {
+//                    bundle.putString("name","NTB");
+//                    bundle.putInt("location",MapsFragment.NTB);
+//                } else if(location.contains("ATB")){
+//                    bundle.putString("name","ATB");
+//                    bundle.putInt("location",MapsFragment.ATB);
+//                } else if(location.contains("ISTE Seminar Hall")
+//                        || location.contains("MB")
+//                        || location.contains("Main Building")
+//                        || location.contains("Main Seminar Hall")){
+//                    bundle.putString("name","Main Building");
+//                    bundle.putInt("location",MapsFragment.MAIN_BUILDING);
+//                } else if(location.contains("Pavilion")){
+//                    bundle.putString("name","Pavilion");
+//                    bundle.putInt("location",MapsFragment.PAVILION);
+//                } else if(location.contains("CCC")){
+//                    bundle.putString("name","CCC");
+//                    bundle.putInt("location",MapsFragment.CCC);
+//                } else if(location.contains("SJA")){
+//                    bundle.putString("name","SJA");
+//                    bundle.putInt("location",MapsFragment.SJA);
+//                } else if(location.contains("SAC")){
+//                    bundle.putString("name","SAC");
+//                    bundle.putInt("location",MapsFragment.SAC);
+//                } else if(location.contains("Sports Complex")){
+//                    bundle.putString("name","New Sports Block");
+//                    bundle.putInt("location",MapsFragment.NEW_SPORTS_BLOCK);
+//                }
+//                mapsFragment.setArguments(bundle);
+//                ((AppCompatActivity)context).getSupportFragmentManager()
+//                        .beginTransaction()
+//                        .replace(R.id.main_menu_fl_container,mapsFragment)
+//                        .addToBackStack("MapsFragment")
+//                        .commit();
+//            }
+//        });
         viewHolder.content.setText(entryList.get(position).getContent());
         if (entryList.get(viewHolder.getAdapterPosition()).isLiked()) {
             viewHolder.like.setTypeface(font2);
@@ -145,8 +145,10 @@ public class ScheduleListAdapter extends RecyclerView.Adapter<ScheduleListAdapte
         viewHolder.like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Typeface font1 = Typeface.createFromAsset(context.getAssets(), "fa-regular-400.ttf");
-                Typeface font2 = Typeface.createFromAsset(context.getAssets(), "fa-solid-900.ttf");
+                Typeface font1 =
+                        Typeface.createFromAsset(context.getAssets(), "fa-regular-400.ttf");
+                Typeface font2 =
+                        Typeface.createFromAsset(context.getAssets(), "fa-solid-900.ttf");
 
                 if (!entryList.get(viewHolder.getAdapterPosition()).isLiked()) {
                     viewHolder.like.setTypeface(font2);
@@ -154,7 +156,7 @@ public class ScheduleListAdapter extends RecyclerView.Adapter<ScheduleListAdapte
                     String json = GsonHelper.getInstance().getGson()
                             .toJson(entryList.get(viewHolder.getAdapterPosition()));
                     preferencesEditor.putString(
-                            (entryList.get(viewHolder.getAdapterPosition()).getName()),
+                            String.valueOf(entryList.get(viewHolder.getAdapterPosition()).getID()),
                             json
                     );
                     preferencesEditor.apply();
@@ -162,7 +164,8 @@ public class ScheduleListAdapter extends RecyclerView.Adapter<ScheduleListAdapte
                 } else {
                     viewHolder.like.setTypeface(font1);
                     entryList.get(viewHolder.getAdapterPosition()).setLiked(false);
-                    preferencesEditor.remove(entryList.get(viewHolder.getAdapterPosition()).getName());
+                    preferencesEditor.remove(
+                            String.valueOf(entryList.get(viewHolder.getAdapterPosition()).getID()));
                     preferencesEditor.apply();
                 }
             }

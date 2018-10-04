@@ -124,7 +124,6 @@ public class ScheduleFragment extends Fragment {
                                 entry.setName(jsonObject.getString("Name"));
                                 if(mPreferences.getString(String.valueOf(entry.getID()), "b").equals("b"))
                                 {
-                                    //Checks if the event is already liked by user
                                     entry.setLiked(false);
 
                                 }
