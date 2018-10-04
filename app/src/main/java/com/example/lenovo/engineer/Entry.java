@@ -2,6 +2,7 @@ package com.example.lenovo.engineer;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
 
 public class Entry implements Parcelable {
     private int ID;
@@ -11,6 +12,7 @@ public class Entry implements Parcelable {
     private String Location;
     private String Image;
     private String Content;
+    private String register_link;
     private int Day;
     private boolean Liked;
     private int register_event;
@@ -134,5 +136,19 @@ public class Entry implements Parcelable {
 
     public void setRegister_event(int register_event) {
         this.register_event = register_event;
+    }
+
+    public String getRegister_link() {
+        return register_link;
+    }
+
+    public void setRegister_link(String register_link) {
+        this.register_link = register_link;
+    }
+
+    @NonNull
+    @Override
+    public String toString(){
+        return Name+" "+register_link;
     }
 }

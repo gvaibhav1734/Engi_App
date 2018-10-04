@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/padding_normal"
         android:textStyle="bold"
+        android:textColor="@color/black"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -65,18 +66,6 @@
         app:layout_constraintTop_toBottomOf="@id/list_item_tv_time">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/padding_small"
-            android:text="Content"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/padding_small"
-            android:text=":" />
-
-        <TextView
             android:id="@+id/list_item_tv_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -87,6 +76,10 @@
     <View
         style="@style/Divider.Horizontal"
         android:layout_marginTop="@dimen/margin_small"
+        android:layout_marginLeft="@dimen/padding_large"
+        android:layout_marginStart="@dimen/padding_large"
+        android:layout_marginRight="@dimen/padding_large"
+        android:layout_marginEnd="@dimen/padding_large"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>

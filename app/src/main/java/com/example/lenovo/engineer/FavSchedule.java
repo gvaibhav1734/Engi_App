@@ -56,12 +56,14 @@ public class FavSchedule extends AppCompatActivity {
                 JSONObject jsonObject = new JSONObject(String.valueOf(entry1.getValue()));
                 Log.d("JSON Response",jsonObject.toString());
                 entry.setDay(jsonObject.getInt("Day"));
-                entry.setID(jsonObject.getInt("Day"));
+                entry.setID(jsonObject.getInt("ID"));
                 entry.setImage(jsonObject.getString("Image"));
                 entry.setContent(jsonObject.getString("Content"));
                 entry.setLocation(jsonObject.getString("Location"));
                 entry.setTime(jsonObject.getString("Time"));
-                //entry.setCommittee(jsonObject.getString("committee"));
+                entry.setCommittee(jsonObject.getString("committee"));
+                entry.setRegister_event(jsonObject.getInt("register_event"));
+                entry.setRegister_link(jsonObject.getString("register_link"));
                 entry.setName(jsonObject.getString("Name"));
                 entry.setLiked(true);
             } catch (JSONException error) {

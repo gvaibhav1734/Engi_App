@@ -8,7 +8,7 @@
     <string name="nav_header_desc">blablabla</string>
     <string name="action_settings">Settings</string>
     <string name="text_schedules">Schedule</string>
-    <string name="EVENT_LIST_URL">https://cricstat.000webhostapp.com/ved/php/schedule.php</string>
+    <string name="EVENT_LIST_URL">http://www.engineernitk.org/schedule.php</string>
     <string name="title_activity_maps">Map</string>
     <string name="home">Home</string>
     <string name="schedule">Schedule</string>
@@ -79,4 +79,7 @@
     <string name="endev">The event was conducted on 14th October where participants in groups of two or three were given a problem statement of human colonisation of a hypothetical planet</string>
     <string name="starrynight">A trademark event for space enthusiasts to see all constellations,planets,moon and much more and find more about deep space</string>
     <string name="register">register</string>
+
+    <string name="banking_sponsor">Banking Sponsor</string>
+
 </resources>

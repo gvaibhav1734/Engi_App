@@ -6,7 +6,7 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/Home"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/ic_home"
             android:title="Home" />
         <item
             android:id="@+id/nav_schedule"
@@ -18,30 +18,24 @@
             android:title="Maps" />
         <item
             android:id="@+id/nav_about"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_info"
             android:title="About Engineer" />
+        <item
+            android:id="@+id/sponsors"
+            android:icon="@drawable/ic_sponsor"
+            android:title="Sponsors" />
+        <item
+            android:id="@+id/committee_head"
+            android:icon="@drawable/ic_committee_heads"
+            android:title="Committee Heads" />
+        <item
+            android:id="@+id/developers"
+            android:icon="@drawable/ic_developer"
+            android:title="Developers" />
         <item
             android:id="@+id/logout"
             android:icon="@drawable/ic_menu_manage"
             android:title="Logout" />
     </group>
-
-    <item android:title="Support">
-        <menu>
-            <item
-                android:id="@+id/committee_head"
-                android:icon="@drawable/baseline_portrait_black_18dp"
-                android:title="Committee Heads" />
-            <item
-                android:id="@+id/developers"
-                android:icon="@drawable/baseline_portrait_black_18dp"
-                android:title="Developers" />
-            <item
-                android:id="@+id/sponsors"
-                android:icon="@drawable/baseline_portrait_black_18dp"
-                android:title="Sponsors" />
-
-        </menu>
-    </item>
 
 </menu>

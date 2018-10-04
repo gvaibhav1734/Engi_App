@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,9 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 public class EntryDialog extends DialogFragment {
     private static final String TAG = "EntryDialog";
@@ -61,6 +65,7 @@ public class EntryDialog extends DialogFragment {
         time.setText(entry.getTime());
         day.setText(String.valueOf(entry.getDay()));
         location.setText(entry.getLocation());
+        Log.d(TAG,"Committee " + entry.getCommittee());
         committee.setText(entry.getCommittee());
         content.setText(entry.getContent());
         close.setOnClickListener(new View.OnClickListener() {
@@ -69,14 +74,23 @@ public class EntryDialog extends DialogFragment {
                 getDialog().dismiss();
             }
         });
-//        if (entry.getRegister_event() == 1)
-//            register.setVisibility(View.VISIBLE);
-//        else
-//            register.setVisibility(View.INVISIBLE);
+        RequestOptions options = new RequestOptions()
+                .centerCrop()
+                .placeholder(R.drawable.engineer_logo)
+                .error(R.drawable.engineer_logo);
+        Glide.with(this)
+                .load(entry.getImage())
+                .apply(options)
+                .into(image);
+        if (entry.getRegister_event() == 1)
+            register.setVisibility(View.VISIBLE);
+        else
+            register.setVisibility(View.GONE);
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent a = new Intent(getContext(), WebViewActivity.class);
+                a.putExtra("link",entry.getRegister_link());
                 startActivity(a);
             }
         });

@@ -30,6 +30,7 @@ public class main_menu extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private static final String TAG = "MainMenu";
     private BottomNavigationView bottomBar;
+    private FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +40,7 @@ public class main_menu extends AppCompatActivity
         setSupportActionBar(toolbar);
         getSupportActionBar().setElevation(0);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -131,7 +132,7 @@ public class main_menu extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+        // as you specify a parent activity in AndroidManifest.array.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
@@ -148,7 +149,7 @@ public class main_menu extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         Fragment fragment = null;
-
+        fab.show();
         if (id == R.id.Home) {
             fragment = new HomeFragment();
         } else if (id == R.id.nav_schedule) {
@@ -159,8 +160,10 @@ public class main_menu extends AppCompatActivity
             fragment = new AboutFragment();
         } else if (id == R.id.committee_head) {
             fragment=new CommitteeHeadsFragment();
+            fab.hide();
         } else if (id == R.id.developers) {
             fragment=new DevelopersFragment();
+            fab.hide();
         } else if (id == R.id.sponsors) {
             fragment=new SponsorsFragment();
         } else if (id == R.id.logout) {

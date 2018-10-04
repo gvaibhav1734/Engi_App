@@ -135,7 +135,7 @@ public class ScheduleListAdapter extends RecyclerView.Adapter<ScheduleListAdapte
                 EntryDialog dialogFragment =
                         EntryDialog.getInstance(entryList.get(viewHolder.getAdapterPosition()));
                 dialogFragment.setCancelable(true);
-                dialogFragment.show(((main_menu) context).getSupportFragmentManager(),
+                dialogFragment.show(((AppCompatActivity) context).getSupportFragmentManager(),
                         "entry_dialog");
             }
         });
