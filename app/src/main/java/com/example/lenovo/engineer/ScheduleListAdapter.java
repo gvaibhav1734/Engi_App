@@ -86,25 +86,28 @@ public class ScheduleListAdapter extends RecyclerView.Adapter<ScheduleListAdapte
                  * name - indicates the name displayed when user clicks on marker
                  * location - is and int which is used to get desired LatLng object.
                  */
-                if(location.contains("ntb")) {
+                if(location.contains("NTB")) {
                     bundle.putString("name","NTB");
                     bundle.putInt("location",MapsFragment.NTB);
-                } else if(location.contains("atb")){
+                } else if(location.contains("ATB")){
                     bundle.putString("name","ATB");
                     bundle.putInt("location",MapsFragment.ATB);
-                } else if(location.contains("mb")){
+                } else if(location.contains("ISTE Seminar Hall")
+                        || location.contains("MB")
+                        || location.contains("Main Building")
+                        || location.contains("Main Seminar Hall")){
                     bundle.putString("name","Main Building");
                     bundle.putInt("location",MapsFragment.MAIN_BUILDING);
-                } else if(location.contains("pavilion")){
+                } else if(location.contains("Pavilion")){
                     bundle.putString("name","Pavilion");
                     bundle.putInt("location",MapsFragment.PAVILION);
-                } else if(location.contains("ccc")){
+                } else if(location.contains("CCC")){
                     bundle.putString("name","CCC");
                     bundle.putInt("location",MapsFragment.CCC);
-                } else if(location.contains("sja")){
+                } else if(location.contains("SJA")){
                     bundle.putString("name","SJA");
                     bundle.putInt("location",MapsFragment.SJA);
-                } else if(location.contains("sac")){
+                } else if(location.contains("SAC")){
                     bundle.putString("name","SAC");
                     bundle.putInt("location",MapsFragment.SAC);
                 } else if(location.contains("Sports Complex")){

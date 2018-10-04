@@ -108,7 +108,6 @@ public class ScheduleFragment extends Fragment {
                                 JSONObject jsonObject = response.getJSONObject(i);
                                 entry.setDay(jsonObject.getInt("Day"));
                                 entry.setID(jsonObject.getInt("ID"));
-                                entry.setImage(jsonObject.getString("Image"));
                                 entry.setContent(jsonObject.getString("Content"));
                                 entry.setLocation(jsonObject.getString("Location"));
                                 entry.setTime(jsonObject.getString("Time"));
@@ -123,7 +122,7 @@ public class ScheduleFragment extends Fragment {
                                 entry.setRegister_event(jsonObject.getInt("register_event"));
                                 entry.setCommittee(jsonObject.getString("Committee"));
                                 entry.setName(jsonObject.getString("Name"));
-                                if(mPreferences.getString(entry.getName(), "b").equals("b"))
+                                if(mPreferences.getString(String.valueOf(entry.getID()), "b").equals("b"))
                                 {
                                     //Checks if the event is already liked by user
                                     entry.setLiked(false);

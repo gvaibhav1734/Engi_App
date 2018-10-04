@@ -44,7 +44,7 @@ public class FavSchedule extends AppCompatActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         // specify an adapter (see also next example)
-        mAdapter = new ScheduleListAdapter(getApplicationContext());
+        mAdapter = new ScheduleListAdapter(this);
         SharedPreferences mPreferences = getSharedPreferences(mSharedPrefFile, MODE_PRIVATE);
         Map<String,?> keys = mPreferences.getAll();
 
@@ -54,16 +54,22 @@ public class FavSchedule extends AppCompatActivity {
             Entry entry = new Entry();
             try {
                 JSONObject jsonObject = new JSONObject(String.valueOf(entry1.getValue()));
-                Log.d("JSON Response",jsonObject.toString());
+                Log.d(TAG,jsonObject.toString());
                 entry.setDay(jsonObject.getInt("Day"));
                 entry.setID(jsonObject.getInt("ID"));
-                entry.setImage(jsonObject.getString("Image"));
                 entry.setContent(jsonObject.getString("Content"));
                 entry.setLocation(jsonObject.getString("Location"));
                 entry.setTime(jsonObject.getString("Time"));
-                entry.setCommittee(jsonObject.getString("committee"));
+                entry.setImage(
+                        jsonObject.getString("Image")
+                                .replace("\\/","/")
+                );
+                entry.setRegister_link(
+                        jsonObject.getString("register_link")
+                                .replace("\\/","/")
+                );
                 entry.setRegister_event(jsonObject.getInt("register_event"));
-                entry.setRegister_link(jsonObject.getString("register_link"));
+                entry.setCommittee(jsonObject.getString("Committee"));
                 entry.setName(jsonObject.getString("Name"));
                 entry.setLiked(true);
             } catch (JSONException error) {
