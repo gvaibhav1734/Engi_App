@@ -7,27 +7,29 @@
 
     <TextView
         android:id="@+id/list_item_tv_name"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:padding="@dimen/padding_normal"
         android:textStyle="bold"
         android:textColor="@color/black"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/list_item_iv_like"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/list_item_iv_like"
         android:text="@string/icon_heart"
-        android:textSize="30sp"
+        android:textSize="24sp"
         android:textColor="@color/colorAccent"
         android:layout_width="80dp"
         android:layout_height="0dp"
         android:padding="@dimen/padding_normal"
-        android:gravity="center"
+        android:paddingEnd="@dimen/padding_large"
+        android:paddingRight="@dimen/padding_large"
+        android:gravity="top|end"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/list_item_tv_name" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/list_item_tv_time"
