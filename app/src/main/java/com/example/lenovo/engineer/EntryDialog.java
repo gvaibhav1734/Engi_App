@@ -135,7 +135,7 @@ public class EntryDialog extends DialogFragment {
                     bundle.putInt("location",MapsFragment.NEW_SPORTS_BLOCK);
                 }
                 mapsFragment.setArguments(bundle);
-                ((AppCompatActivity) getActivity()).getSupportFragmentManager()
+                getActivity().getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.main_menu_fl_container, mapsFragment)
                         .addToBackStack("MapsFragment")

@@ -67,7 +67,6 @@
 
 
     <View
-        android:id="@+id/divider"
         style="@style/Divider.Horizontal"
         android:layout_marginTop="@dimen/margin_small"
         app:layout_constraintBottom_toBottomOf="parent"

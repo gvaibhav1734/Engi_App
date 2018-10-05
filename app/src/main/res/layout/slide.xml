@@ -2,6 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <ImageView
         android:id="@+id/image"
         android:layout_width="fill_parent"
@@ -9,5 +10,5 @@
         android:adjustViewBounds="true"
         android:layout_gravity="center"
         android:src="@drawable/pic1"
-        android:scaleType="centerCrop"/>
+        android:scaleType="centerCrop" />
 </FrameLayout>
