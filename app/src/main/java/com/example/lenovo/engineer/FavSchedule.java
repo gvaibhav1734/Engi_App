@@ -66,17 +66,17 @@ public class FavSchedule extends AppCompatActivity {
                 entry.setContent(jsonObject.getString("Content"));
                 entry.setLocation(jsonObject.getString("Location"));
                 entry.setTime(jsonObject.getString("Time"));
-                entry.setImage(
-                        jsonObject.getString("Image")
-                                .replace("\\/", "/")
-                );
-                entry.setRegister_link(
-                        jsonObject.getString("register_link")
-                                .replace("\\/", "/")
-                );
                 entry.setRegister_event(jsonObject.getInt("register_event"));
                 entry.setCommittee(jsonObject.getString("Committee"));
                 entry.setName(jsonObject.getString("Name"));
+                entry.setImage(
+                        jsonObject.getString("Image")
+                                .replace("\\/","/")
+                );
+                entry.setRegister_link(
+                        jsonObject.getString("register_link")
+                                .replace("\\/","/")
+                );
                 entry.setLiked(true);
             } catch (JSONException error) {
                 Log.e(TAG, "JSON error " + error.getMessage());

@@ -147,8 +147,7 @@
                     android:id="@+id/entry_dialog_tv_content"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/padding_normal"
-                    android:padding="@dimen/padding_small"
+                    android:padding="@dimen/padding_large"
                     app:layout_constraintTop_toBottomOf="@id/entry_dialog_gl_data" />
             </android.support.constraint.ConstraintLayout>
         </ScrollView>

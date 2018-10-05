@@ -149,6 +149,6 @@ public class Entry implements Parcelable {
     @NonNull
     @Override
     public String toString(){
-        return Name+" "+register_link;
+        return Name+"\t"+Day+"\t"+ID;
     }
 }

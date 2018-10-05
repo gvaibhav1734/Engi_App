@@ -37,7 +37,6 @@ public class ScheduleListAdapter extends RecyclerView.Adapter<ScheduleListAdapte
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        //        Typeface font = Typeface.createFromAsset( context.getAssets(), "fontawesome-webfont.ttf" );
         Typeface font = Typeface.createFromAsset(context.getAssets(), "fa-regular-400.ttf");
         TextView name, time, content, location;
         TextView like;
