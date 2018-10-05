@@ -41,11 +41,9 @@ public class ScheduleFragment extends Fragment {
     private ViewPager viewPager;
     private TabLayout tabLayout;
     private ProgressBar progressBar;
-    ScheduleListAdapter day1Adapter, day2Adapter, day3Adapter, day4Adapter, day5Adapter;
+    ScheduleListAdapter day1Adapter, day2Adapter, day3Adapter, day4Adapter, day0Adapter;
     private String sharedPrefFile = "com.example.android.engineer";
     private SharedPreferences mPreferences;
-    private String DEF=null;
-    private boolean allowRefresh=true;
 
     public ScheduleFragment() {
 
@@ -63,6 +61,7 @@ public class ScheduleFragment extends Fragment {
         tabLayout = rootView.findViewById(R.id.schedule_tl_tabs);
         progressBar = rootView.findViewById(R.id.schedule_list_pb_progress);
         tabLayout.setupWithViewPager(viewPager);
+        day0Adapter = new ScheduleListAdapter(getActivity());
         day1Adapter = new ScheduleListAdapter(getActivity());
         day2Adapter = new ScheduleListAdapter(getActivity());
         day3Adapter = new ScheduleListAdapter(getActivity());
@@ -75,21 +74,6 @@ public class ScheduleFragment extends Fragment {
         return rootView;
     }
 
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        Log.d("OnResume", "Is in Resume");
-        day1Adapter = new ScheduleListAdapter(getActivity());
-        day2Adapter = new ScheduleListAdapter(getActivity());
-        day3Adapter = new ScheduleListAdapter(getActivity());
-        day4Adapter = new ScheduleListAdapter(getActivity());
-        //day5Adapter = new ScheduleListAdapter(getActivity());
-        viewPager.setAdapter(new CustomPagerAdapter(getActivity()));
-        makeRequest();
-
-    }
-
     public void makeRequest() {
         progressBar.setVisibility(View.VISIBLE);
         JsonArrayRequest listRequest = new JsonArrayRequest(
@@ -100,8 +84,6 @@ public class ScheduleFragment extends Fragment {
                     @Override
                     public void onResponse(JSONArray response) {
                         Log.d(TAG, "listRequest success Volley : " + response.toString());
-                        Type listType = new TypeToken<Entry>() {
-                        }.getType();
                         for (int i =0 ; i<response.length(); i++) {
                             Entry entry = new Entry();
                             try {
@@ -111,6 +93,9 @@ public class ScheduleFragment extends Fragment {
                                 entry.setContent(jsonObject.getString("Content"));
                                 entry.setLocation(jsonObject.getString("Location"));
                                 entry.setTime(jsonObject.getString("Time"));
+                                entry.setRegister_event(jsonObject.getInt("register_event"));
+                                entry.setCommittee(jsonObject.getString("Committee"));
+                                entry.setName(jsonObject.getString("Name"));
                                 entry.setImage(
                                         jsonObject.getString("Image")
                                         .replace("\\/","/")
@@ -119,21 +104,20 @@ public class ScheduleFragment extends Fragment {
                                         jsonObject.getString("register_link")
                                                 .replace("\\/","/")
                                 );
-                                entry.setRegister_event(jsonObject.getInt("register_event"));
-                                entry.setCommittee(jsonObject.getString("Committee"));
-                                entry.setName(jsonObject.getString("Name"));
-                                if(mPreferences.getString(String.valueOf(entry.getID()), "b").equals("b"))
-                                {
+                                if(mPreferences.getString(String.valueOf(entry.getID()), "b").equals("b")) {
                                     entry.setLiked(false);
-
                                 }
                                 else {
                                     entry.setLiked(true);
                                 }
+                                Log.d(TAG,entry.toString());
                             } catch (JSONException error) {
                                 Log.e(TAG, "JSON error " + error.getMessage());
                             }
                             switch (entry.getDay()) {
+                                case 0:
+                                    day0Adapter.addEntry(entry);
+                                    break;
                                 case 1:
                                     day1Adapter.addEntry(entry);
                                     break;
@@ -146,9 +130,6 @@ public class ScheduleFragment extends Fragment {
                                 case 4:
                                     day4Adapter.addEntry(entry);
                                     break;
-//                                case 5:
-//                                    day5Adapter.addEntry(entry);
-//                                    break;
                             }
                         }
                         progressBar.setVisibility(View.GONE);
@@ -173,14 +154,17 @@ public class ScheduleFragment extends Fragment {
     }
 
     class CustomPagerAdapter extends PagerAdapter {
-        private static final int DAY1 = 0;
-        private static final int DAY2 = 1;
-        private static final int DAY3 = 2;
-        private static final int DAY4 = 3;
-        private static final int DAY5 = 4;
-        private String titles[] = {"Day 1", "Day 2", "Day 3", "Day 4"};
-        private int layouts[] = {R.layout.schedule_list_1, R.layout.schedule_list_2,
-                R.layout.schedule_list_3, R.layout.schedule_list_4, R.layout.schedule_list_5};
+        private static final int DAY0 = 0;
+        private static final int DAY1 = 1;
+        private static final int DAY2 = 2;
+        private static final int DAY3 = 3;
+        private static final int DAY4 = 4;
+        private String titles[] = {"Day 0","Day 1", "Day 2", "Day 3", "Day 4"};
+        private int layouts[] = {R.layout.schedule_list_1,
+                R.layout.schedule_list_2,
+                R.layout.schedule_list_3,
+                R.layout.schedule_list_4,
+                R.layout.schedule_list_5};
         private Context context;
 
         CustomPagerAdapter(Context context) {
@@ -202,6 +186,9 @@ public class ScheduleFragment extends Fragment {
             RecyclerView recyclerView = rootView.findViewById(R.id.schedule_list_rv);
             recyclerView.setLayoutManager(new LinearLayoutManager(context));
             switch (position) {
+                case DAY0:
+                    recyclerView.setAdapter(day0Adapter);
+                    break;
                 case DAY1:
                     recyclerView.setAdapter(day1Adapter);
                     break;
@@ -213,9 +200,6 @@ public class ScheduleFragment extends Fragment {
                     break;
                 case DAY4:
                     recyclerView.setAdapter(day4Adapter);
-                    break;
-                case DAY5:
-                    recyclerView.setAdapter(day5Adapter);
                     break;
             }
             return rootView;
