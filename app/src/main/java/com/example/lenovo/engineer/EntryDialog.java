@@ -76,8 +76,8 @@ public class EntryDialog extends DialogFragment {
         });
         RequestOptions options = new RequestOptions()
                 .centerCrop()
-                .placeholder(R.drawable.engineer_logo)
-                .error(R.drawable.engineer_logo);
+                .placeholder(R.drawable.about_pic)
+                .error(R.drawable.about_pic);
         Glide.with(this)
                 .load(entry.getImage())
                 .apply(options)
