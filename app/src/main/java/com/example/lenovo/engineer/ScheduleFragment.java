@@ -67,7 +67,7 @@ public class ScheduleFragment extends Fragment {
         day2Adapter = new ScheduleListAdapter(getActivity());
         day3Adapter = new ScheduleListAdapter(getActivity());
         day4Adapter = new ScheduleListAdapter(getActivity());
-        day5Adapter = new ScheduleListAdapter(getActivity());
+        //day5Adapter = new ScheduleListAdapter(getActivity());
         viewPager.setAdapter(new CustomPagerAdapter(getActivity()));
         makeRequest();
 
@@ -84,7 +84,7 @@ public class ScheduleFragment extends Fragment {
         day2Adapter = new ScheduleListAdapter(getActivity());
         day3Adapter = new ScheduleListAdapter(getActivity());
         day4Adapter = new ScheduleListAdapter(getActivity());
-        day5Adapter = new ScheduleListAdapter(getActivity());
+        //day5Adapter = new ScheduleListAdapter(getActivity());
         viewPager.setAdapter(new CustomPagerAdapter(getActivity()));
         makeRequest();
 
@@ -107,17 +107,23 @@ public class ScheduleFragment extends Fragment {
                             try {
                                 JSONObject jsonObject = response.getJSONObject(i);
                                 entry.setDay(jsonObject.getInt("Day"));
-                                entry.setID(jsonObject.getInt("Day"));
-                                entry.setImage(jsonObject.getString("Image"));
+                                entry.setID(jsonObject.getInt("ID"));
                                 entry.setContent(jsonObject.getString("Content"));
                                 entry.setLocation(jsonObject.getString("Location"));
                                 entry.setTime(jsonObject.getString("Time"));
-                                //Gives error in Fav_Schedule if not commented out
-                                //entry.setCommittee(jsonObject.getString("committee"));
+                                entry.setImage(
+                                        jsonObject.getString("Image")
+                                        .replace("\\/","/")
+                                );
+                                entry.setRegister_link(
+                                        jsonObject.getString("register_link")
+                                                .replace("\\/","/")
+                                );
+                                entry.setRegister_event(jsonObject.getInt("register_event"));
+                                entry.setCommittee(jsonObject.getString("Committee"));
                                 entry.setName(jsonObject.getString("Name"));
-                                if(mPreferences.getString(entry.getName(), "b").equals("b"))
+                                if(mPreferences.getString(String.valueOf(entry.getID()), "b").equals("b"))
                                 {
-                                    //Checks if the event is already liked by user
                                     entry.setLiked(false);
 
                                 }
@@ -140,9 +146,9 @@ public class ScheduleFragment extends Fragment {
                                 case 4:
                                     day4Adapter.addEntry(entry);
                                     break;
-                                case 5:
-                                    day5Adapter.addEntry(entry);
-                                    break;
+//                                case 5:
+//                                    day5Adapter.addEntry(entry);
+//                                    break;
                             }
                         }
                         progressBar.setVisibility(View.GONE);
@@ -172,7 +178,7 @@ public class ScheduleFragment extends Fragment {
         private static final int DAY3 = 2;
         private static final int DAY4 = 3;
         private static final int DAY5 = 4;
-        private String titles[] = {"Day 1", "Day 2", "Day 3", "Day 4", "Day 5"};
+        private String titles[] = {"Day 1", "Day 2", "Day 3", "Day 4"};
         private int layouts[] = {R.layout.schedule_list_1, R.layout.schedule_list_2,
                 R.layout.schedule_list_3, R.layout.schedule_list_4, R.layout.schedule_list_5};
         private Context context;

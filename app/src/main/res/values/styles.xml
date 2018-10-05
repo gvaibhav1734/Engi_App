@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="fontFamily">@font/nunito</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -34,5 +35,6 @@
         <item name="android:textColorSecondary">@color/white</item>
         <item name="android:colorBackground">@color/whitish</item>
         <item name="android:listPreferredItemPaddingRight">4dp</item>
+        <item name="fontFamily">@font/lato</item>
     </style>
 </resources>

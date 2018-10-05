@@ -29,6 +29,27 @@ public class CommitteeHeadsFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         List<CommitteeHead> committeeHeads = new ArrayList<>();
         committeeHeads.add(new CommitteeHead(
+                R.drawable.image_gaurab_raut,
+                "Gaurab Raut",
+                "Convenor",
+                "gaurab.raut@gmail.com",
+                "8123849209")
+        );
+        committeeHeads.add(new CommitteeHead(
+                R.drawable.image_kshitij_bhandari,
+                "Kshitij Bhandari",
+                "Chief Coordinator",
+                "kbhandari98@gmail.com",
+                "9930411090")
+        );
+        committeeHeads.add(new CommitteeHead(
+                R.drawable.image_kavish,
+                "Kavish Ramchandani",
+                "Joint Convenor",
+                "krciiti@gmail.com",
+                "8949696724")
+        );
+        committeeHeads.add(new CommitteeHead(
                 R.drawable.image_shreyansh,
                 "Shreyansh",
                 "Chief Coordinator",
@@ -45,7 +66,7 @@ public class CommitteeHeadsFragment extends Fragment {
         committeeHeads.add(new CommitteeHead(
                 R.drawable.image_atul,
                 "Atul Singh",
-                "Website and App Head",
+                "Technical Head",
                 "atulksingh1507@gmail.com",
                 "8976045880")
         );
@@ -54,7 +75,7 @@ public class CommitteeHeadsFragment extends Fragment {
                 R.drawable.image_dipanshu,
                 "Dipanshu Prasad",
                 "Tronix Committee",
-                "prasad.dipanshu.prasad@gmail.com",
+                "tronix@nitk.edu.in",
                 "8861897884")
         );
         committeeHeads.add(new CommitteeHead(
@@ -85,13 +106,6 @@ public class CommitteeHeadsFragment extends Fragment {
                 "Metamorph",
                 "subramanian.gokul@gmail.com",
                 "9742348710")
-        );
-        committeeHeads.add(new CommitteeHead(
-                R.drawable.image_kavish,
-                "Kavish Ramchandani",
-                "Joint Convenor",
-                "krciiti@gmail.com",
-                "8949696724")
         );
 
         committeeHeads.add(new CommitteeHead(

@@ -46,6 +46,12 @@ public class DevelopersFragment extends Fragment{
                 "Android",
                 "vvijaytanmai@gmail.com")
         );
+        developers.add(new Developer(
+                R.drawable.developer_animesh,
+                "Animesh Kumar",
+                "Android",
+                "animuz111@gmail.com")
+        );
         recyclerView.setAdapter(new RecyclerViewAdapter(developers));
         return rootView;
     }

@@ -2,153 +2,158 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#eef3f8">
 
-    <TextView
-        android:id="@+id/entry_dialog_tv_name"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/padding_normal"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/entry_dialog_iv_close"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/entry_dialog_iv_close"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/padding_small"
-        android:src="@drawable/ic_close"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/entry_dialog_iv_image"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="@dimen/margin_small"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/entry_dialog_tv_name" />
-
-    <ScrollView
-        android:id="@+id/entry_dialog_sv"
+    <FrameLayout
+        android:id="@+id/frame"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="top"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/entry_dialog_iv_image">
+        app:layout_constraintRight_toRightOf="parent">
 
-        <android.support.constraint.ConstraintLayout
+        <TextView
+            android:id="@+id/entry_dialog_tv_name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_normal"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_large"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/entry_dialog_iv_close"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/entry_dialog_tv_time"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/margin_small"
-                android:drawableLeft="@drawable/ic_schedule"
-                android:drawablePadding="@dimen/padding_small"
-                android:drawableStart="@drawable/ic_schedule"
-                android:gravity="center_vertical"
-                android:padding="@dimen/padding_small"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@id/entry_dialog_tv_location"
-                app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/entry_dialog_iv_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:padding="@dimen/padding_small"
+            android:src="@drawable/ic_close"/>
+    </FrameLayout>
 
-            <TextView
-                android:id="@+id/entry_dialog_tv_location"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/margin_small"
-                android:drawableLeft="@drawable/ic_schedule"
-                android:drawablePadding="@dimen/padding_small"
-                android:drawableStart="@drawable/ic_location"
-                android:gravity="center_vertical"
-                android:padding="@dimen/padding_small"
-                app:layout_constraintLeft_toRightOf="@id/entry_dialog_tv_time"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:id="@+id/data"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/frame"
+        app:layout_constraintBottom_toTopOf="@id/entry_dialog_btn_register">
 
-            <GridLayout
-                android:id="@+id/entry_dialog_gl_data"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:columnCount="3"
-                android:orientation="horizontal"
-                android:padding="@dimen/padding_normal"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@id/list_item_iv_like"
-                app:layout_constraintTop_toBottomOf="@id/entry_dialog_tv_time">
+        <ScrollView
+            android:id="@+id/entry_dialog_sv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/entry_dialog_iv_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:padding="@dimen/padding_normal"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/entry_dialog_tv_time"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_small"
+                    android:drawableStart="@drawable/ic_schedule"
+                    android:drawableLeft="@drawable/ic_schedule"
+                    android:drawablePadding="@dimen/padding_small"
+                    android:layout_marginTop="@dimen/margin_large"
+                    android:gravity="center_vertical"
                     android:padding="@dimen/padding_small"
-                    android:text="Committee" />
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@id/entry_dialog_tv_location"
+                    app:layout_constraintTop_toBottomOf="@id/entry_dialog_iv_image" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/entry_dialog_tv_location"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_small"
+                    android:drawableStart="@drawable/ic_location"
+                    android:drawableLeft="@drawable/ic_schedule"
+                    android:drawablePadding="@dimen/padding_small"
+                    android:layout_marginTop="@dimen/margin_large"
+                    android:gravity="center_vertical"
                     android:padding="@dimen/padding_small"
-                    android:text=":" />
+                    app:layout_constraintLeft_toRightOf="@id/entry_dialog_tv_time"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/entry_dialog_iv_image" />
 
-                <TextView
-                    android:id="@+id/entry_dialog_tv_committee"
-                    android:layout_width="wrap_content"
+                <GridLayout
+                    android:id="@+id/entry_dialog_gl_data"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/padding_small" />
+                    android:columnCount="3"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_normal"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@id/list_item_iv_like"
+                    app:layout_constraintTop_toBottomOf="@id/entry_dialog_tv_time">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/padding_small"
-                    android:text="Day" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/padding_small"
+                        android:textColor="@color/black"
+                        android:text="Committee" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/padding_small"
-                    android:text=":" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/padding_small"
+                        android:text=":" />
 
-                <TextView
-                    android:id="@+id/entry_dialog_tv_day"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/padding_small" />
-            </GridLayout>
+                    <TextView
+                        android:id="@+id/entry_dialog_tv_committee"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/padding_small" />
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="@dimen/padding_normal"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/entry_dialog_gl_data">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/padding_small"
+                        android:textColor="@color/black"
+                        android:text="Day" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/padding_small"
-                    android:text="Content" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/padding_small"
+                        android:text=":" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/padding_small"
-                    android:text=":" />
+                    <TextView
+                        android:id="@+id/entry_dialog_tv_day"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/padding_small" />
+                </GridLayout>
 
                 <TextView
                     android:id="@+id/entry_dialog_tv_content"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/padding_small" />
-            </LinearLayout>
-        </android.support.constraint.ConstraintLayout>
-    </ScrollView>
+                    android:layout_margin="@dimen/padding_normal"
+                    android:padding="@dimen/padding_small"
+                    app:layout_constraintTop_toBottomOf="@id/entry_dialog_gl_data" />
+            </android.support.constraint.ConstraintLayout>
+        </ScrollView>
+    </LinearLayout>
+
     <Button
         android:id="@+id/entry_dialog_btn_register"
         android:layout_width="match_parent"
