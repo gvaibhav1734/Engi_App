@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -31,12 +32,12 @@ public class FavSchedule extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fav_sc);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.fav_toolbar);
+        Toolbar toolbar = findViewById(R.id.fav_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         toolbar.showOverflowMenu();
-        mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+        mRecyclerView = findViewById(R.id.my_recycler_view);
 
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
@@ -49,15 +50,17 @@ public class FavSchedule extends AppCompatActivity {
         // specify an adapter (see also next example)
         mAdapter = new ScheduleListAdapter(this);
         SharedPreferences mPreferences = getSharedPreferences(mSharedPrefFile, MODE_PRIVATE);
-        Map<String,?> keys = mPreferences.getAll();
-
-        for(Map.Entry<String,?> entry1 : keys.entrySet()){
-            Log.d("map values",entry1.getKey() + ": " +
+        Map<String, ?> keys = mPreferences.getAll();
+        if (keys.size() != 0) {
+            findViewById(R.id.favourites_check).setVisibility(View.GONE);
+        }
+        for (Map.Entry<String, ?> entry1 : keys.entrySet()) {
+            Log.d("map values", entry1.getKey() + ": " +
                     entry1.getValue().toString());
             Entry entry = new Entry();
             try {
                 JSONObject jsonObject = new JSONObject(String.valueOf(entry1.getValue()));
-                Log.d(TAG,jsonObject.toString());
+                Log.d(TAG, jsonObject.toString());
                 entry.setDay(jsonObject.getInt("Day"));
                 entry.setID(jsonObject.getInt("ID"));
                 entry.setContent(jsonObject.getString("Content"));
@@ -65,11 +68,11 @@ public class FavSchedule extends AppCompatActivity {
                 entry.setTime(jsonObject.getString("Time"));
                 entry.setImage(
                         jsonObject.getString("Image")
-                                .replace("\\/","/")
+                                .replace("\\/", "/")
                 );
                 entry.setRegister_link(
                         jsonObject.getString("register_link")
-                                .replace("\\/","/")
+                                .replace("\\/", "/")
                 );
                 entry.setRegister_event(jsonObject.getInt("register_event"));
                 entry.setCommittee(jsonObject.getString("Committee"));
