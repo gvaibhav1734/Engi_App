@@ -12,8 +12,9 @@
 
     <ImageView
         android:id="@+id/aboutPic"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="207dp"
+        android:background="@drawable/about_pic"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
