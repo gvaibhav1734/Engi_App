@@ -45,9 +45,10 @@ public class ScheduleFragment extends Fragment {
     private String sharedPrefFile = "com.example.android.engineer";
     private SharedPreferences mPreferences;
     private static int previousTab=0;
+    private RecyclerView recyclerView;
+    private static int scrollTo=0;
 
     public ScheduleFragment() {
-
     }
 
     @Nullable
@@ -64,28 +65,18 @@ public class ScheduleFragment extends Fragment {
         tabLayout.setupWithViewPager(viewPager);
         //day5Adapter = new ScheduleListAdapter(getActivity());
         getActivity().setTitle("Schedule");
+        makeRequest();
         return rootView;
     }
 
-    @Override
-    public void onPause() {
-        super.onPause();
-        previousTab = viewPager.getCurrentItem();
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        makeRequest();
-    }
 
     public void makeRequest() {
+        progressBar.setVisibility(View.VISIBLE);
         day0Adapter = new ScheduleListAdapter(getActivity());
         day1Adapter = new ScheduleListAdapter(getActivity());
         day2Adapter = new ScheduleListAdapter(getActivity());
         day3Adapter = new ScheduleListAdapter(getActivity());
         day4Adapter = new ScheduleListAdapter(getActivity());
-        progressBar.setVisibility(View.VISIBLE);
         JsonArrayRequest listRequest = new JsonArrayRequest(
                 Request.Method.GET,
                 getString(R.string.EVENT_LIST_URL),
@@ -123,7 +114,6 @@ public class ScheduleFragment extends Fragment {
                                 else {
                                     entry.setLiked(true);
                                 }
-                                Log.d(TAG,entry.toString());
                             } catch (JSONException error) {
                                 Log.e(TAG, "JSON error " + error.getMessage());
                             }
@@ -198,7 +188,7 @@ public class ScheduleFragment extends Fragment {
                     context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View rootView = inflater.inflate(layouts[position], container, false);
             container.addView(rootView);
-            RecyclerView recyclerView = rootView.findViewById(R.id.schedule_list_rv);
+            recyclerView = rootView.findViewById(R.id.schedule_list_rv);
             recyclerView.setLayoutManager(new LinearLayoutManager(context));
             switch (position) {
                 case DAY0:

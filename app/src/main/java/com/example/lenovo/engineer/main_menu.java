@@ -64,7 +64,7 @@ public class main_menu extends AppCompatActivity
         navigationView.bringToFront();
 
         View header = navigationView.getHeaderView(0);
-        GoogleSignInAccount account = GoogleSignInHelper.getInstance().getAccount();
+        GoogleSignInAccount account = GoogleSignInHelper.getInstance(this).getAccount();
 
         View navView;
         navView = header.findViewById(R.id.name);
@@ -150,7 +150,7 @@ public class main_menu extends AppCompatActivity
             fragment=new SponsorsFragment();
             fab.hide();
         } else if (id == R.id.logout) {
-            GoogleSignInHelper.getInstance().getClient().signOut();
+            GoogleSignInHelper.getInstance(this).getClient().signOut();
             Log.d(TAG, "Logout Successful");
             finish();
             startActivity(new Intent(this, MainActivity.class));

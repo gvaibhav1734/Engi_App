@@ -1,27 +1,27 @@
 {
   "project_info": {
-    "project_number": "640302812708",
-    "firebase_url": "https://engineer-214307.firebaseio.com",
-    "project_id": "engineer-214307",
-    "storage_bucket": "engineer-214307.appspot.com"
+    "project_number": "243648961130",
+    "firebase_url": "https://engineer-1533977835482.firebaseio.com",
+    "project_id": "engineer-1533977835482",
+    "storage_bucket": "engineer-1533977835482.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:640302812708:android:405696f6e7daa51d",
+        "mobilesdk_app_id": "1:243648961130:android:405696f6e7daa51d",
         "android_client_info": {
           "package_name": "com.example.lenovo.engineer"
         }
       },
       "oauth_client": [
         {
-          "client_id": "640302812708-fu4cd46lvinv0cfsiqumbglkl89r1dck.apps.googleusercontent.com",
+          "client_id": "243648961130-c6751d6l2v5tvse3632nc8gjf16o65k3.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAtv_G4pD541g9LJgNiuYM_Oecc-vg9eR0"
+          "current_key": "AIzaSyBT13x435IEuIEpga7XNe92VxU7OnNqkBA"
         }
       ],
       "services": {

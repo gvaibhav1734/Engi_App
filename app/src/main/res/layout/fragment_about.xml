@@ -35,6 +35,7 @@
                 android:layout_height="wrap_content"
                 android:text="WE THINK | WE CREATE | WE ARE ENGINEERS"
                 android:textAlignment="center"
+                android:padding="@dimen/padding_normal"
                 android:textStyle="bold" />
 
             <TextView

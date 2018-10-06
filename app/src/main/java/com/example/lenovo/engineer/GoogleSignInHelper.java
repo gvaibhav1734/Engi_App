@@ -44,7 +44,9 @@ public class GoogleSignInHelper {
     /**
      * For situations where you only want the Client and DO NOT want to create another one.
      */
-    public static synchronized GoogleSignInHelper getInstance() {
+    public static synchronized GoogleSignInHelper getInstance(Context context) {
+        if(instance == null)
+            instance.setup(context, null);
         return instance;
     }
 
