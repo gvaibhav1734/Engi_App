@@ -70,7 +70,55 @@ public class CommitteeHeadsFragment extends Fragment {
                 "atulksingh1507@gmail.com",
                 "8976045880")
         );
-
+        committeeHeads.add(new CommitteeHead(
+                R.drawable.image_abhilekh,
+                "Abhilekh Shrivastava",
+                "Cheif Coordinator",
+                "-",
+                "9071987791")
+        );
+        committeeHeads.add(new CommitteeHead(
+                R.drawable.image_raveesh,
+                "Raveesh Sinha",
+                "Workshop ",
+                "sinharaveesh16@gmail.com",
+                "9983563302 ")
+        );
+        committeeHeads.add(new CommitteeHead(
+                R.drawable.image_ved,
+                "Ved Choupane",
+                "Engi Press",
+                "vchoop3@gmail.com",
+                "8830157634")
+        );
+        committeeHeads.add(new CommitteeHead(
+                R.drawable.image_pradeep,
+                "Pradeep Choudhary",
+                "Student Hospitality",
+                "pradeepchoudharyj99@gmail.com",
+                "9413640133")
+        );
+        committeeHeads.add(new CommitteeHead(
+                R.drawable.image_yash_gangwal,
+                "Yash Gangwal",
+                "Associate Publicity",
+                "-",
+                "9130272865")
+        );
+        committeeHeads.add(new CommitteeHead(
+                R.drawable.image_nihar_chitnis,
+                "Nihar Chitnis",
+                "Associate Technical Head",
+                "niharchitnis@gmail.com",
+                "8951791633 ")
+        );
+        committeeHeads.add(new CommitteeHead(
+                R.drawable.image_ritvik_arya,
+                "Ritvik Arya",
+                "Associate Technical Head",
+                "rtvkiz@gmail.com",
+                "8989973062")
+        );
         committeeHeads.add(new CommitteeHead(
                 R.drawable.image_dipanshu,
                 "Dipanshu Prasad",
@@ -92,7 +140,6 @@ public class CommitteeHeadsFragment extends Fragment {
                 "chetanm66@gmail.com",
                 "8892140482")
         );
-
         committeeHeads.add(new CommitteeHead(
                 R.drawable.image_rakesh_naga_sai,
                 "Rakesh Naga Sai",
@@ -108,20 +155,6 @@ public class CommitteeHeadsFragment extends Fragment {
                 "9742348710")
         );
 
-        committeeHeads.add(new CommitteeHead(
-                R.drawable.image_pradeep,
-                "Pradeep Choudhary",
-                "Student Hospitality",
-                "pradeepchoudharyj99@gmail.com",
-                "9413640133")
-        );
-        committeeHeads.add(new CommitteeHead(
-                R.drawable.image_ved,
-                "Ved Choupane",
-                "Engi Press",
-                "vchoop3@gmail.com",
-                "8830157634")
-        );
         committeeHeads.add(new CommitteeHead(
                 R.drawable.image_akhilu,
                 "Akhil Udathu",

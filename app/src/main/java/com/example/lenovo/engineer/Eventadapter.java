@@ -34,7 +34,6 @@ public class Eventadapter  extends RecyclerView.Adapter<Eventadapter.ViewHolder>
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int pos) {
         final Event event=event_list.get(pos);
-        viewHolder.title.setText(event.getTitle());
         viewHolder.descr.setText(event.getDescription());
         //Loading Committee Cover
         Glide.with(mContext).load(event.getThumbnail()).into(viewHolder.thumbnail);
@@ -52,7 +51,6 @@ public class Eventadapter  extends RecyclerView.Adapter<Eventadapter.ViewHolder>
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             thumbnail= itemView.findViewById(R.id.event_view_thumbnail);
-            title=itemView.findViewById(R.id.event_view_title);
             descr=itemView.findViewById(R.id.event_view_desc);
 
 
