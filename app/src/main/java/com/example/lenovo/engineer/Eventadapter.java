@@ -51,7 +51,7 @@ public class Eventadapter  extends RecyclerView.Adapter<Eventadapter.ViewHolder>
         public ImageView thumbnail;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            thumbnail=(ImageView)itemView.findViewById(R.id.event_view_thumbnail);
+            thumbnail= itemView.findViewById(R.id.event_view_thumbnail);
             title=itemView.findViewById(R.id.event_view_title);
             descr=itemView.findViewById(R.id.event_view_desc);
 

@@ -3,7 +3,6 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
@@ -32,7 +31,6 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/wethink"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="WE THINK | WE CREATE | WE ARE ENGINEERS"
@@ -40,7 +38,6 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/aboutText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_extra_large"

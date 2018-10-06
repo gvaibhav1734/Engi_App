@@ -26,8 +26,8 @@ public class CommAdapter extends RecyclerView.Adapter<CommAdapter.MyViewHolder> 
         public MyViewHolder(View view) {
             super(view);
             this.view=view;
-            title = (TextView) view.findViewById(R.id.home_view_title);
-            thumbnail = (ImageView) view.findViewById(R.id.home_view_thumbnail);
+            title = view.findViewById(R.id.home_view_title);
+            thumbnail = view.findViewById(R.id.home_view_thumbnail);
         }
     }
     public CommAdapter(Context context, List<CommitteeDet>committeeDetList)

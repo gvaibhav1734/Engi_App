@@ -31,11 +31,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:padding="@dimen/padding_small"
-            android:src="@drawable/ic_close"/>
+            android:src="@drawable/ic_close" />
     </FrameLayout>
 
     <LinearLayout
-        android:id="@+id/data"
         android:layout_width="match_parent"
         android:layout_height="400dp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -44,7 +43,6 @@
         app:layout_constraintBottom_toTopOf="@id/entry_dialog_btn_register">
 
         <ScrollView
-            android:id="@+id/entry_dialog_sv"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -157,5 +155,5 @@
         android:text="@string/register"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent" />
 </android.support.constraint.ConstraintLayout>

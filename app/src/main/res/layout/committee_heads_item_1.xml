@@ -14,7 +14,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:id="@+id/committee_heads_item_ll_data"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"

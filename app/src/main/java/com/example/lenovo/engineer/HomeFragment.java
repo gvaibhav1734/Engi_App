@@ -69,7 +69,7 @@ public class HomeFragment extends Fragment{
         for (int i = 0; i < Images.length; i++)
             ImageArray.add(Images[i]);
 
-        mPager = (ViewPager) getView().findViewById(R.id.pager);
+        mPager = getView().findViewById(R.id.pager);
 
         mPager.setAdapter(new ImageAdapter(getContext(), ImageArray));
         CircleIndicator indicator = getView().findViewById(R.id.indicator);
@@ -125,9 +125,9 @@ public class HomeFragment extends Fragment{
         CommitteeDet h= new CommitteeDet(getString(R.string.Civil),covers[6]);
         a= new CommitteeDet(getString(R.string.Technites),covers[7]);
         committeeDetList.add(a);
+        committeeDetList.add(e);
         committeeDetList.add(c);
         committeeDetList.add(d);
-        committeeDetList.add(e);
         committeeDetList.add(f);
         committeeDetList.add(g);
         committeeDetList.add(h);
