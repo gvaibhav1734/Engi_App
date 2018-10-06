@@ -90,18 +90,21 @@ public class main_menu extends AppCompatActivity
                                 .replace(R.id.main_menu_fl_container, new HomeFragment(), "Home")
                                 .addToBackStack("Home")
                                 .commit();
+                        fab.show();
                         break;
                     case R.id.bottom_bar_schedule:
                         getSupportFragmentManager().beginTransaction()
                                 .replace(R.id.main_menu_fl_container, new ScheduleFragment(), "Schedule")
                                 .addToBackStack("Schedule")
                                 .commit();
+                        fab.show();
                         break;
                     case R.id.bottom_bar_maps:
                         getSupportFragmentManager().beginTransaction()
                                 .replace(R.id.main_menu_fl_container, new MapsFragment(), "Maps")
                                 .addToBackStack("Maps")
                                 .commit();
+                        fab.hide();
                         break;
                 }
                 return true;
