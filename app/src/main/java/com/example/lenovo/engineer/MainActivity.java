@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .requestEmail()
                 .build();
         // Build a GoogleSignInClient with the options specified by gso.
-        mGoogleSignInClient = GoogleSignInHelper.getInstance(this, gso).getClient();
+        mGoogleSignInClient = GoogleSignInHelper.getInstance(getApplicationContext(), gso).getClient();
         if (mGoogleSignInAccount == null) {
 
             SignInButton signInButton = findViewById(R.id.sign_in_button);
