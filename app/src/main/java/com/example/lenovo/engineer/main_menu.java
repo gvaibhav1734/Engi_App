@@ -64,7 +64,7 @@ public class main_menu extends AppCompatActivity
         navigationView.bringToFront();
 
         View header = navigationView.getHeaderView(0);
-        GoogleSignInAccount account = GoogleSignInHelper.getInstance().getAccount();
+        GoogleSignInAccount account = GoogleSignInHelper.getInstance(this).getAccount();
 
         View navView;
         navView = header.findViewById(R.id.name);
@@ -90,18 +90,21 @@ public class main_menu extends AppCompatActivity
                                 .replace(R.id.main_menu_fl_container, new HomeFragment(), "Home")
                                 .addToBackStack("Home")
                                 .commit();
+                        fab.show();
                         break;
                     case R.id.bottom_bar_schedule:
                         getSupportFragmentManager().beginTransaction()
                                 .replace(R.id.main_menu_fl_container, new ScheduleFragment(), "Schedule")
                                 .addToBackStack("Schedule")
                                 .commit();
+                        fab.show();
                         break;
                     case R.id.bottom_bar_maps:
                         getSupportFragmentManager().beginTransaction()
                                 .replace(R.id.main_menu_fl_container, new MapsFragment(), "Maps")
                                 .addToBackStack("Maps")
                                 .commit();
+                        fab.hide();
                         break;
                 }
                 return true;
@@ -128,15 +131,18 @@ public class main_menu extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         Fragment fragment = null;
-        fab.show();
         if (id == R.id.Home) {
             fragment = new HomeFragment();
+            fab.show();
         } else if (id == R.id.nav_schedule) {
             fragment = new ScheduleFragment();
+            fab.show();
         } else if (id == R.id.nav_maps) {
             fragment = new MapsFragment();
+            fab.hide();
         } else if (id == R.id.nav_about) {
             fragment = new AboutFragment();
+            fab.hide();
         } else if (id == R.id.committee_head) {
             fragment=new CommitteeHeadsFragment();
             fab.hide();
@@ -145,8 +151,9 @@ public class main_menu extends AppCompatActivity
             fab.hide();
         } else if (id == R.id.sponsors) {
             fragment=new SponsorsFragment();
+            fab.hide();
         } else if (id == R.id.logout) {
-            GoogleSignInHelper.getInstance().getClient().signOut();
+            GoogleSignInHelper.getInstance(this).getClient().signOut();
             Log.d(TAG, "Logout Successful");
             finish();
             startActivity(new Intent(this, MainActivity.class));

@@ -65,7 +65,6 @@ public class EntryDialog extends DialogFragment {
         time.setText(entry.getTime());
         day.setText(String.valueOf(entry.getDay()));
         location.setText(entry.getLocation());
-        Log.d(TAG,"Committee " + entry.getCommittee());
         committee.setText(entry.getCommittee());
         content.setText(entry.getContent());
         close.setOnClickListener(new View.OnClickListener() {

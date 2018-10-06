@@ -31,9 +31,10 @@ public class HomeFragment extends Fragment {
     private static ViewPager mPager;
     private static int currentPage = 0;
     private static final Integer[] Images = {R.drawable.sunburn_nitk,
+            R.drawable.day_2,
             R.drawable.final_1,
             R.drawable.final_workshop,
-            R.drawable.sandbox};
+            R.drawable.engi_bg};
     private ArrayList<Integer> ImageArray = new ArrayList<Integer>();
 
     public HomeFragment() {

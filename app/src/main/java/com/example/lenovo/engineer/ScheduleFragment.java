@@ -44,9 +44,11 @@ public class ScheduleFragment extends Fragment {
     ScheduleListAdapter day1Adapter, day2Adapter, day3Adapter, day4Adapter, day0Adapter;
     private String sharedPrefFile = "com.example.android.engineer";
     private SharedPreferences mPreferences;
+    private static int previousTab=0;
+    private RecyclerView recyclerView;
+    private static int scrollTo=0;
 
     public ScheduleFragment() {
-
     }
 
     @Nullable
@@ -61,20 +63,20 @@ public class ScheduleFragment extends Fragment {
         tabLayout = rootView.findViewById(R.id.schedule_tl_tabs);
         progressBar = rootView.findViewById(R.id.schedule_list_pb_progress);
         tabLayout.setupWithViewPager(viewPager);
+        //day5Adapter = new ScheduleListAdapter(getActivity());
+        getActivity().setTitle("Schedule");
+        makeRequest();
+        return rootView;
+    }
+
+
+    public void makeRequest() {
+        progressBar.setVisibility(View.VISIBLE);
         day0Adapter = new ScheduleListAdapter(getActivity());
         day1Adapter = new ScheduleListAdapter(getActivity());
         day2Adapter = new ScheduleListAdapter(getActivity());
         day3Adapter = new ScheduleListAdapter(getActivity());
         day4Adapter = new ScheduleListAdapter(getActivity());
-        //day5Adapter = new ScheduleListAdapter(getActivity());
-        makeRequest();
-        viewPager.setAdapter(new CustomPagerAdapter(getActivity()));
-        getActivity().setTitle("Schedule");
-        return rootView;
-    }
-
-    public void makeRequest() {
-        progressBar.setVisibility(View.VISIBLE);
         JsonArrayRequest listRequest = new JsonArrayRequest(
                 Request.Method.GET,
                 getString(R.string.EVENT_LIST_URL),
@@ -103,13 +105,15 @@ public class ScheduleFragment extends Fragment {
                                         jsonObject.getString("register_link")
                                                 .replace("\\/","/")
                                 );
+                                if(entry.getContent().equals("null") || entry.getContent().equals("")){
+                                    entry.setContent("Engineer 2018");
+                                }
                                 if(mPreferences.getString(String.valueOf(entry.getID()), "b").equals("b")) {
                                     entry.setLiked(false);
                                 }
                                 else {
                                     entry.setLiked(true);
                                 }
-                                Log.d(TAG,entry.toString());
                             } catch (JSONException error) {
                                 Log.e(TAG, "JSON error " + error.getMessage());
                             }
@@ -132,6 +136,8 @@ public class ScheduleFragment extends Fragment {
                             }
                         }
                         progressBar.setVisibility(View.GONE);
+                        viewPager.setAdapter(new CustomPagerAdapter(getActivity()));
+                        viewPager.setCurrentItem(previousTab);
                     }
                 },
                 new Response.ErrorListener() {
@@ -182,7 +188,7 @@ public class ScheduleFragment extends Fragment {
                     context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View rootView = inflater.inflate(layouts[position], container, false);
             container.addView(rootView);
-            RecyclerView recyclerView = rootView.findViewById(R.id.schedule_list_rv);
+            recyclerView = rootView.findViewById(R.id.schedule_list_rv);
             recyclerView.setLayoutManager(new LinearLayoutManager(context));
             switch (position) {
                 case DAY0:
