@@ -128,15 +128,18 @@ public class main_menu extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         Fragment fragment = null;
-        fab.show();
         if (id == R.id.Home) {
             fragment = new HomeFragment();
+            fab.show();
         } else if (id == R.id.nav_schedule) {
             fragment = new ScheduleFragment();
+            fab.show();
         } else if (id == R.id.nav_maps) {
             fragment = new MapsFragment();
+            fab.hide();
         } else if (id == R.id.nav_about) {
             fragment = new AboutFragment();
+            fab.hide();
         } else if (id == R.id.committee_head) {
             fragment=new CommitteeHeadsFragment();
             fab.hide();
@@ -145,6 +148,7 @@ public class main_menu extends AppCompatActivity
             fab.hide();
         } else if (id == R.id.sponsors) {
             fragment=new SponsorsFragment();
+            fab.hide();
         } else if (id == R.id.logout) {
             GoogleSignInHelper.getInstance().getClient().signOut();
             Log.d(TAG, "Logout Successful");

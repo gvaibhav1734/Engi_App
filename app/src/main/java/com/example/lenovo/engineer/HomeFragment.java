@@ -33,7 +33,7 @@ public class HomeFragment extends Fragment {
     private static final Integer[] Images = {R.drawable.sunburn_nitk,
             R.drawable.final_1,
             R.drawable.final_workshop,
-            R.drawable.sandbox};
+            R.drawable.engi_bg};
     private ArrayList<Integer> ImageArray = new ArrayList<Integer>();
 
     public HomeFragment() {

@@ -88,7 +88,7 @@ public class EventsActivity extends AppCompatActivity {
             eventList.add(event);
             event=new Event("Henry Menezes","Former Indian Football Team \nCEO-Western Football Assoc",R.drawable.henry_menezes);
             eventList.add(event);
-            event=new Event("Natasha Doshi","Model Actress",R.drawable.event_back);
+            event=new Event("Natasha Doshi","Model Actress",R.drawable.natasha_doshi);
             eventList.add(event);
             event=new Event("SN Mukherjee","Retired Major General Indian Army ",R.drawable.sn_mukherjee);
             eventList.add(event);
