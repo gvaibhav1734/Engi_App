@@ -103,6 +103,9 @@ public class ScheduleFragment extends Fragment {
                                         jsonObject.getString("register_link")
                                                 .replace("\\/","/")
                                 );
+                                if(entry.getContent().equals("null") || entry.getContent().equals("")){
+                                    entry.setContent("Engineer 2018");
+                                }
                                 if(mPreferences.getString(String.valueOf(entry.getID()), "b").equals("b")) {
                                     entry.setLiked(false);
                                 }
