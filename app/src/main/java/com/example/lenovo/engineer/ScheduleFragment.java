@@ -44,6 +44,7 @@ public class ScheduleFragment extends Fragment {
     ScheduleListAdapter day1Adapter, day2Adapter, day3Adapter, day4Adapter, day0Adapter;
     private String sharedPrefFile = "com.example.android.engineer";
     private SharedPreferences mPreferences;
+    private static int previousTab=0;
 
     public ScheduleFragment() {
 
@@ -61,19 +62,29 @@ public class ScheduleFragment extends Fragment {
         tabLayout = rootView.findViewById(R.id.schedule_tl_tabs);
         progressBar = rootView.findViewById(R.id.schedule_list_pb_progress);
         tabLayout.setupWithViewPager(viewPager);
+        //day5Adapter = new ScheduleListAdapter(getActivity());
+        getActivity().setTitle("Schedule");
+        return rootView;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        previousTab = viewPager.getCurrentItem();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        makeRequest();
+    }
+
+    public void makeRequest() {
         day0Adapter = new ScheduleListAdapter(getActivity());
         day1Adapter = new ScheduleListAdapter(getActivity());
         day2Adapter = new ScheduleListAdapter(getActivity());
         day3Adapter = new ScheduleListAdapter(getActivity());
         day4Adapter = new ScheduleListAdapter(getActivity());
-        //day5Adapter = new ScheduleListAdapter(getActivity());
-        makeRequest();
-        viewPager.setAdapter(new CustomPagerAdapter(getActivity()));
-        getActivity().setTitle("Schedule");
-        return rootView;
-    }
-
-    public void makeRequest() {
         progressBar.setVisibility(View.VISIBLE);
         JsonArrayRequest listRequest = new JsonArrayRequest(
                 Request.Method.GET,
@@ -135,6 +146,8 @@ public class ScheduleFragment extends Fragment {
                             }
                         }
                         progressBar.setVisibility(View.GONE);
+                        viewPager.setAdapter(new CustomPagerAdapter(getActivity()));
+                        viewPager.setCurrentItem(previousTab);
                     }
                 },
                 new Response.ErrorListener() {
