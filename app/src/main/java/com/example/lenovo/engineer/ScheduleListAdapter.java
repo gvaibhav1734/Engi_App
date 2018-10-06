@@ -126,10 +126,6 @@ public class ScheduleListAdapter extends RecyclerView.Adapter<ScheduleListAdapte
             viewHolder.like.setTypeface(font2);
         } else
             viewHolder.like.setTypeface(font1);
-        //viewHolder.like.setText(R.string.fa_icon_heart);
-
-//        Set liked or not liked when SharedPreferences implemented.
-//        viewHolder.like.setImageResource(R.drawable.ic_not_liked);
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
