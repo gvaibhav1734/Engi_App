@@ -22,7 +22,7 @@ import java.util.TimerTask;
 
 import me.relex.circleindicator.CircleIndicator;
 
-public class HomeFragment extends Fragment{
+public class HomeFragment extends Fragment {
     private static final String TAG = "HomeFragment";
 
     private RecyclerView recyclerView;
@@ -36,20 +36,21 @@ public class HomeFragment extends Fragment{
             R.drawable.sandbox};
     private ArrayList<Integer> ImageArray = new ArrayList<Integer>();
 
-    public HomeFragment(){
+    public HomeFragment() {
 
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
-                                @Nullable Bundle savedInstanceState) {
+                             @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        View rootView = inflater.inflate(R.layout.fragment_home,container,false);
+        View rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
-        recyclerView= rootView.findViewById(R.id.home_recycler_view);
-        committeeDetList=new ArrayList<>();
-        adapter=new CommAdapter(getContext(),committeeDetList);
+        recyclerView = rootView.findViewById(R.id.home_recycler_view);
+        committeeDetList = new ArrayList<>();
+        adapter = new CommAdapter(getContext(), committeeDetList);
 
-        RecyclerView.LayoutManager mLayoutManager= new GridLayoutManager(getContext(),2);
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getContext(), 2);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(10), true));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -88,13 +89,30 @@ public class HomeFragment extends Fragment{
             }
         };
 
-        Timer swipeTimer = new Timer();
+        final Timer swipeTimer = new Timer();
         swipeTimer.schedule(new TimerTask() {
             @Override
             public void run() {
                 handler.post(Update);
             }
         }, 5000, 5000);
+
+        mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int i, float v, int i1) {
+
+            }
+
+            @Override
+            public void onPageSelected(int i) {
+                currentPage = i;
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int i) {
+
+            }
+        });
     }
 
     private void prepCommittee() {
@@ -113,19 +131,19 @@ public class HomeFragment extends Fragment{
                         R.drawable.wslogo
                 };
         CommitteeDet a;
-            a=new CommitteeDet("Workshops",covers[10]);
+        a = new CommitteeDet("Workshops", covers[10]);
         committeeDetList.add(a);
-        a=new CommitteeDet("Engi Talks",covers[9]);
+        a = new CommitteeDet("Engi Talks", covers[9]);
         committeeDetList.add(a);
-        a= new CommitteeDet(getString(R.string.Tronix),covers[0]);
+        a = new CommitteeDet(getString(R.string.Tronix), covers[0]);
         committeeDetList.add(a);
-        CommitteeDet c= new CommitteeDet(getString(R.string.Mech),covers[1]);
-        CommitteeDet d= new CommitteeDet(getString(R.string.Meta),covers[2]);
-        CommitteeDet e= new CommitteeDet(getString(R.string.Comp),covers[3]);
-        CommitteeDet f= new CommitteeDet(getString(R.string.chem),covers[4]);
-        CommitteeDet g= new CommitteeDet(getString(R.string.Mining),covers[8]);
-        CommitteeDet h= new CommitteeDet(getString(R.string.Civil),covers[6]);
-        a= new CommitteeDet(getString(R.string.Technites),covers[7]);
+        CommitteeDet c = new CommitteeDet(getString(R.string.Mech), covers[1]);
+        CommitteeDet d = new CommitteeDet(getString(R.string.Meta), covers[2]);
+        CommitteeDet e = new CommitteeDet(getString(R.string.Comp), covers[3]);
+        CommitteeDet f = new CommitteeDet(getString(R.string.chem), covers[4]);
+        CommitteeDet g = new CommitteeDet(getString(R.string.Mining), covers[8]);
+        CommitteeDet h = new CommitteeDet(getString(R.string.Civil), covers[6]);
+        a = new CommitteeDet(getString(R.string.Technites), covers[7]);
         committeeDetList.add(a);
         committeeDetList.add(e);
         committeeDetList.add(c);
@@ -136,6 +154,7 @@ public class HomeFragment extends Fragment{
 
         adapter.notifyDataSetChanged();
     }
+
     /**
      * RecyclerView item decoration - give equal margin around grid item
      */
@@ -174,6 +193,7 @@ public class HomeFragment extends Fragment{
             }
         }
     }
+
     private int dpToPx(int dp) {
         Resources r = getResources();
         return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
