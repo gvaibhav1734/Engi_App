@@ -124,8 +124,9 @@ public class ScheduleListAdapter extends RecyclerView.Adapter<ScheduleListAdapte
         viewHolder.content.setText(entryList.get(position).getContent());
         if (entryList.get(viewHolder.getAdapterPosition()).isLiked()) {
             viewHolder.like.setTypeface(font2);
-        } else
+        } else {
             viewHolder.like.setTypeface(font1);
+        }
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -175,5 +176,9 @@ public class ScheduleListAdapter extends RecyclerView.Adapter<ScheduleListAdapte
     public void addEntry(Entry entry) {
         entryList.add(entry);
         notifyItemInserted(entryList.size());
+    }
+
+    public void updateList(){
+        notifyDataSetChanged();
     }
 }

@@ -12,6 +12,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -57,7 +58,7 @@ public class ScheduleFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         //Read Shared Preference
         mPreferences = getActivity().getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
-
+        Log.d(TAG,"onCreateView");
         View rootView = inflater.inflate(R.layout.fragment_schedule, container, false);
         viewPager = rootView.findViewById(R.id.schedule_vp_container);
         tabLayout = rootView.findViewById(R.id.schedule_tl_tabs);
@@ -65,18 +66,29 @@ public class ScheduleFragment extends Fragment {
         tabLayout.setupWithViewPager(viewPager);
         //day5Adapter = new ScheduleListAdapter(getActivity());
         getActivity().setTitle("Schedule");
-        makeRequest();
         return rootView;
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        previousTab = viewPager.getCurrentItem();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d(TAG,"OnResume");
+        makeRequest();
+    }
 
     public void makeRequest() {
-        progressBar.setVisibility(View.VISIBLE);
         day0Adapter = new ScheduleListAdapter(getActivity());
         day1Adapter = new ScheduleListAdapter(getActivity());
         day2Adapter = new ScheduleListAdapter(getActivity());
         day3Adapter = new ScheduleListAdapter(getActivity());
         day4Adapter = new ScheduleListAdapter(getActivity());
+        progressBar.setVisibility(View.VISIBLE);
         JsonArrayRequest listRequest = new JsonArrayRequest(
                 Request.Method.GET,
                 getString(R.string.EVENT_LIST_URL),
@@ -189,6 +201,13 @@ public class ScheduleFragment extends Fragment {
             View rootView = inflater.inflate(layouts[position], container, false);
             container.addView(rootView);
             recyclerView = rootView.findViewById(R.id.schedule_list_rv);
+            DefaultItemAnimator animator = new DefaultItemAnimator() {
+                @Override
+                public boolean canReuseUpdatedViewHolder(RecyclerView.ViewHolder viewHolder) {
+                    return true;
+                }
+            };
+            recyclerView.setItemAnimator(animator);
             recyclerView.setLayoutManager(new LinearLayoutManager(context));
             switch (position) {
                 case DAY0:
