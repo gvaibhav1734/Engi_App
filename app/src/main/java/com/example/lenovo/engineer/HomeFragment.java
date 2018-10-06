@@ -128,7 +128,8 @@ public class HomeFragment extends Fragment {
                         R.drawable.technites,
                         R.drawable.heic1509a,
                         R.drawable.engi_talks_pic,
-                        R.drawable.wslogo
+                        R.drawable.wslogo,
+                        R.drawable.iconbiz
                 };
         CommitteeDet a;
         a = new CommitteeDet("Workshops", covers[10]);
@@ -143,6 +144,8 @@ public class HomeFragment extends Fragment {
         CommitteeDet f = new CommitteeDet(getString(R.string.chem), covers[4]);
         CommitteeDet g = new CommitteeDet(getString(R.string.Mining), covers[8]);
         CommitteeDet h = new CommitteeDet(getString(R.string.Civil), covers[6]);
+        a= new CommitteeDet("BizWaves",covers[11]);
+        committeeDetList.add(a);
         a = new CommitteeDet(getString(R.string.Technites), covers[7]);
         committeeDetList.add(a);
         committeeDetList.add(e);
