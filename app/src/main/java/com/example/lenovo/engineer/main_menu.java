@@ -23,7 +23,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.stats.internal.G;
 
 
@@ -64,7 +66,7 @@ public class main_menu extends AppCompatActivity
         navigationView.bringToFront();
 
         View header = navigationView.getHeaderView(0);
-        GoogleSignInAccount account = GoogleSignInHelper.getInstance(this).getAccount();
+        GoogleSignInAccount account = GoogleSignInHelper.getInstance(getApplicationContext()).getAccount();
 
         View navView;
         navView = header.findViewById(R.id.name);
