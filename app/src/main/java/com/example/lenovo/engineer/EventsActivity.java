@@ -86,9 +86,9 @@ public class EventsActivity extends AppCompatActivity {
             eventList.add(event);
             event=new Event("Dr. Pankaj Joshi","Globally renowned scientist Astrophysicist senior professor at TIFR",R.drawable.pankaj);
             eventList.add(event);
-            event=new Event("Henry Menezes","Former Indian Football Team \nCEO-Western Football Assoc",R.drawable.henry_menezes);
-            eventList.add(event);
             event=new Event("Natasha Doshi","Model Actress",R.drawable.natasha_doshi);
+            eventList.add(event);
+            event=new Event("Henry Menezes","Former Indian Football Team \nCEO-Western Football Assoc",R.drawable.henry_menezes);
             eventList.add(event);
             event=new Event("SN Mukherjee","Retired Major General Indian Army ",R.drawable.sn_mukherjee);
             eventList.add(event);
@@ -114,13 +114,15 @@ public class EventsActivity extends AppCompatActivity {
        }
         if(str1.equals("Mechanical"))
         {
-            event=new Event("Robowars",getString(R.string.Robowars),R.drawable.mech5);
+            event=new Event("Robowars",getString(R.string.Robowars),R.drawable.robo_wars);
             eventList.add(event);
             event=new Event("Bot Hockey",getString(R.string.bot_hockey),R.drawable.mech1);
             eventList.add(event);
-            event=new Event("Perfect Machine",getString(R.string.perfect_machine),R.drawable.mech8);
+            event=new Event("Perfect Machine",getString(R.string.perfect_machine),R.drawable.mech5);
             eventList.add(event);
             event=new Event("Wright Flight",getString(R.string.wright_flight),R.drawable.mech7);
+            eventList.add(event);
+            event=new Event("Contraption","The aim of this competition is to build a Rube Goldberg machine.", R.drawable.mech8);
             eventList.add(event);
 
         }
@@ -165,6 +167,12 @@ public class EventsActivity extends AppCompatActivity {
             eventList.add(event);
             event=new Event("Architect",getString(R.string.arch),R.drawable.architect);
             eventList.add(event);
+            event=new Event("Introduction to AutoCad","Introduction to AutoCad",R.drawable.autocad);
+            eventList.add(event);
+            event=new Event("Poster","Poster Presentation",R.drawable.poster);
+            eventList.add(event);
+
+
 
         }
         if(str1.equals("Reflux"))
