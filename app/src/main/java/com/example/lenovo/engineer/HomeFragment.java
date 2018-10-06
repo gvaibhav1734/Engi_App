@@ -30,11 +30,13 @@ public class HomeFragment extends Fragment{
     private List<CommitteeDet> committeeDetList;
     private static ViewPager mPager;
     private static int currentPage = 0;
-    private static final Integer[] Images = {R.drawable.logo, R.drawable.final_1, R.drawable.final_workshop,R.drawable.sandbox};
+    private static final Integer[] Images = {R.drawable.sunburn_nitk,
+            R.drawable.final_1,
+            R.drawable.final_workshop,
+            R.drawable.sandbox};
     private ArrayList<Integer> ImageArray = new ArrayList<Integer>();
 
-    public HomeFragment()
-    {
+    public HomeFragment(){
 
     }
     @Override
@@ -92,7 +94,7 @@ public class HomeFragment extends Fragment{
             public void run() {
                 handler.post(Update);
             }
-        }, 2500, 2500);
+        }, 5000, 5000);
     }
 
     private void prepCommittee() {

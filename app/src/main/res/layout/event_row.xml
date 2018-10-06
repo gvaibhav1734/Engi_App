@@ -1,62 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_marginBottom="5dp"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp">
 
     <ImageView
         android:id="@+id/event_view_thumbnail"
         android:layout_width="match_parent"
-        android:adjustViewBounds="true"
         android:layout_height="200dp"
         android:layout_gravity="center"
-        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
         android:alpha=".9"
+        android:scaleType="fitXY"
         tools:text="@tools:sample/backgrounds/scenic" />
 
     <TextView
-        android:textStyle="bold"
-        android:paddingTop="10dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@id/event_view_desc"
-        android:id="@+id/event_view_title"
-        android:textAlignment="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:textColor="@color/white"
-        tools:text="Title" />
-    <!--To do font change-->
-    <TextView
-        android:textSize="15sp"
-        android:paddingTop="5dp"
-        android:paddingRight="10dp"
-        android:paddingLeft="10dp"
-        android:paddingBottom="10dp"
-        android:layout_marginBottom="2dp"
-        android:layout_marginTop="10dp"
-        android:layout_below="@id/event_view_title"
-        app:layout_constraintBottom_toBottomOf="@id/event_view_thumbnail"
-        android:textColor="@color/white"
         android:id="@+id/event_view_desc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        tools:text="Description"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="2dp"
+        android:background="@color/black"
         android:gravity="center"
-        android:background="@color/black" />
+        android:paddingLeft="10dp"
+        android:paddingTop="5dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@id/event_view_thumbnail"
+        tools:text="Description" />
 
     <View
         style="@style/Divider.Horizontal"
         android:layout_marginTop="@dimen/margin_small"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintRight_toRightOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>
