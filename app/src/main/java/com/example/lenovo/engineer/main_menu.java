@@ -34,11 +34,16 @@ public class main_menu extends AppCompatActivity
     private static final String TAG = "MainMenu";
     private BottomNavigationView bottomBar;
     private FloatingActionButton fab;
+    private GoogleSignInOptions gso;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+
+        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         if(getSupportActionBar()!=null) {
@@ -67,7 +72,7 @@ public class main_menu extends AppCompatActivity
         navigationView.bringToFront();
 
         View header = navigationView.getHeaderView(0);
-        GoogleSignInAccount account = GoogleSignInHelper.getInstance(getApplicationContext()).getAccount();
+        GoogleSignInAccount account = GoogleSignInHelper.getInstance(getApplicationContext(), gso).getAccount();
 
         View navView;
         navView = header.findViewById(R.id.name);
@@ -159,7 +164,7 @@ public class main_menu extends AppCompatActivity
             fragment = new HelpFragment();
             fab.hide();
         } else if (id == R.id.logout) {
-            GoogleSignInHelper.getInstance(this).getClient().signOut();
+            GoogleSignInHelper.getInstance(this, gso).getClient().signOut();
             Log.d(TAG, "Logout Successful");
             finish();
             startActivity(new Intent(this, MainActivity.class));
