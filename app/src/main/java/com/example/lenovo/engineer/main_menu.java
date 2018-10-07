@@ -134,13 +134,13 @@ public class main_menu extends AppCompatActivity
         int id = item.getItemId();
         Fragment fragment = null;
         if (id == R.id.Home) {
-            fragment = new HomeFragment();
+            bottomBar.setSelectedItemId(R.id.bottom_bar_home);
             fab.show();
         } else if (id == R.id.nav_schedule) {
-            fragment = new ScheduleFragment();
+            bottomBar.setSelectedItemId(R.id.bottom_bar_schedule);
             fab.show();
         } else if (id == R.id.nav_maps) {
-            fragment = new MapsFragment();
+            bottomBar.setSelectedItemId(R.id.bottom_bar_maps);
             fab.hide();
         } else if (id == R.id.nav_about) {
             fragment = new AboutFragment();
