@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.recyclerview.extensions.ListAdapter;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,7 @@ import com.google.android.gms.maps.MapFragment;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -176,9 +178,5 @@ public class ScheduleListAdapter extends RecyclerView.Adapter<ScheduleListAdapte
     public void addEntry(Entry entry) {
         entryList.add(entry);
         notifyItemInserted(entryList.size());
-    }
-
-    public void updateList(){
-        notifyDataSetChanged();
     }
 }

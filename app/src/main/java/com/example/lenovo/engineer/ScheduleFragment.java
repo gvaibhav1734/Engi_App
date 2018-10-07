@@ -45,9 +45,10 @@ public class ScheduleFragment extends Fragment {
     ScheduleListAdapter day1Adapter, day2Adapter, day3Adapter, day4Adapter, day0Adapter;
     private String sharedPrefFile = "com.example.android.engineer";
     private SharedPreferences mPreferences;
-    private static int previousTab=0;
+    private static int previousTab = 0;
     private RecyclerView recyclerView;
-    private static int scrollTo=0;
+    private LinearLayoutManager linearLayoutManager;
+    private static int scrollTo = 0;
 
     public ScheduleFragment() {
     }
@@ -58,7 +59,7 @@ public class ScheduleFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         //Read Shared Preference
         mPreferences = getActivity().getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
-        Log.d(TAG,"onCreateView");
+        Log.d(TAG, "onCreateView");
         View rootView = inflater.inflate(R.layout.fragment_schedule, container, false);
         viewPager = rootView.findViewById(R.id.schedule_vp_container);
         tabLayout = rootView.findViewById(R.id.schedule_tl_tabs);
@@ -66,6 +67,7 @@ public class ScheduleFragment extends Fragment {
         tabLayout.setupWithViewPager(viewPager);
         //day5Adapter = new ScheduleListAdapter(getActivity());
         getActivity().setTitle("Schedule");
+        makeRequest();
         return rootView;
     }
 
@@ -73,13 +75,14 @@ public class ScheduleFragment extends Fragment {
     public void onPause() {
         super.onPause();
         previousTab = viewPager.getCurrentItem();
+        scrollTo = recyclerView.computeVerticalScrollOffset();
+        Log.d(TAG, "onPause " + scrollTo);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        Log.d(TAG,"OnResume");
-        makeRequest();
+        Log.d(TAG, "OnResume");
     }
 
     public void makeRequest() {
@@ -97,7 +100,7 @@ public class ScheduleFragment extends Fragment {
                     @Override
                     public void onResponse(JSONArray response) {
                         Log.d(TAG, "listRequest success Volley : " + response.toString());
-                        for (int i =0 ; i<response.length(); i++) {
+                        for (int i = 0; i < response.length(); i++) {
                             Entry entry = new Entry();
                             try {
                                 JSONObject jsonObject = response.getJSONObject(i);
@@ -111,19 +114,18 @@ public class ScheduleFragment extends Fragment {
                                 entry.setName(jsonObject.getString("Name"));
                                 entry.setImage(
                                         jsonObject.getString("Image")
-                                        .replace("\\/","/")
+                                                .replace("\\/", "/")
                                 );
                                 entry.setRegister_link(
                                         jsonObject.getString("register_link")
-                                                .replace("\\/","/")
+                                                .replace("\\/", "/")
                                 );
-                                if(entry.getContent().equals("null") || entry.getContent().equals("")){
+                                if (entry.getContent().equals("null") || entry.getContent().equals("")) {
                                     entry.setContent("Engineer 2018");
                                 }
-                                if(mPreferences.getString(String.valueOf(entry.getID()), "b").equals("b")) {
+                                if (mPreferences.getString(String.valueOf(entry.getID()), "b").equals("b")) {
                                     entry.setLiked(false);
-                                }
-                                else {
+                                } else {
                                     entry.setLiked(true);
                                 }
                             } catch (JSONException error) {
@@ -156,7 +158,7 @@ public class ScheduleFragment extends Fragment {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.e(TAG, "listRequest Volley error : " + error.getMessage());
-                        Snackbar.make(getView(),"Connection lost.",Snackbar.LENGTH_INDEFINITE)
+                        Snackbar.make(getView(), "Connection lost.", Snackbar.LENGTH_INDEFINITE)
                                 .setAction("Retry", new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
@@ -176,7 +178,7 @@ public class ScheduleFragment extends Fragment {
         private static final int DAY2 = 2;
         private static final int DAY3 = 3;
         private static final int DAY4 = 4;
-        private String titles[] = {"Day 0","Day 1", "Day 2", "Day 3", "Day 4"};
+        private String titles[] = {"Day 0", "Day 1", "Day 2", "Day 3", "Day 4"};
         private int layouts[] = {R.layout.schedule_list_1,
                 R.layout.schedule_list_2,
                 R.layout.schedule_list_3,
@@ -201,14 +203,6 @@ public class ScheduleFragment extends Fragment {
             View rootView = inflater.inflate(layouts[position], container, false);
             container.addView(rootView);
             recyclerView = rootView.findViewById(R.id.schedule_list_rv);
-            DefaultItemAnimator animator = new DefaultItemAnimator() {
-                @Override
-                public boolean canReuseUpdatedViewHolder(RecyclerView.ViewHolder viewHolder) {
-                    return true;
-                }
-            };
-            recyclerView.setItemAnimator(animator);
-            recyclerView.setLayoutManager(new LinearLayoutManager(context));
             switch (position) {
                 case DAY0:
                     recyclerView.setAdapter(day0Adapter);
@@ -226,6 +220,8 @@ public class ScheduleFragment extends Fragment {
                     recyclerView.setAdapter(day4Adapter);
                     break;
             }
+            linearLayoutManager = new LinearLayoutManager(context);
+            recyclerView.setLayoutManager(linearLayoutManager);
             return rootView;
         }
 
