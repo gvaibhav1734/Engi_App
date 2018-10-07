@@ -36,7 +36,7 @@
     <string name="bot_hockey">Bot Hockey is an exciting and challenging competition featuring two teams with remote controlled robots competing against each other to score goals with a ball.</string>
     <string name="perfect_machine">Perfect machine is a unique competition which tests the skills of the participant in tackling various tasks that are given to them with their bot</string>
     <string name="wright_flight">Wright Flight attracts RC plane hobbyists from all over the country with unique and challenging flying tasks</string>
-    <string name="bot_foot">Bot football is a multiplayer game where two players use their wire. less bots to defeat their opponent in a limited time football match.</string>
+    <string name="bot_foot">Bot football is a multi-player game where two players use their wire. less bots to defeat their opponent in a limited time football match.</string>
     <string name="laser_pro">Catch the eye-catching projects Laser Harp and Laser Turret which focuses on playing Harp with the turret</string>
     <string name="contr">A great implementation of classic Rube Goldberg machine.</string>
     <string name="virt_sand">This was most highly anticipated exhibition made by using Augmented Reality and used projector to implement it.</string>
@@ -46,20 +46,20 @@
     <string name="constarch">This interactive session shows how crazy of a Non-Newtonian fluid constarch can be!</string>
     <string name="thermite">This extremely stunning visual demo shows the practical side of how welding rails work using the Thermite Welding process.</string>
     <string name="ga">Using pure science and a bit of brute force, embrittlement of Al sheets has never been explained easier in a way that triggers the brain.</string>
-    <string name="blast_furnce">CDATA[A clay furnace and a low melting point metal such as Pb is all you need to show a successful demonstration. </string>
+    <string name="blast_furnce">A clay furnace and a low melting point metal such as Pb is all you need to show a successful demonstration. </string>
     <string name="foil">This dramatic session demonstrates how a simple packaging material like metal foil undergoes amalgamation.</string>
     <string name="col">The event is aimed to improve design and management skills of participants. And also provides an opportunity to learn fabrication processes.</string>
     <string name="mind_bend">The event will be an amalgamation of visual rounds and written tests, full of interesting and intriguing challenges</string>
-    <string name="arch">BUILD SIMPLE, BUT WORKING MODELS FROM DAILY USE ITEMS(POPSICLE STICKS, PAPER ETC.). Civil Engineering is an art; a profession of creative ability and logic.</string>
+    <string name="arch">Build simple, but working models from daily use items(Popsicle Sticks, paper etc.). Civil Engineering is an art; a profession of creative ability and logic.</string>
     <string name="chem_break">It consists of a general quiz, a unique \'Picture Connect\' round and a treasure hunt as the final round which is conduted in the Chemical Dept. of NITK!!!</string>
     <string name="idp">IDP aims to enhance interaction with the industry through real time problem solving with problem statement given a week before</string>
     <string name="capture">Capture is a photo gallery event where you get to show us a moment captured by you, which depicts any science related processes.</string>
-    <string name="chem_e_talks">Do you want to meet international academicians, researchers, entrepeneurs and industrialists? Then come join us at the Chem E talks</string>
+    <string name="chem_e_talks">Do you want to meet international academicians, researchers, entrepreneurs and industrialists? Then come join us at the Chem E talks</string>
     <string name="inscr">This individual flagship event online event has attracted participation from some of the top companies like Microsoft, Yahoo and from top competitive programmers</string>
     <string name="kode_komb">Three rounds, each being a thrilling mix of coding debugging and puzzles on rocks all teams engage in continuous battles collecting points on the way.</string>
     <string name="marath">An event that test how long you can persist solving the trickiest computer problems thrown at you and requires fluent coding skills as its logic based!!!</string>
     <string name="rect">Feel you code can withdstand any challenge?Prove it! Requiring only a working knowledge of C or C++, Rectify is an individual event</string>
-    <string name="ectf">Involving Crytography, Reverse engineering and Web app challanges and even Manipulating Security flaws, this Jeopardy style "Capture the flag" event is an online team competition</string>
+    <string name="ectf">Involving Cryptography, Reverse engineering and Web app challenges and even Manipulating Security flaws, this Jeopardy style "Capture the flag" event is an online team competition</string>
     <string name="antar">Antariksh is the space exhibition room of Astro Committee where the various projects undertaken by the club and models are displayed. </string>
     <string name="starwars">The annual Astro-Quiz held by Astro Committee was held on 13th October and the event saw around twenty teams participate for the prizes </string>
     <string name="Interst">The objective of the event is to assess the various safety mechanisms devised by the participants to protect the payload</string>
@@ -68,5 +68,6 @@
     <string name="register">register</string>
 
     <string name="banking_sponsor">Banking Sponsor</string>
+    <string name="synthessence">Primarily focusing on Big Data Analytics and Machine Learning, this event provides an opportunity for the participants to get their hands dirty on real datasets.</string>
 
 </resources>

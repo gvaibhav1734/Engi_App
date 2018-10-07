@@ -41,9 +41,10 @@ public class main_menu extends AppCompatActivity
         setContentView(R.layout.activity_main_menu);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setElevation(0);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-
+        if(getSupportActionBar()!=null) {
+            getSupportActionBar().setElevation(0);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        }
         fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

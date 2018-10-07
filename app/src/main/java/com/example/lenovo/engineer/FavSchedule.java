@@ -34,8 +34,11 @@ public class FavSchedule extends AppCompatActivity {
         setContentView(R.layout.fav_sc);
         Toolbar toolbar = findViewById(R.id.fav_toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        if(getSupportActionBar()!=null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+            getSupportActionBar().setTitle("Favourites");
+        }
         toolbar.showOverflowMenu();
         mRecyclerView = findViewById(R.id.my_recycler_view);
 

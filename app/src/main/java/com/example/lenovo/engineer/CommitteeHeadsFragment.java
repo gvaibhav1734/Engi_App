@@ -27,6 +27,8 @@ public class CommitteeHeadsFragment extends Fragment {
                 inflater.inflate(R.layout.fragment_committee_heads, container, false);
         RecyclerView recyclerView = rootView.findViewById(R.id.committee_heads_rv);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        if (getActivity() != null)
+            getActivity().setTitle("Committee Heads");
         List<CommitteeHead> committeeHeads = new ArrayList<>();
         committeeHeads.add(new CommitteeHead(
                 R.drawable.image_gaurab_raut,
@@ -209,17 +211,20 @@ public class CommitteeHeadsFragment extends Fragment {
         @NonNull
         @Override
         public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
-            LayoutInflater layoutInflater =
-                    (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View v = null;
-            switch (viewType) {
-                case 0:
-                    v = layoutInflater.inflate(R.layout.committee_heads_item_0, viewGroup, false);
-                    break;
-                case 1:
-                    v = layoutInflater.inflate(R.layout.committee_heads_item_1, viewGroup, false);
+            ViewHolder vh = null;
+            if (getContext() != null) {
+                LayoutInflater layoutInflater =
+                        (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                View v = null;
+                switch (viewType) {
+                    case 0:
+                        v = layoutInflater.inflate(R.layout.committee_heads_item_0, viewGroup, false);
+                        break;
+                    case 1:
+                        v = layoutInflater.inflate(R.layout.committee_heads_item_1, viewGroup, false);
+                }
+                vh = new ViewHolder(v);
             }
-            ViewHolder vh = new ViewHolder(v);
             return vh;
         }
 

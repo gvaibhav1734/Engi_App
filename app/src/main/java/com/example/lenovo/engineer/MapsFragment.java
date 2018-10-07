@@ -44,6 +44,9 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        if(getActivity()!=null){
+            getActivity().setTitle("Map");
+        }
         Bundle bundle = getArguments();
         if (bundle != null) {
             this.bundle = bundle;
@@ -57,9 +60,11 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
         // and move the map's camera to the same location.
         this.googleMap = googleMap;
         this.googleMap.getUiSettings().setMapToolbarEnabled(false);
-        this.googleMap.setMapStyle(
-                MapStyleOptions.loadRawResourceStyle(getContext(), R.raw.map_style)
-        );
+        if(getContext()!=null) {
+            this.googleMap.setMapStyle(
+                    MapStyleOptions.loadRawResourceStyle(getContext(), R.raw.map_style)
+            );
+        }
         if (bundle != null) {
             String name = bundle.getString("location");
             LatLng latLng ;

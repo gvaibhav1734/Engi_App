@@ -16,6 +16,8 @@ public class SponsorsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_sponsors, container, false);
+        if(getActivity()!=null)
+            getActivity().setTitle("Sponsors");
         this.container = rootView.findViewById(R.id.sponsors_ll_container);
         return rootView;
     }

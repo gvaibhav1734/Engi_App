@@ -56,7 +56,8 @@ public class ScheduleFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         //Read Shared Preference
-        mPreferences = getActivity().getApplicationContext().getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
+        if(getActivity()!=null)
+            mPreferences = getActivity().getApplicationContext().getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
         Log.d(TAG, "onCreateView");
         View rootView = inflater.inflate(R.layout.fragment_schedule, container, false);
         viewPager = rootView.findViewById(R.id.schedule_vp_container);
@@ -64,7 +65,8 @@ public class ScheduleFragment extends Fragment {
         progressBar = rootView.findViewById(R.id.schedule_list_pb_progress);
         tabLayout.setupWithViewPager(viewPager);
         //day5Adapter = new ScheduleListAdapter(getActivity());
-        getActivity().setTitle("Schedule");
+        if(getActivity()!=null)
+            getActivity().setTitle("Schedule");
         day0Adapter = new ScheduleListAdapter(getActivity());
         day1Adapter = new ScheduleListAdapter(getActivity());
         day2Adapter = new ScheduleListAdapter(getActivity());

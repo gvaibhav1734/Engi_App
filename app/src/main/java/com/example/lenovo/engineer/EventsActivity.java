@@ -27,12 +27,14 @@ public class EventsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_events);
         android.support.v7.widget.Toolbar toolbar =  findViewById(R.id.event_toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if(getSupportActionBar()!=null)
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         if(extras!=null)
         {
             str=extras.getString("title")+" Events";
             str1=extras.getString("title");
-            getSupportActionBar().setTitle(str);
+            if(getSupportActionBar()!=null)
+                getSupportActionBar().setTitle(str);
         }
         RecyclerView recyclerView=findViewById(R.id.event_recycler);
         mAdapter=new Eventadapter(getApplicationContext(),eventList);
@@ -82,33 +84,33 @@ public class EventsActivity extends AppCompatActivity {
         }
         if(str1.equals("Engi Talks"))
         {
-            event=new Event("Grace Samson","HR, Head of Informatica India" ,R.drawable.grace_samson);
+            event=new Event("Natasha Doshi","Natasha Doshi",R.drawable.natasha_doshi);
             eventList.add(event);
-            event=new Event("Dr. Pankaj Joshi","Globally renowned scientist Astrophysicist senior professor at TIFR",R.drawable.pankaj);
+            event=new Event("Dr. Pankaj Joshi","Dr. Pankaj Joshi : Globally renowned scientist, Astrophysicist. Stephen Hawking's Research Colleague",R.drawable.pankaj);
             eventList.add(event);
-            event=new Event("Natasha Doshi","Model Actress",R.drawable.natasha_doshi);
+            event=new Event("Henry Menezes","Henry Menezes : Former Indian Football Team \nCEO-Western Football Assoc",R.drawable.henry_menezes);
             eventList.add(event);
-            event=new Event("Henry Menezes","Former Indian Football Team \nCEO-Western Football Assoc",R.drawable.henry_menezes);
+            event=new Event("SN Mukherjee","SN Mukherjee : Retired Major General Indian Army ",R.drawable.sn_mukherjee);
             eventList.add(event);
-            event=new Event("SN Mukherjee","Retired Major General Indian Army ",R.drawable.sn_mukherjee);
+            event=new Event("Rahul Tyagi","Rahul Tyagi : CEO, Luciders Indian leading Cyber Security Expert" ,R.drawable.rahul_tyagi_curr);
             eventList.add(event);
-            event=new Event("Rahul Tyagi","CEO, Luciders Indian leading Cyber Security Expert" ,R.drawable.rahul_tyagi_curr);
+            event=new Event("Grace Samson","Grace Samson : HR, Head of Informatica India" ,R.drawable.grace_samson);
             eventList.add(event);
         }
 
        if(str1.equals("Tronix"))
        {
-           event=new Event("Foxhunt",getString(R.string.foxhunt),R.drawable.foxhunt1);
+           event=new Event("Foxhunt","Foxhunt : "+getString(R.string.foxhunt),R.drawable.foxhunt1);
            eventList.add(event);
-           event=new Event("Symphony",getString(R.string.Symphony),R.drawable.symphony);
+           event=new Event("Symphony","Symphony : "+getString(R.string.Symphony),R.drawable.symphony);
            eventList.add(event);
-           event=new Event("Trade-Off",getString(R.string.Trade_off),R.drawable.tradeoff);
+           event=new Event("Trade-Off","Trade-Off : "+getString(R.string.Trade_off),R.drawable.tradeoff);
            eventList.add(event);
-           event=new Event("TrailBlazer",getString(R.string.TrailBlazer),R.drawable.trologo);
+           event=new Event("TrailBlazer","TrailBlazer : "+getString(R.string.TrailBlazer),R.drawable.trologo);
            eventList.add(event);
-           event=new Event("Light of Seven",getString(R.string.Light_of_seven),R.drawable.lightofseven);
+           event=new Event("Light of Seven","Light of Seven : "+getString(R.string.Light_of_seven),R.drawable.lightofseven);
            eventList.add(event);
-           event=new Event("Automata",getString(R.string.Automata),R.drawable.automata);
+           event=new Event("Automata","Automata : "+ getString(R.string.Automata),R.drawable.automata);
            eventList.add(event);
 
        }
@@ -122,7 +124,7 @@ public class EventsActivity extends AppCompatActivity {
             eventList.add(event);
             event=new Event("Wright Flight",getString(R.string.wright_flight),R.drawable.mech7);
             eventList.add(event);
-            event=new Event("Contraption","The aim of this competition is to build a Rube Goldberg machine.", R.drawable.mech8);
+            event=new Event("Contraption","Contraption : "+"The aim of this competition is to build a Rube Goldberg machine.", R.drawable.mech8);
             eventList.add(event);
 
         }
@@ -132,40 +134,40 @@ public class EventsActivity extends AppCompatActivity {
             eventList.add(event);
             event=new Event("Laser Projects",getString(R.string.laser_pro),R.drawable.laser);
             eventList.add(event);
-            event=new Event("Contraption",getString(R.string.contr),R.drawable.technites1);
+            event=new Event("Contraption","Contraption : "+getString(R.string.contr),R.drawable.technites1);
             eventList.add(event);
-            event=new Event("Virtual Sandbox",getString(R.string.virt_sand),R.drawable.sandbox);
+            event=new Event("Virtual Sandbox","Virtual Sandbox : "+getString(R.string.virt_sand),R.drawable.sandbox);
             eventList.add(event);
 
         }
 
         if(str1.equals("Metallurgy"))
         {
-            event=new Event("MetaMagic",getString(R.string.meta_mag),R.drawable.meta);
+            event=new Event("MetaMagic","MetaMagic : "+ getString(R.string.meta_mag),R.drawable.chem_lab_1);
             eventList.add(event);
-            event=new Event("MindBend",getString(R.string.mindbend),R.drawable.mindbend);
+            event=new Event("MindBend","MindBend : "+getString(R.string.mindbend),R.drawable.mindbend);
             eventList.add(event);
-            event=new Event("Sem Tem Expo",getString(R.string.sem_tem),R.drawable.miridae_sem_3);
+            event=new Event("Sem Tem Expo","Sem Tem Expo : "+getString(R.string.sem_tem),R.drawable.miridae_sem_3);
             eventList.add(event);
-            event=new Event("Constarch Event",getString(R.string.constarch),R.drawable.cornstarch);
+            event=new Event("Constarch Event","Constarch Event : "+getString(R.string.constarch),R.drawable.cornstarch);
             eventList.add(event);
-            event=new Event("Thermite Demo",getString(R.string.thermite),R.drawable.meta);
+            event=new Event("Thermite Demo","Thermite Demo : "+getString(R.string.thermite),R.drawable.meta);
             eventList.add(event);
-            event=new Event("GA embrittlement of AL",getString(R.string.ga),R.drawable.gaal);
+            event=new Event("GA embrittlement of AL","GA embrittlement of AL : " + getString(R.string.ga),R.drawable.gaal);
             eventList.add(event);
-            event=new Event("Blast Furnace Model",getString(R.string.blast_furnce),R.drawable.blastfurnace);
+            event=new Event("Blast Furnace Model","Blast Furnace Model : " + getString(R.string.blast_furnce),R.drawable.blastfurnace);
             eventList.add(event);
-            event=new Event("Foil Amalgamation",getString(R.string.foil),R.drawable.chem_lab_1);
+            event=new Event("Foil Amalgamation","Foil Amalgamation : "+getString(R.string.foil),R.drawable.meta);
             eventList.add(event);
 
         }
         if(str1.equals("Civil"))
         {
-            event=new Event("Colossus",getString(R.string.col),R.drawable.colossus);
+            event=new Event("Colossus","Colossus : "+getString(R.string.col),R.drawable.colossus);
             eventList.add(event);
-            event=new Event("Mind Bend",getString(R.string.mind_bend),R.drawable.mindbend);
+            event=new Event("Mind Bend","Mind Bend : "+getString(R.string.mind_bend),R.drawable.mindbend);
             eventList.add(event);
-            event=new Event("Architect",getString(R.string.arch),R.drawable.architect);
+            event=new Event("Architect","Architect : " +getString(R.string.arch),R.drawable.architect);
             eventList.add(event);
             event=new Event("Introduction to AutoCad","Introduction to AutoCad",R.drawable.autocad);
             eventList.add(event);
@@ -201,24 +203,26 @@ public class EventsActivity extends AppCompatActivity {
         }
         if(str1.equals("Comp"))
         {
-            event=new Event("Inscription",getString(R.string.inscr),R.drawable.ins);
+            event=new Event("Inscription","Inscription : "+getString(R.string.inscr),R.drawable.ins);
             eventList.add(event);
-            event=new Event("Kode Kombat",getString(R.string.kode_komb),R.drawable.combat);
+            event=new Event("Kode Kombat","Kode Kombat : "+getString(R.string.kode_komb),R.drawable.combat);
             eventList.add(event);
-            event=new Event("Marathon",getString(R.string.marath),R.drawable.mlpic);
+            event=new Event("Marathon","Marathon : "+getString(R.string.marath),R.drawable.mlpic);
             eventList.add(event);
-            event=new Event("Rectify",getString(R.string.rect),R.drawable.rectifyimg);
+            event=new Event("Rectify","Rectify : "+getString(R.string.rect),R.drawable.rectifyimg);
             eventList.add(event);
-            event=new Event("ECTF",getString(R.string.ectf),R.drawable.ctfimg);
+            event=new Event("ECTF","ECTF : "+getString(R.string.ectf),R.drawable.ctfimg);
+            eventList.add(event);
+            event=new Event("Synthessence","Synthessence : "+getString(R.string.synthessence),R.drawable.synthessence);
             eventList.add(event);
         }
         if(str1.equals("Astro"))
         {
             event=new Event("Antariksh Attraction",getString(R.string.antar),R.drawable.antariksh);
             eventList.add(event);
-            event=new Event("StarWars",getString(R.string.starwars),R.drawable.starwars);
+            event=new Event("StarWars","StarWars : "+getString(R.string.starwars),R.drawable.starwars);
             eventList.add(event);
-            event=new Event("Interstellar",getString(R.string.Interst),R.drawable.interstellarfinal);
+            event=new Event("Interstellar","Interstellar : "+getString(R.string.Interst),R.drawable.interstellarfinal);
             eventList.add(event);
             event=new Event("Endeavour",getString(R.string.endev),R.drawable.endeavour);
             eventList.add(event);
