@@ -157,7 +157,7 @@ public class EventsActivity extends AppCompatActivity {
             eventList.add(event);
             event=new Event("Blast Furnace Model","Blast Furnace Model : " + getString(R.string.blast_furnce),R.drawable.blastfurnace);
             eventList.add(event);
-            event=new Event("Foil Amalgamation","Foil Amalgamation : "+getString(R.string.foil),R.drawable.meta);
+            event=new Event("Foil Amalgamation","Foil Amalgamation : "+getString(R.string.foil),R.drawable.almg);
             eventList.add(event);
 
         }
@@ -203,7 +203,7 @@ public class EventsActivity extends AppCompatActivity {
         }
         if(str1.equals("Comp"))
         {
-            event=new Event("Inscription","Inscription : "+getString(R.string.inscr),R.drawable.ins);
+            event=new Event("Inscription","Inscription : "+getString(R.string.inscr),R.drawable.inscription);
             eventList.add(event);
             event=new Event("Kode Kombat","Kode Kombat : "+getString(R.string.kode_komb),R.drawable.combat);
             eventList.add(event);

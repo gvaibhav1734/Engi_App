@@ -110,9 +110,16 @@ public class CommitteeHeadsFragment extends Fragment {
         committeeHeads.add(new CommitteeHead(
                 R.drawable.image_pradeep,
                 "Pradeep Choudhary",
-                "Student Hospitality",
+                "Engi Force",
                 "pradeepchoudharyj99@gmail.com",
                 "9413640133")
+        );
+        committeeHeads.add(new CommitteeHead(
+                R.drawable.image_vamshi_krishna,
+                "Vamshi Krishna",
+                "Student Hospitality",
+                "vamsikrish9191@gmail.com",
+                "9742604301")
         );
         committeeHeads.add(new CommitteeHead(
                 R.drawable.image_yash_gangwal,
