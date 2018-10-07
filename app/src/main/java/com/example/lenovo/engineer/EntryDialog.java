@@ -61,56 +61,58 @@ public class EntryDialog extends DialogFragment {
         getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
 
         final Entry entry = getArguments().getParcelable("entry");
-        name.setText(entry.getName());
-        time.setText(entry.getTime());
-        day.setText(String.valueOf(entry.getDay()));
-        location.setText(entry.getLocation());
-        committee.setText(entry.getCommittee());
-        content.setText(entry.getContent());
-        close.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getDialog().dismiss();
-            }
-        });
-        RequestOptions options = new RequestOptions()
-                .centerCrop()
-                .placeholder(R.drawable.about_pic)
-                .error(R.drawable.about_pic);
-        Glide.with(this)
-                .load(entry.getImage())
-                .apply(options)
-                .into(image);
-        if (entry.getRegister_event() == 1)
-            register.setVisibility(View.VISIBLE);
-        else
-            register.setVisibility(View.GONE);
-        register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent a = new Intent(getContext(), WebViewActivity.class);
-                a.putExtra("link",entry.getRegister_link());
-                startActivity(a);
-            }
-        });
-        location.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                MapsFragment mapsFragment = new MapsFragment();
-                Bundle bundle = new Bundle();
-                String location = entry.getLocation();
-                bundle.putString("location",location);
-                mapsFragment.setArguments(bundle);
-                if(!location.equals("Online")) {
-                    getActivity().getSupportFragmentManager()
-                            .beginTransaction()
-                            .replace(R.id.main_menu_fl_container, mapsFragment)
-                            .addToBackStack("MapsFragment")
-                            .commit();
+        if(entry!=null) {
+            name.setText(entry.getName());
+            time.setText(entry.getTime());
+            day.setText(String.valueOf(entry.getDay()));
+            location.setText(entry.getLocation());
+            committee.setText(entry.getCommittee());
+            content.setText(entry.getContent());
+            close.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
                     getDialog().dismiss();
                 }
-            }
-        });
+            });
+            RequestOptions options = new RequestOptions()
+                    .centerCrop()
+                    .placeholder(R.drawable.about_pic)
+                    .error(R.drawable.about_pic);
+            Glide.with(this)
+                    .load(entry.getImage())
+                    .apply(options)
+                    .into(image);
+            if (entry.getRegister_event() == 1)
+                register.setVisibility(View.VISIBLE);
+            else
+                register.setVisibility(View.GONE);
+            register.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent a = new Intent(getContext(), WebViewActivity.class);
+                    a.putExtra("link", entry.getRegister_link());
+                    startActivity(a);
+                }
+            });
+            location.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    MapsFragment mapsFragment = new MapsFragment();
+                    Bundle bundle = new Bundle();
+                    String location = entry.getLocation();
+                    bundle.putString("location", location);
+                    mapsFragment.setArguments(bundle);
+                    if (!location.equals("Online")) {
+                        getActivity().getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.main_menu_fl_container, mapsFragment)
+                                .addToBackStack("MapsFragment")
+                                .commit();
+                        getDialog().dismiss();
+                    }
+                }
+            });
+        }
         return rootView;
     }
 }

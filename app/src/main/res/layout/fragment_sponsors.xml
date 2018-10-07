@@ -116,6 +116,16 @@
                 android:text="@string/title_sponsor"
                 android:textAlignment="center" />
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:padding="@dimen/padding_normal"
+                android:src="@drawable/sponsor_hdfc"
+                android:text="@string/title_sponsor"
+                android:textAlignment="center" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -176,6 +186,27 @@
                 android:gravity="center_vertical"
                 android:padding="@dimen/padding_normal"
                 android:src="@drawable/sponsor_namma_tv"
+                android:text="@string/title_sponsor"
+                android:textAlignment="center" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:gravity="center_vertical"
+                android:padding="@dimen/padding_normal"
+                android:text="Supply Chain Partner"
+                android:textAlignment="center"
+                android:textSize="@dimen/text_size_large"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:padding="@dimen/padding_normal"
+                android:src="@drawable/sponsor_safe_express"
                 android:text="@string/title_sponsor"
                 android:textAlignment="center" />
 

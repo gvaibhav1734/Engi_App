@@ -24,8 +24,10 @@ public class WebViewActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Register");
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        if(getSupportActionBar()!=null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
         webview = findViewById(R.id.webview_wv);
         /*WebSettings webSettings = webview.getSettings();
         webSettings.setJavaScriptEnabled(true);
@@ -55,13 +57,11 @@ public class WebViewActivity extends AppCompatActivity {
     {
         @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
-            // TODO Auto-generated method stub
             super.onPageStarted(view, url, favicon);
         }
 
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            // TODO Auto-generated method stub
             progressBar.setVisibility(View.VISIBLE);
             view.loadUrl(url);
             return true;
@@ -70,7 +70,6 @@ public class WebViewActivity extends AppCompatActivity {
 
         @Override
         public void onPageFinished(WebView view, String url) {
-            // TODO Auto-generated method stub
             super.onPageFinished(view, url);
 
             progressBar.setVisibility(View.GONE);

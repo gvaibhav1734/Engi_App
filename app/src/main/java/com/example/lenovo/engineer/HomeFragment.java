@@ -28,7 +28,7 @@ public class HomeFragment extends Fragment {
     private RecyclerView recyclerView;
     private CommAdapter adapter;
     private List<CommitteeDet> committeeDetList;
-    private static ViewPager mPager;
+    private ViewPager mPager;
     private static int currentPage = 0;
     private static final Integer[] Images = {R.drawable.sunburn_nitk,
             R.drawable.day_2,
@@ -50,7 +50,9 @@ public class HomeFragment extends Fragment {
         recyclerView = rootView.findViewById(R.id.home_recycler_view);
         committeeDetList = new ArrayList<>();
         adapter = new CommAdapter(getContext(), committeeDetList);
-
+        if(getActivity()!=null){
+            getActivity().setTitle("Engineer");
+        }
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getContext(), 2);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(10), true));
@@ -64,8 +66,8 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         //you can set the title for your toolbar here for different fragments different titles
-        getActivity().setTitle("Engineer");
-
+        if(getActivity()!=null)
+            getActivity().setTitle("Engineer");
         initSlider();
     }
 

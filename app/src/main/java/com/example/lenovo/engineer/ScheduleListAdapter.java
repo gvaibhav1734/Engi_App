@@ -30,12 +30,12 @@ import static android.content.Context.MODE_PRIVATE;
 public class ScheduleListAdapter extends RecyclerView.Adapter<ScheduleListAdapter.ViewHolder> {
     private List<Entry> entryList = new ArrayList<>();
     private Context context;
-    private SharedPreferences mPreferences;
-    private String sharedPrefFile = "com.example.android.engineer";
+    private static SharedPreferences mPreferences;
+    private static String sharedPrefFile = "com.example.android.engineer";
 
     ScheduleListAdapter(Context context) {
         this.context = context;
-        mPreferences = this.context.getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
+        mPreferences = context.getApplicationContext().getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -178,5 +178,16 @@ public class ScheduleListAdapter extends RecyclerView.Adapter<ScheduleListAdapte
     public void addEntry(Entry entry) {
         entryList.add(entry);
         notifyItemInserted(entryList.size());
+    }
+
+    public void updateList(){
+        for(int i=0; i<entryList.size(); i++){
+            if(mPreferences.getString(String.valueOf(entryList.get(i).getID()),"nope").equals("nope")) {
+                entryList.get(i).setLiked(false);
+            } else{
+                entryList.get(i).setLiked(true);
+            }
+            notifyItemChanged(i);
+        }
     }
 }

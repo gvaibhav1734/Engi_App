@@ -47,8 +47,6 @@ public class ScheduleFragment extends Fragment {
     private SharedPreferences mPreferences;
     private static int previousTab = 0;
     private RecyclerView recyclerView;
-    private LinearLayoutManager linearLayoutManager;
-    private static int scrollTo = 0;
 
     public ScheduleFragment() {
     }
@@ -58,7 +56,8 @@ public class ScheduleFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         //Read Shared Preference
-        mPreferences = getActivity().getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
+        if(getActivity()!=null)
+            mPreferences = getActivity().getApplicationContext().getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
         Log.d(TAG, "onCreateView");
         View rootView = inflater.inflate(R.layout.fragment_schedule, container, false);
         viewPager = rootView.findViewById(R.id.schedule_vp_container);
@@ -66,7 +65,13 @@ public class ScheduleFragment extends Fragment {
         progressBar = rootView.findViewById(R.id.schedule_list_pb_progress);
         tabLayout.setupWithViewPager(viewPager);
         //day5Adapter = new ScheduleListAdapter(getActivity());
-        getActivity().setTitle("Schedule");
+        if(getActivity()!=null)
+            getActivity().setTitle("Schedule");
+        day0Adapter = new ScheduleListAdapter(getActivity());
+        day1Adapter = new ScheduleListAdapter(getActivity());
+        day2Adapter = new ScheduleListAdapter(getActivity());
+        day3Adapter = new ScheduleListAdapter(getActivity());
+        day4Adapter = new ScheduleListAdapter(getActivity());
         makeRequest();
         return rootView;
     }
@@ -75,22 +80,21 @@ public class ScheduleFragment extends Fragment {
     public void onPause() {
         super.onPause();
         previousTab = viewPager.getCurrentItem();
-        scrollTo = recyclerView.computeVerticalScrollOffset();
-        Log.d(TAG, "onPause " + scrollTo);
+        Log.d(TAG, "onPause");
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        day0Adapter.updateList();
+        day1Adapter.updateList();
+        day2Adapter.updateList();
+        day3Adapter.updateList();
+        day4Adapter.updateList();
         Log.d(TAG, "OnResume");
     }
 
     public void makeRequest() {
-        day0Adapter = new ScheduleListAdapter(getActivity());
-        day1Adapter = new ScheduleListAdapter(getActivity());
-        day2Adapter = new ScheduleListAdapter(getActivity());
-        day3Adapter = new ScheduleListAdapter(getActivity());
-        day4Adapter = new ScheduleListAdapter(getActivity());
         progressBar.setVisibility(View.VISIBLE);
         JsonArrayRequest listRequest = new JsonArrayRequest(
                 Request.Method.GET,
@@ -220,8 +224,7 @@ public class ScheduleFragment extends Fragment {
                     recyclerView.setAdapter(day4Adapter);
                     break;
             }
-            linearLayoutManager = new LinearLayoutManager(context);
-            recyclerView.setLayoutManager(linearLayoutManager);
+            recyclerView.setLayoutManager(new LinearLayoutManager(context));
             return rootView;
         }
 

@@ -33,6 +33,10 @@
             android:icon="@drawable/ic_developer"
             android:title="Developers" />
         <item
+            android:id="@+id/help"
+            android:icon="@drawable/ic_info"
+            android:title="Help" />
+        <item
             android:id="@+id/logout"
             android:icon="@drawable/ic_menu_manage"
             android:title="Logout" />

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -27,6 +28,8 @@ public class DevelopersFragment extends Fragment{
                 inflater.inflate(R.layout.fragment_developers, container, false);
         RecyclerView recyclerView = rootView.findViewById(R.id.developers_rv);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        if(getActivity()!=null)
+            getActivity().setTitle("Developers");
         List<Developer> developers = new ArrayList<>();
         developers.add(new Developer(
                 R.drawable.developer_vaibhav,

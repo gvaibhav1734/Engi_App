@@ -27,6 +27,8 @@ public class CommitteeHeadsFragment extends Fragment {
                 inflater.inflate(R.layout.fragment_committee_heads, container, false);
         RecyclerView recyclerView = rootView.findViewById(R.id.committee_heads_rv);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        if (getActivity() != null)
+            getActivity().setTitle("Committee Heads");
         List<CommitteeHead> committeeHeads = new ArrayList<>();
         committeeHeads.add(new CommitteeHead(
                 R.drawable.image_gaurab_raut,
@@ -38,7 +40,7 @@ public class CommitteeHeadsFragment extends Fragment {
         committeeHeads.add(new CommitteeHead(
                 R.drawable.image_kshitij_bhandari,
                 "Kshitij Bhandari",
-                "Chief Coordinator",
+                "Treasurer",
                 "kbhandari98@gmail.com",
                 "9930411090")
         );
@@ -80,9 +82,23 @@ public class CommitteeHeadsFragment extends Fragment {
         committeeHeads.add(new CommitteeHead(
                 R.drawable.image_raveesh,
                 "Raveesh Sinha",
-                "Workshop ",
+                "Workshop Head",
                 "sinharaveesh16@gmail.com",
-                "9983563302 ")
+                "9983563302")
+        );
+        committeeHeads.add(new CommitteeHead(
+                R.drawable.image_mohit_gupta,
+                "Mohit Gupta",
+                "Chief Coordinator",
+                "immohitgupta1@gmail.com",
+                "7597486374")
+        );
+        committeeHeads.add(new CommitteeHead(
+                R.drawable.image_vrishabh_sharma,
+                "Vrishabh Sharma",
+                "Chief Coordinator",
+                "vrishabhsharma22@gmail.com",
+                "9850079242")
         );
         committeeHeads.add(new CommitteeHead(
                 R.drawable.image_ved,
@@ -94,9 +110,16 @@ public class CommitteeHeadsFragment extends Fragment {
         committeeHeads.add(new CommitteeHead(
                 R.drawable.image_pradeep,
                 "Pradeep Choudhary",
-                "Student Hospitality",
+                "Engi Force",
                 "pradeepchoudharyj99@gmail.com",
                 "9413640133")
+        );
+        committeeHeads.add(new CommitteeHead(
+                R.drawable.image_vamshi_krishna,
+                "Vamshi Krishna",
+                "Student Hospitality",
+                "vamsikrish9191@gmail.com",
+                "9742604301")
         );
         committeeHeads.add(new CommitteeHead(
                 R.drawable.image_yash_gangwal,
@@ -136,7 +159,7 @@ public class CommitteeHeadsFragment extends Fragment {
         committeeHeads.add(new CommitteeHead(
                 R.drawable.image_chetan,
                 "Chetan Munegowda",
-                "Marketing Manager",
+                "Reflux Head",
                 "chetanm66@gmail.com",
                 "8892140482")
         );
@@ -195,17 +218,20 @@ public class CommitteeHeadsFragment extends Fragment {
         @NonNull
         @Override
         public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
-            LayoutInflater layoutInflater =
-                    (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View v = null;
-            switch (viewType) {
-                case 0:
-                    v = layoutInflater.inflate(R.layout.committee_heads_item_0, viewGroup, false);
-                    break;
-                case 1:
-                    v = layoutInflater.inflate(R.layout.committee_heads_item_1, viewGroup, false);
+            ViewHolder vh = null;
+            if (getContext() != null) {
+                LayoutInflater layoutInflater =
+                        (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                View v = null;
+                switch (viewType) {
+                    case 0:
+                        v = layoutInflater.inflate(R.layout.committee_heads_item_0, viewGroup, false);
+                        break;
+                    case 1:
+                        v = layoutInflater.inflate(R.layout.committee_heads_item_1, viewGroup, false);
+                }
+                vh = new ViewHolder(v);
             }
-            ViewHolder vh = new ViewHolder(v);
             return vh;
         }
 
