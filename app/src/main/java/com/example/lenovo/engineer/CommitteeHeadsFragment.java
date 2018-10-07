@@ -38,7 +38,7 @@ public class CommitteeHeadsFragment extends Fragment {
         committeeHeads.add(new CommitteeHead(
                 R.drawable.image_kshitij_bhandari,
                 "Kshitij Bhandari",
-                "Chief Coordinator",
+                "Treasurer",
                 "kbhandari98@gmail.com",
                 "9930411090")
         );
@@ -80,7 +80,7 @@ public class CommitteeHeadsFragment extends Fragment {
         committeeHeads.add(new CommitteeHead(
                 R.drawable.image_raveesh,
                 "Raveesh Sinha",
-                "Workshop ",
+                "Workshop Head",
                 "sinharaveesh16@gmail.com",
                 "9983563302 ")
         );
@@ -136,7 +136,7 @@ public class CommitteeHeadsFragment extends Fragment {
         committeeHeads.add(new CommitteeHead(
                 R.drawable.image_chetan,
                 "Chetan Munegowda",
-                "Marketing Manager",
+                "Reflux Head",
                 "chetanm66@gmail.com",
                 "8892140482")
         );
