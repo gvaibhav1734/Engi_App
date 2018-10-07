@@ -168,8 +168,4 @@ public class FavListAdapter extends RecyclerView.Adapter<FavListAdapter.ViewHold
         entryList.add(entry);
         notifyItemInserted(entryList.size());
     }
-
-    public void updateList(){
-        notifyDataSetChanged();
-    }
 }
