@@ -195,11 +195,7 @@ public class EventsActivity extends AppCompatActivity {
             eventList.add(event);
             event=new Event("Vipanan","Marketing Event",R.drawable.vipanan);
             eventList.add(event);
-            event=new Event("BizLytics","Analytics Event",R.drawable.biz1);
-            eventList.add(event);
-            event=new Event("Light of Seven",getString(R.string.Light_of_seven),R.drawable.lightofseven);
-            eventList.add(event);
-            event=new Event("Automata",getString(R.string.Automata),R.drawable.automata);
+            event=new Event("BizLytics","Analytics Event",R.drawable.bizlytics);
             eventList.add(event);
 
         }
