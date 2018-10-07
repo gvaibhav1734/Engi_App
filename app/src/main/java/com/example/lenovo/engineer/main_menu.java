@@ -155,6 +155,9 @@ public class main_menu extends AppCompatActivity
         } else if (id == R.id.sponsors) {
             fragment=new SponsorsFragment();
             fab.hide();
+        } else if (id == R.id.help){
+            fragment = new HelpFragment();
+            fab.hide();
         } else if (id == R.id.logout) {
             GoogleSignInHelper.getInstance(this).getClient().signOut();
             Log.d(TAG, "Logout Successful");

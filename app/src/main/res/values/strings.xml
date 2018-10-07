@@ -51,14 +51,14 @@
     <string name="col">The event is aimed to improve design and management skills of participants. And also provides an opportunity to learn fabrication processes.</string>
     <string name="mind_bend">The event will be an amalgamation of visual rounds and written tests, full of interesting and intriguing challenges</string>
     <string name="arch">Build simple, but working models from daily use items(Popsicle Sticks, paper etc.). Civil Engineering is an art; a profession of creative ability and logic.</string>
-    <string name="chem_break">It consists of a general quiz, a unique \'Picture Connect\' round and a treasure hunt as the final round which is conduted in the Chemical Dept. of NITK!!!</string>
+    <string name="chem_break">It consists of a general quiz, a unique \'Picture Connect\' round and a treasure hunt as the final round which is conducted in the Chemical Dept. of NITK!!!</string>
     <string name="idp">IDP aims to enhance interaction with the industry through real time problem solving with problem statement given a week before</string>
     <string name="capture">Capture is a photo gallery event where you get to show us a moment captured by you, which depicts any science related processes.</string>
     <string name="chem_e_talks">Do you want to meet international academicians, researchers, entrepreneurs and industrialists? Then come join us at the Chem E talks</string>
     <string name="inscr">This individual flagship event online event has attracted participation from some of the top companies like Microsoft, Yahoo and from top competitive programmers</string>
     <string name="kode_komb">Three rounds, each being a thrilling mix of coding debugging and puzzles on rocks all teams engage in continuous battles collecting points on the way.</string>
     <string name="marath">An event that test how long you can persist solving the trickiest computer problems thrown at you and requires fluent coding skills as its logic based!!!</string>
-    <string name="rect">Feel you code can withdstand any challenge?Prove it! Requiring only a working knowledge of C or C++, Rectify is an individual event</string>
+    <string name="rect">Feel you code can withstand any challenge?Prove it! Requiring only a working knowledge of C or C++, Rectify is an individual event</string>
     <string name="ectf">Involving Cryptography, Reverse engineering and Web app challenges and even Manipulating Security flaws, this Jeopardy style "Capture the flag" event is an online team competition</string>
     <string name="antar">Antariksh is the space exhibition room of Astro Committee where the various projects undertaken by the club and models are displayed. </string>
     <string name="starwars">The annual Astro-Quiz held by Astro Committee was held on 13th October and the event saw around twenty teams participate for the prizes </string>
@@ -69,5 +69,11 @@
 
     <string name="banking_sponsor">Banking Sponsor</string>
     <string name="synthessence">Primarily focusing on Big Data Analytics and Machine Learning, this event provides an opportunity for the participants to get their hands dirty on real datasets.</string>
+    <string name="help_text">
+        • Register for events by clicking on their schedule cards respectively
+        \n• Click on location in schedule card popup to take you to that location in Maps.
+        \n• Click on heart icon to select that event as favourite.
+        \n• To logout click on Logout in the navigation menu.
+        \n• To know more about any event contact the committee heads.</string>
 
 </resources>

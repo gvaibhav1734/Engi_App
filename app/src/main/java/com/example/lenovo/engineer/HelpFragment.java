@@ -16,8 +16,8 @@ import com.example.lenovo.engineer.ImageAdapter;
 
 import org.w3c.dom.Text;
 
-public class AboutFragment extends Fragment {
-    public AboutFragment() {
+public class HelpFragment extends Fragment {
+    public HelpFragment() {
         // Required empty public constructor
     }
 
@@ -31,7 +31,7 @@ public class AboutFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         if(getActivity()!=null)
-            getActivity().setTitle("About Engineer");
-        return inflater.inflate(R.layout.fragment_about, container, false);
+            getActivity().setTitle("Help");
+        return inflater.inflate(R.layout.fragment_help, container, false);
     }
 }
