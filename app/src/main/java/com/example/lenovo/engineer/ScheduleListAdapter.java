@@ -35,7 +35,7 @@ public class ScheduleListAdapter extends RecyclerView.Adapter<ScheduleListAdapte
 
     ScheduleListAdapter(Context context) {
         this.context = context;
-        mPreferences = context.getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
+        mPreferences = context.getApplicationContext().getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
