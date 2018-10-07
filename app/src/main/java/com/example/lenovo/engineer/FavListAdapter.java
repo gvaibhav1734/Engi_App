@@ -11,7 +11,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.recyclerview.extensions.ListAdapter;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,17 +22,16 @@ import com.google.android.gms.maps.MapFragment;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class ScheduleListAdapter extends RecyclerView.Adapter<ScheduleListAdapter.ViewHolder> {
+public class FavListAdapter extends RecyclerView.Adapter<FavListAdapter.ViewHolder> {
     private List<Entry> entryList = new ArrayList<>();
     private Context context;
     private SharedPreferences mPreferences;
     private String sharedPrefFile = "com.example.android.engineer";
 
-    ScheduleListAdapter(Context context) {
+    FavListAdapter(Context context) {
         this.context = context;
         mPreferences = this.context.getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
     }
@@ -148,23 +146,14 @@ public class ScheduleListAdapter extends RecyclerView.Adapter<ScheduleListAdapte
                 Typeface font2 =
                         Typeface.createFromAsset(context.getAssets(), "fa-solid-900.ttf");
 
-                if (!entryList.get(viewHolder.getAdapterPosition()).isLiked()) {
-                    viewHolder.like.setTypeface(font2);
-                    entryList.get(viewHolder.getAdapterPosition()).setLiked(true);
-                    String json = GsonHelper.getInstance().getGson()
-                            .toJson(entryList.get(viewHolder.getAdapterPosition()));
-                    preferencesEditor.putString(
-                            String.valueOf(entryList.get(viewHolder.getAdapterPosition()).getID()),
-                            json
-                    );
-                    preferencesEditor.apply();
-
-                } else {
+                if (entryList.get(viewHolder.getAdapterPosition()).isLiked()) {
                     viewHolder.like.setTypeface(font1);
                     entryList.get(viewHolder.getAdapterPosition()).setLiked(false);
                     preferencesEditor.remove(
                             String.valueOf(entryList.get(viewHolder.getAdapterPosition()).getID()));
                     preferencesEditor.apply();
+                    entryList.remove(viewHolder.getAdapterPosition());
+                    notifyItemRemoved(viewHolder.getAdapterPosition());
                 }
             }
         });

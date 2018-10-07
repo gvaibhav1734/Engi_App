@@ -18,7 +18,7 @@ import java.util.Map;
 public class FavSchedule extends AppCompatActivity {
     private static String TAG = "Fav_Schedule";
     private RecyclerView mRecyclerView;
-    private ScheduleListAdapter mAdapter;
+    private FavListAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private String mSharedPrefFile = "com.example.android.engineer";
 
@@ -48,7 +48,7 @@ public class FavSchedule extends AppCompatActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         // specify an adapter (see also next example)
-        mAdapter = new ScheduleListAdapter(this);
+        mAdapter = new FavListAdapter(this);
         SharedPreferences mPreferences = getSharedPreferences(mSharedPrefFile, MODE_PRIVATE);
         Map<String, ?> keys = mPreferences.getAll();
         if (keys.size() != 0) {

@@ -56,6 +56,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
         // Add a marker in Sydney, Australia,
         // and move the map's camera to the same location.
         this.googleMap = googleMap;
+        this.googleMap.getUiSettings().setMapToolbarEnabled(false);
         this.googleMap.setMapStyle(
                 MapStyleOptions.loadRawResourceStyle(getContext(), R.raw.map_style)
         );
